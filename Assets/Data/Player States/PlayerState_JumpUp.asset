@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec3dfbac90d3de4ab8d43a670aa2a71, type: 3}
+  m_Name: PlayerState_JumpUp
+  m_EditorClassIdentifier: 
+  stateName: Jump
+  transitionDuration: 0.1
+  jumpForce: 10
+  moveSpeed: 8
+  jumpVFX: {fileID: 4677385770777475979, guid: 31beca5807f326246860109c534f1383, type: 3}
+  jumpSFX: {fileID: 8300000, guid: eed2451bbd4264da8b6c27c92df62faf, type: 3}

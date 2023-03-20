@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7948bfc3ca563a74aa053e683f01867e, type: 3}
+  m_Name: PlayerState_Fall
+  m_EditorClassIdentifier: 
+  stateName: Fall
+  transitionDuration: 0.1
+  speedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.024971008
+      value: 0.070892334
+      inSlope: -1.4526477
+      outSlope: -1.4526477
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.25804418
+    - serializedVersion: 3
+      time: 0.5
+      value: -15.03537
+      inSlope: 0.9413769
+      outSlope: 0.9413769
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.4631016
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  moveSpeed: 8
