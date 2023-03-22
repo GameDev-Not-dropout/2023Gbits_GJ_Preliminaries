@@ -11,11 +11,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - BG
   - Ground
   - 
   - 
-  - 
+  - Player
   - 
   - 
   - 
@@ -40,4 +40,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BG
+    uniqueID: 2542528195
+    locked: 0
+  - name: Ground
+    uniqueID: 1440990577
+    locked: 0
+  - name: Player
+    uniqueID: 920563329
     locked: 0

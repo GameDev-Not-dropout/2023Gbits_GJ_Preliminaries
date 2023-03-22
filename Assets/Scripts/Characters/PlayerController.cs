@@ -48,6 +48,32 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(input.AxisX, 1f, 1f);
         }
         SetVelocityX(speed * input.AxisX);
+
+        if (transform.position.x < 10)      // 玩家在场景1
+        {
+            if (transform.position.x > TransitionManager.Instance.handler2)    // 跳转到场景2
+            {
+                transform.position = new Vector3(transform.position.x + 20, transform.position.y);
+            }
+        }
+        if (transform.position.x > 10 && transform.position.x < 30)    // 玩家在场景2
+        {
+            if (transform.position.x - 20 > TransitionManager.Instance.handler3)    // 跳转到场景3
+            {
+                transform.position = new Vector3(transform.position.x + 20, transform.position.y);
+            }
+            if (transform.position.x - 20 < TransitionManager.Instance.handler2)    // 回到场景1
+            {
+                transform.position = new Vector3(transform.position.x - 20, transform.position.y);
+            }
+        }
+        if (transform.position.x > 30)    // 玩家在场景3
+        {
+            if (transform.position.x - 40 < TransitionManager.Instance.handler3)    // 回到场景2
+            {
+                transform.position = new Vector3(transform.position.x - 20, transform.position.y);
+            }
+        }
     }
 
     #region 方便调整刚体速度
