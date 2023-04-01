@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class TimeController : MonoBehaviour
 {
@@ -21,6 +23,8 @@ public class TimeController : MonoBehaviour
 
     TimeControlled[] timeObjects;
     PlayerController playerController;
+    public Volume postProcessing;
+    ColorAdjustments colorAdjustments;
 
     private void Awake()
     {
@@ -30,13 +34,10 @@ public class TimeController : MonoBehaviour
         recordMax = recordSeconds * 600000 * 3;
         recordedData = new RecordeData[timeObjects.Length, recordMax];
 
-    }
-
-
-    private void Start()
-    {
+        postProcessing.profile.TryGet<ColorAdjustments>(out colorAdjustments);
 
     }
+
 
     private void Update()
     {
@@ -48,6 +49,7 @@ public class TimeController : MonoBehaviour
         {
             wasSteppingBack = true;
             playerController.SetUseGravity(false);
+            colorAdjustments.saturation.Override(-50f);
 
             if (recordIndex > 0)
             {
@@ -93,6 +95,7 @@ public class TimeController : MonoBehaviour
                 frameDataIndex = recordIndex;  // 倒带结束后重新开始记录数据
                 wasSteppingBack = false;
                 playerController.SetUseGravity(true);
+                colorAdjustments.saturation.Override(0f);
 
             }
 
