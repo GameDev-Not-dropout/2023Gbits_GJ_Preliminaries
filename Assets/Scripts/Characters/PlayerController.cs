@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public bool IsFalling => rigidBody.velocity.y < 0f && !IsGrounded;
     public float MoveSpeed => Mathf.Abs(rigidBody.velocity.x);  // 玩家水平移动速度要取绝对值
 
+
     #region MonoCallBacks
     private void Awake()
     {
@@ -53,25 +54,38 @@ public class PlayerController : MonoBehaviour
         {
             if (transform.position.x > TransitionManager.Instance.handler2)    // 跳转到场景2
             {
-                transform.position = new Vector3(transform.position.x + 20, transform.position.y);
+                TransitionManager.Instance.SpawnShockWaves(transform.position, 1);
+                transform.position = new Vector3(transform.position.x + 40, transform.position.y);
+                TransitionManager.Instance.SpawnShockWaves(transform.position, 2);
+                TransitionManager.Instance.SpawnShockWaves(transform.position, 3, 40);
             }
         }
-        if (transform.position.x > 10 && transform.position.x < 30)    // 玩家在场景2
+        if (transform.position.x > 10 && transform.position.x < 50)    // 玩家在场景2
         {
-            if (transform.position.x - 20 > TransitionManager.Instance.handler3)    // 跳转到场景3
+            if (transform.position.x - 40 > TransitionManager.Instance.handler3)    // 跳转到场景3
             {
-                transform.position = new Vector3(transform.position.x + 20, transform.position.y);
+                TransitionManager.Instance.SpawnShockWaves(transform.position, 1);
+                TransitionManager.Instance.SpawnShockWaves(transform.position, 3, -40);
+                transform.position = new Vector3(transform.position.x + 40, transform.position.y);
+                TransitionManager.Instance.SpawnShockWaves(transform.position, 2);
+
             }
-            if (transform.position.x - 20 < TransitionManager.Instance.handler2)    // 回到场景1
+            if (transform.position.x - 40 < TransitionManager.Instance.handler2)    // 回到场景1
             {
-                transform.position = new Vector3(transform.position.x - 20, transform.position.y);
+                TransitionManager.Instance.SpawnShockWaves(transform.position, 1);
+                TransitionManager.Instance.SpawnShockWaves(transform.position, 3, 40);
+                transform.position = new Vector3(transform.position.x - 40, transform.position.y);
+                TransitionManager.Instance.SpawnShockWaves(transform.position, 2);
             }
         }
-        if (transform.position.x > 30)    // 玩家在场景3
+        if (transform.position.x > 50)    // 玩家在场景3
         {
-            if (transform.position.x - 40 < TransitionManager.Instance.handler3)    // 回到场景2
+            if (transform.position.x - 80 < TransitionManager.Instance.handler3)    // 回到场景2
             {
-                transform.position = new Vector3(transform.position.x - 20, transform.position.y);
+                TransitionManager.Instance.SpawnShockWaves(transform.position, 1);
+                transform.position = new Vector3(transform.position.x - 40, transform.position.y);
+                TransitionManager.Instance.SpawnShockWaves(transform.position, 2);
+                TransitionManager.Instance.SpawnShockWaves(transform.position, 3, -40);
             }
         }
     }
@@ -123,4 +137,5 @@ public class PlayerController : MonoBehaviour
     {
         Victory = true;
     }
+
 }

@@ -71,13 +71,15 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
                 if (GetHandlerScreenPoint.x < point.x)
                 {
-                    playerTransform.position = new Vector3(playerTransform.position.x + 20, playerTransform.position.y);
-
+                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 1);
+                    playerTransform.position = new Vector3(playerTransform.position.x + 40, playerTransform.position.y);
+                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 2);
+                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 3, 40);
                     return;
                 }
             }
         }
-        if (playerTransform.position.x > 10 && playerTransform.position.x < 30)    // 玩家在场景2
+        if (playerTransform.position.x > 10 && playerTransform.position.x < 50)    // 玩家在场景2
         {
             if (handlerIndex == 3)      // 跳转到场景3
             {
@@ -85,8 +87,10 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
                 if (GetHandlerScreenPoint.x < point.x)
                 {
-                    playerTransform.position = new Vector3(playerTransform.position.x + 20, playerTransform.position.y);
-
+                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 1);
+                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 3, -40);
+                    playerTransform.position = new Vector3(playerTransform.position.x + 40, playerTransform.position.y);
+                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 2);
                     return;
                 }
             }
@@ -96,13 +100,15 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
                 if (GetHandlerScreenPoint.x > point.x)
                 {
-                    playerTransform.position = new Vector3(playerTransform.position.x - 20, playerTransform.position.y);
-
+                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 1);
+                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 3, 40);
+                    playerTransform.position = new Vector3(playerTransform.position.x - 40, playerTransform.position.y);
+                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 2);
                     return;
                 }
             }
         }
-        if (playerTransform.position.x > 30)
+        if (playerTransform.position.x > 50)
         {
             if (handlerIndex == 3)
             {
@@ -110,8 +116,10 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
                 if (GetHandlerScreenPoint.x > point.x)
                 {
-                    playerTransform.position = new Vector3(playerTransform.position.x - 20, playerTransform.position.y);
-
+                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 1);
+                    playerTransform.position = new Vector3(playerTransform.position.x - 40, playerTransform.position.y);
+                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 2);
+                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 3, -40);
                     return;
                 }
             }
