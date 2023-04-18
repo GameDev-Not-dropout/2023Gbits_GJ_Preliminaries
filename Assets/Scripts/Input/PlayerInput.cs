@@ -15,6 +15,7 @@ public class PlayerInput : MonoBehaviour
     public bool HasJumpInputBuffer { get; set; }
     public bool jump => playerInputActions.GamePlay.Jump.WasPressedThisFrame();
     public bool stopJump => playerInputActions.GamePlay.Jump.WasReleasedThisFrame();
+    public bool changeScene => playerInputActions.GamePlay.ChangeScene.WasPressedThisFrame();
 
 
     #region MonoCallBacks

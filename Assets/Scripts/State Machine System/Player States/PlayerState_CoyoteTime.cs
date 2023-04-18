@@ -21,6 +21,8 @@ public class PlayerState_CoyoteTime : PlayerState
 
     public override void LogicUpdate()
     {
+        base.LogicUpdate();
+
         #region 状态切换
         if (input.jump)
         {

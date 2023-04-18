@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class PlayerState : ScriptableObject, IState
 {
@@ -49,8 +50,11 @@ public class PlayerState : ScriptableObject, IState
     }       
             
     public virtual void LogicUpdate()
-    {       
-            
+    {
+        if (input.changeScene)
+        {
+            EventSystem.instance.EmitEvent(EventName.OnChangeScene, stateMachine.transform);
+        }
     }       
             
     public virtual void PhysicUpdate()

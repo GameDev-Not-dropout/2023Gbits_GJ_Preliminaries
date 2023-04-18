@@ -44,6 +44,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeScene"",
+                    ""type"": ""Button"",
+                    ""id"": ""b18835f9-e2eb-49f3-bcef-0f73f008097c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -112,6 +121,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a66c4c90-f616-440e-b510-5e8004726a4c"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeScene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -122,6 +142,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_GamePlay = asset.FindActionMap("GamePlay", throwIfNotFound: true);
         m_GamePlay_Axes = m_GamePlay.FindAction("Axes", throwIfNotFound: true);
         m_GamePlay_Jump = m_GamePlay.FindAction("Jump", throwIfNotFound: true);
+        m_GamePlay_ChangeScene = m_GamePlay.FindAction("ChangeScene", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -183,12 +204,14 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private IGamePlayActions m_GamePlayActionsCallbackInterface;
     private readonly InputAction m_GamePlay_Axes;
     private readonly InputAction m_GamePlay_Jump;
+    private readonly InputAction m_GamePlay_ChangeScene;
     public struct GamePlayActions
     {
         private @PlayerInputActions m_Wrapper;
         public GamePlayActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Axes => m_Wrapper.m_GamePlay_Axes;
         public InputAction @Jump => m_Wrapper.m_GamePlay_Jump;
+        public InputAction @ChangeScene => m_Wrapper.m_GamePlay_ChangeScene;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -204,6 +227,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Jump.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnJump;
+                @ChangeScene.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeScene;
+                @ChangeScene.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeScene;
+                @ChangeScene.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeScene;
             }
             m_Wrapper.m_GamePlayActionsCallbackInterface = instance;
             if (instance != null)
@@ -214,6 +240,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @ChangeScene.started += instance.OnChangeScene;
+                @ChangeScene.performed += instance.OnChangeScene;
+                @ChangeScene.canceled += instance.OnChangeScene;
             }
         }
     }
@@ -222,5 +251,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     {
         void OnAxes(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnChangeScene(InputAction.CallbackContext context);
     }
 }

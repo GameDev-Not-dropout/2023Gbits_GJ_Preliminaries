@@ -14,6 +14,8 @@ public class PlayerState_Idle : PlayerState
 
     public override void LogicUpdate()
     {
+        base.LogicUpdate();
+
         #region 状态切换
         if (input.Move)
         {

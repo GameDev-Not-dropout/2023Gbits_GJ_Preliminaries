@@ -10,9 +10,7 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     public RectTransform rectTransform;
     Camera mainCamera;
     public Camera sceneCamera2;
-    public Camera sceneCamera3;
     public Transform playerTransform;
-    public int handlerIndex;
 
     Vector3 GetHandlerScreenPoint => RectTransformUtility.WorldToScreenPoint(null, transform.position);
 
@@ -27,18 +25,6 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     {
         Debug.Log("OnBeginDrag");
 
-        #region 防止两条线之间出现卡顿，弹出来一点
-        if (handlerIndex == 2)
-        {
-            if (TransitionManager.Instance.handler2 >= TransitionManager.Instance.handler3 - 0.5f)
-                rectTransform.offsetMin = new Vector2(mainCamera.WorldToScreenPoint(new Vector3(TransitionManager.Instance.handler2 - 0.2f, 0f, 0f)).x, -(Screen.height / 2));
-        }
-        if (handlerIndex == 3)
-        {
-            if (TransitionManager.Instance.handler2 + 0.5f >= TransitionManager.Instance.handler3)
-                rectTransform.offsetMin = new Vector2(mainCamera.WorldToScreenPoint(new Vector3(TransitionManager.Instance.handler3 + 0.2f, 0f, 0f)).x, -(Screen.height / 2));
-        } 
-        #endregion
         this.SaveHandlerData();
     }
 
@@ -46,86 +32,47 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     {
         Debug.Log("OnDrag");
 
-        if (handlerIndex == 2)
-        {
-            if (mainCamera.WorldToScreenPoint(new Vector3(TransitionManager.Instance.handler3 - 0.5f, 0f, 0f)).x > Input.mousePosition.x)
-                this.DraggingHandler(eventData);
-            else
-                rectTransform.offsetMin = new Vector2(mainCamera.WorldToScreenPoint(new Vector3(TransitionManager.Instance.handler3 - 0.6f, 0f, 0f)).x, -(Screen.height / 2));
-
-        }
-        if (handlerIndex == 3)
-        {
-            if (mainCamera.WorldToScreenPoint(new Vector3(TransitionManager.Instance.handler2 + 0.5f, 0f, 0f)).x < Input.mousePosition.x)
-                this.DraggingHandler(eventData);
-            else
-                rectTransform.offsetMin = new Vector2(mainCamera.WorldToScreenPoint(new Vector3(TransitionManager.Instance.handler2 + 0.6f, 0f, 0f)).x, -(Screen.height / 2));
-
-        }
-
-        if (playerTransform.position.x < 10)    // 当前玩家在场景1
-        {
-            if (handlerIndex == 2)      // 跳转到场景2
-            {
-                Vector3 point = mainCamera.WorldToScreenPoint(playerTransform.position);
-
-                if (GetHandlerScreenPoint.x < point.x)
-                {
-                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 1);
-                    playerTransform.position = new Vector3(playerTransform.position.x + 40, playerTransform.position.y);
-                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 2);
-                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 3, 40);
-                    return;
-                }
-            }
-        }
-        if (playerTransform.position.x > 10 && playerTransform.position.x < 50)    // 玩家在场景2
-        {
-            if (handlerIndex == 3)      // 跳转到场景3
-            {
-                Vector3 point = sceneCamera2.WorldToScreenPoint(playerTransform.position);
-
-                if (GetHandlerScreenPoint.x < point.x)
-                {
-                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 1);
-                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 3, -40);
-                    playerTransform.position = new Vector3(playerTransform.position.x + 40, playerTransform.position.y);
-                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 2);
-                    return;
-                }
-            }
-            if (handlerIndex == 2)      // 回到场景1
-            {
-                Vector3 point = sceneCamera2.WorldToScreenPoint(playerTransform.position);
-
-                if (GetHandlerScreenPoint.x > point.x)
-                {
-                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 1);
-                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 3, 40);
-                    playerTransform.position = new Vector3(playerTransform.position.x - 40, playerTransform.position.y);
-                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 2);
-                    return;
-                }
-            }
-        }
-        if (playerTransform.position.x > 50)
-        {
-            if (handlerIndex == 3)
-            {
-                Vector3 point = sceneCamera3.WorldToScreenPoint(playerTransform.position);
-
-                if (GetHandlerScreenPoint.x > point.x)
-                {
-                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 1);
-                    playerTransform.position = new Vector3(playerTransform.position.x - 40, playerTransform.position.y);
-                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 2);
-                    TransitionManager.Instance.SpawnShockWaves(playerTransform.position, 3, -40);
-                    return;
-                }
-            }
-        }
-
+        this.DraggingHandler(eventData);
+        TransitionScene();
     }
+
+    /// <summary>
+    /// 跳转场景
+    /// </summary>
+    private void TransitionScene()
+    {
+        Vector3 pos = playerTransform.position;
+        if (pos.x < 40)    // 当前玩家在场景1
+        {
+            // 跳转到场景2
+            Vector3 point = mainCamera.WorldToScreenPoint(pos);
+
+            if (GetHandlerScreenPoint.x < point.x)
+            {
+                TransitionManager.Instance.SpawnShockWaves(pos, 1);
+                pos.x = pos.x + 80;
+                TransitionManager.Instance.SpawnShockWaves(pos, 2);
+                playerTransform.position = pos;
+                return;
+            }
+        }
+        if (pos.x > 40 && pos.x < 110)    // 玩家在场景2
+        {
+            // 回到场景1
+            Vector3 point = sceneCamera2.WorldToScreenPoint(pos);
+
+            if (GetHandlerScreenPoint.x > point.x)
+            {
+                TransitionManager.Instance.SpawnShockWaves(pos, 1);
+                pos.x = pos.x - 80;
+                TransitionManager.Instance.SpawnShockWaves(pos, 2);
+                playerTransform.position = pos;
+                return;
+            }
+
+        }
+    }
+
     /// <summary>
     /// 线跟随鼠标
     /// </summary>
@@ -150,13 +97,6 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     /// </summary>
     private void SaveHandlerData()
     {
-        if (handlerIndex == 2)
-        {
-            TransitionManager.Instance.handler2 = mainCamera.ScreenToWorldPoint(GetHandlerScreenPoint).x;
-        }
-        if (handlerIndex == 3)
-        {
-            TransitionManager.Instance.handler3 = mainCamera.ScreenToWorldPoint(GetHandlerScreenPoint).x;
-        }
+        TransitionManager.Instance.handler2 = mainCamera.ScreenToWorldPoint(GetHandlerScreenPoint).x;
     }
 }

@@ -16,6 +16,8 @@ public class PlayerState_Land : PlayerState
 
     public override void LogicUpdate()
     {
+        base.LogicUpdate();
+
         #region 状态切换
         if (input.HasJumpInputBuffer || input.jump)
         {

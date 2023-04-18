@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //[SerializeField] VoidEventChannel levelClearedEventChannel;
-
     PlayerGroundDetector groundDetector;
     PlayerInput input;
     Rigidbody2D rigidBody;
@@ -25,18 +23,12 @@ public class PlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         VoicePlayer = GetComponentInChildren<AudioSource>();
     }
-    private void OnEnable()
-    {
-        //levelClearedEventChannel.AddListener(OnLevelClear);
-    }
+
     private void Start()
     {
         input.EnableGamePlayInput();    // 启用动作表
     }
-    private void OnDisable()
-    {
-        //levelClearedEventChannel.RemoveListener(OnLevelClear);
-    }
+
     #endregion
 
     /// <summary>
@@ -46,58 +38,49 @@ public class PlayerController : MonoBehaviour
     {
         if (input.Move)     // 镜像翻转
         {
-            transform.localScale = new Vector3(input.AxisX, 1f, 1f);
+            transform.localScale = new Vector3(input.AxisX, transform.localScale.y, 1f);
         }
-        SetVelocityX(speed * input.AxisX);
 
-        if (transform.position.x < 10)      // 玩家在场景1
-        {
-            if (transform.position.x > TransitionManager.Instance.handler2)    // 跳转到场景2
-            {
-                TransitionManager.Instance.SpawnShockWaves(transform.position, 1);
-                transform.position = new Vector3(transform.position.x + 40, transform.position.y);
-                TransitionManager.Instance.SpawnShockWaves(transform.position, 2);
-                TransitionManager.Instance.SpawnShockWaves(transform.position, 3, 40);
-            }
-        }
-        if (transform.position.x > 10 && transform.position.x < 50)    // 玩家在场景2
-        {
-            if (transform.position.x - 40 > TransitionManager.Instance.handler3)    // 跳转到场景3
-            {
-                TransitionManager.Instance.SpawnShockWaves(transform.position, 1);
-                TransitionManager.Instance.SpawnShockWaves(transform.position, 3, -40);
-                transform.position = new Vector3(transform.position.x + 40, transform.position.y);
-                TransitionManager.Instance.SpawnShockWaves(transform.position, 2);
+        SetVelocityX(speed * input.AxisX);  // 移动
 
-            }
-            if (transform.position.x - 40 < TransitionManager.Instance.handler2)    // 回到场景1
-            {
-                TransitionManager.Instance.SpawnShockWaves(transform.position, 1);
-                TransitionManager.Instance.SpawnShockWaves(transform.position, 3, 40);
-                transform.position = new Vector3(transform.position.x - 40, transform.position.y);
-                TransitionManager.Instance.SpawnShockWaves(transform.position, 2);
-            }
-        }
-        if (transform.position.x > 50)    // 玩家在场景3
+        TransitionScene();
+    }
+
+
+    /// <summary>
+    /// 场景跳转
+    /// </summary>
+    private void TransitionScene()
+    {
+        Vector3 pos = transform.position;
+
+        if (pos.x < 40)      // 玩家在场景1
         {
-            if (transform.position.x - 80 < TransitionManager.Instance.handler3)    // 回到场景2
+            if (pos.x > TransitionManager.Instance.handler2)    // 跳转到场景2
             {
-                TransitionManager.Instance.SpawnShockWaves(transform.position, 1);
-                transform.position = new Vector3(transform.position.x - 40, transform.position.y);
-                TransitionManager.Instance.SpawnShockWaves(transform.position, 2);
-                TransitionManager.Instance.SpawnShockWaves(transform.position, 3, -40);
+                TransitionManager.Instance.SpawnShockWaves(pos, 1);
+                pos.x = pos.x + 80;
+                TransitionManager.Instance.SpawnShockWaves(pos, 2);
             }
         }
+        if (pos.x > 40 && pos.x < 110)    // 玩家在场景2
+        {
+            if (pos.x - 80 < TransitionManager.Instance.handler2)    // 回到场景1
+            {
+                TransitionManager.Instance.SpawnShockWaves(pos, 1);
+                pos.x = pos.x - 80;
+                TransitionManager.Instance.SpawnShockWaves(pos, 2);
+            }
+        }
+        transform.position = pos;
     }
 
     #region 方便调整刚体速度
     /// <summary>
     /// 对刚体速度的直接修改
     /// </summary>
-    public void SetVelocity(Vector3 velocity)
-    {
-        rigidBody.velocity = velocity;
-    }
+    public void SetVelocity(Vector3 velocity) => rigidBody.velocity = velocity;
+
 
     /// <summary>
     /// 用于左右移动玩家
@@ -120,18 +103,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// 启用/关闭重力
     /// </summary>
-    public void SetUseGravity(bool value)
-    {
-        if (value)
-        {
-            rigidBody.gravityScale = 1;
-
-        }
-        else
-        {
-            rigidBody.gravityScale = 0;
-        }
-    }
+    public void SetUseGravity(bool value) => rigidBody.gravityScale = value ? 1 : 0;
 
     void OnLevelClear()
     {

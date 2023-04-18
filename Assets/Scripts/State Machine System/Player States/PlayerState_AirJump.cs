@@ -22,6 +22,7 @@ public class PlayerState_AirJump : PlayerState
 
     public override void LogicUpdate()
     {
+        base.LogicUpdate();
         if (input.stopJump || player.IsFalling)
         {
             stateMachine.SwitchState(typeof(PlayerState_Fall));

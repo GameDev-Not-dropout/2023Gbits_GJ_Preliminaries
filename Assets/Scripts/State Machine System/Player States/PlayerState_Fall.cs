@@ -9,6 +9,8 @@ public class PlayerState_Fall : PlayerState
     [SerializeField] float moveSpeed = 5f;
     public override void LogicUpdate()
     {
+        base.LogicUpdate();
+
         #region 状态切换
         if (player.IsGrounded)
         {
