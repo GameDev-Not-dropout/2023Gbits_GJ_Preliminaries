@@ -1,15 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
-using static UnityEditor.PlayerSettings;
 
 public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     public RectTransform rectTransform;
     Camera mainCamera;
-    public Camera sceneCamera2;
     public Transform playerTransform;
 
     Vector3 GetHandlerScreenPoint => RectTransformUtility.WorldToScreenPoint(null, transform.position);
@@ -33,44 +28,6 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         Debug.Log("OnDrag");
 
         this.DraggingHandler(eventData);
-        TransitionScene();
-    }
-
-    /// <summary>
-    /// 跳转场景
-    /// </summary>
-    private void TransitionScene()
-    {
-        Vector3 pos = playerTransform.position;
-        if (pos.x < 40)    // 当前玩家在场景1
-        {
-            // 跳转到场景2
-            Vector3 point = mainCamera.WorldToScreenPoint(pos);
-
-            if (GetHandlerScreenPoint.x < point.x)
-            {
-                TransitionManager.Instance.SpawnShockWaves(pos, 1);
-                pos.x = pos.x + 80;
-                TransitionManager.Instance.SpawnShockWaves(pos, 2);
-                playerTransform.position = pos;
-                return;
-            }
-        }
-        if (pos.x > 40 && pos.x < 110)    // 玩家在场景2
-        {
-            // 回到场景1
-            Vector3 point = sceneCamera2.WorldToScreenPoint(pos);
-
-            if (GetHandlerScreenPoint.x > point.x)
-            {
-                TransitionManager.Instance.SpawnShockWaves(pos, 1);
-                pos.x = pos.x - 80;
-                TransitionManager.Instance.SpawnShockWaves(pos, 2);
-                playerTransform.position = pos;
-                return;
-            }
-
-        }
     }
 
     /// <summary>
@@ -97,6 +54,15 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     /// </summary>
     private void SaveHandlerData()
     {
-        TransitionManager.Instance.handler2 = mainCamera.ScreenToWorldPoint(GetHandlerScreenPoint).x;
+        if (mainCamera.transform.position.x < 40)
+        {
+            TransitionManager.Instance.TriggerAPos = mainCamera.ScreenToWorldPoint(GetHandlerScreenPoint).x;
+            TransitionManager.Instance.TriggerBPos = mainCamera.ScreenToWorldPoint(GetHandlerScreenPoint).x + 80;
+        }
+        else
+        {
+            TransitionManager.Instance.TriggerAPos = mainCamera.ScreenToWorldPoint(GetHandlerScreenPoint).x - 80;
+            TransitionManager.Instance.TriggerBPos = mainCamera.ScreenToWorldPoint(GetHandlerScreenPoint).x;
+        }
     }
 }

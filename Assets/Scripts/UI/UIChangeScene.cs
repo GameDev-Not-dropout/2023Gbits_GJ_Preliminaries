@@ -35,7 +35,7 @@ public class UIChangeScene : MonoBehaviour
 
         if (pos.x < 40)      // 玩家在场景1
         {
-            if (pos.x < TransitionManager.Instance.handler2)    // 此时在线的左边
+            if (pos.x < TransitionManager.Instance.TriggerAPos)    // 此时在线的左边
             {
                 mainCamera.transform.position = sceneCamera2Pos;
                 Left_SceneBG.overrideSprite = A_SceneSprite;  // 切换为A场景图片
@@ -50,7 +50,7 @@ public class UIChangeScene : MonoBehaviour
         }
         else   // 玩家在场景2
         {
-            if (pos.x < TransitionManager.Instance.handler2)    // 此时在线的左边
+            if (pos.x < TransitionManager.Instance.TriggerBPos)    // 此时在线的左边
             {
                 mainCamera.transform.position = mainCameraPos;
                 Left_SceneBG.overrideSprite = B_SceneSprite;  // 切换为B场景图片

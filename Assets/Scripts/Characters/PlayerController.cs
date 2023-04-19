@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         input.EnableGamePlayInput();    // 启用动作表
+
     }
 
     #endregion
@@ -43,37 +44,8 @@ public class PlayerController : MonoBehaviour
 
         SetVelocityX(speed * input.AxisX);  // 移动
 
-        TransitionScene();
     }
 
-
-    /// <summary>
-    /// 场景跳转
-    /// </summary>
-    private void TransitionScene()
-    {
-        Vector3 pos = transform.position;
-
-        if (pos.x < 40)      // 玩家在场景1
-        {
-            if (pos.x > TransitionManager.Instance.handler2)    // 跳转到场景2
-            {
-                TransitionManager.Instance.SpawnShockWaves(pos, 1);
-                pos.x = pos.x + 80;
-                TransitionManager.Instance.SpawnShockWaves(pos, 2);
-            }
-        }
-        if (pos.x > 40 && pos.x < 110)    // 玩家在场景2
-        {
-            if (pos.x - 80 < TransitionManager.Instance.handler2)    // 回到场景1
-            {
-                TransitionManager.Instance.SpawnShockWaves(pos, 1);
-                pos.x = pos.x - 80;
-                TransitionManager.Instance.SpawnShockWaves(pos, 2);
-            }
-        }
-        transform.position = pos;
-    }
 
     #region 方便调整刚体速度
     /// <summary>

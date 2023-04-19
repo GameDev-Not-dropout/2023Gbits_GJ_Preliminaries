@@ -7,9 +7,31 @@ public class TransitionManager : MonoBehaviour
 {
     public static TransitionManager Instance;
 
-    [NonSerialized] public float handler2;
     public ShockWaveManager[] shockWaves;
+    public GameObject transitionTriggerA;
+    public GameObject transitionTriggerB;
 
+    float triggerAPos;
+    float triggerBPos;
+
+    public float TriggerAPos 
+    { 
+        get => triggerAPos;
+        set
+        {
+            triggerAPos = value;
+            transitionTriggerA.transform.position = new Vector3(triggerAPos, 0, 0);
+        }
+    }
+    public float TriggerBPos
+    {
+        get => triggerBPos;
+        set
+        {
+            triggerBPos = value;
+            transitionTriggerB.transform.position = new Vector3(triggerBPos, 0, 0);
+        }
+    }
 
     private void Awake()
     {
