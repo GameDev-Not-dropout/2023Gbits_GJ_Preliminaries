@@ -11,7 +11,23 @@ public class PlayerGroundDetector : MonoBehaviour
     [SerializeField] float distance = 0.1f;
 
     // 投射碰撞球体，不会产生GC，返回数组长度
-    public bool IsGrounded => Physics2D.CircleCastNonAlloc(transform.position, detectionRadius, direction, hit2D, distance, groundLayer) != 0;
+    public bool IsGrounded
+    {
+        get
+        {
+            bool result = Physics2D.CircleCastNonAlloc(transform.position, detectionRadius, direction, hit2D, distance, groundLayer) != 0;
+            if (hit2D[0] && hit2D[0].transform.tag == Tags.T_MoveFloor)
+            {
+                transform.parent.SetParent(hit2D[0].transform);
+            }
+            else
+            {
+                transform.parent.SetParent(null);
+            }
+            return result;
+        }
+    }
+        
 
 
     /// <summary>

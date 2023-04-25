@@ -5,6 +5,7 @@ using UnityEngine;
 public enum EventName
 {
     OnChangeScene = 1,
+    OnGetKey = 2,
 }
 
 public class EventSystem : MonoBehaviour

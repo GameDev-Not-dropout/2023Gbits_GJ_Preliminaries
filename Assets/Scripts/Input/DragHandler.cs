@@ -6,6 +6,7 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     public RectTransform rectTransform;
     Camera mainCamera;
     public Transform playerTransform;
+    public bool canDrag = true;
 
     Vector3 GetHandlerScreenPoint => RectTransformUtility.WorldToScreenPoint(null, transform.position);
 
@@ -18,15 +19,17 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("OnBeginDrag");
-
+        //Debug.Log("OnBeginDrag");
+        if (!canDrag)
+            return;
         this.SaveHandlerData();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("OnDrag");
-
+        //Debug.Log("OnDrag");
+        if (!canDrag)
+            return;
         this.DraggingHandler(eventData);
     }
 
@@ -44,8 +47,9 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("OnEndDrag");
-
+        //Debug.Log("OnEndDrag");
+        if (!canDrag)
+            return;
         this.SaveHandlerData();
     }
 
