@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIChangeScene : MonoBehaviour
@@ -19,6 +20,7 @@ public class UIChangeScene : MonoBehaviour
     public Sprite A_SceneSprite;
     public Sprite B_SceneSprite;
 
+    bool canChangeScene;
 
     private void OnEnable()
     {
@@ -26,6 +28,10 @@ public class UIChangeScene : MonoBehaviour
     }
     private void Start()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            canChangeScene = true;
+        }
         mainCamera = Camera.main;
     }
     private void OnDisable()
@@ -35,6 +41,9 @@ public class UIChangeScene : MonoBehaviour
 
     void ChangeScene(Transform plyaerTransform)
     {
+        if (!canChangeScene)
+            return;
+
         Vector3 pos = plyaerTransform.position;
 
         if (pos.x < 40)      // 玩家在场景1
