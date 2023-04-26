@@ -25,7 +25,7 @@ public class UILevelSelectPanel : MonoBehaviour
 
     public void LoadLevel(int index)
     {
-        SceneManager.LoadScene(index);
+        SceneFadeManager.instance.ChangeScene(index);
     }
 
 

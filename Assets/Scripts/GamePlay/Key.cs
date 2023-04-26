@@ -9,7 +9,7 @@ public class Key : MonoBehaviour
     {
         if (collision.tag == Tags.T_Player)
         {
-            EventSystem.instance.EmitEvent(EventName.OnGetKey);
+            EventSystem.instance.EmitEvent(EventName.OnGetKey);     // 开门
             this.gameObject.SetActive(false);
         }
     }

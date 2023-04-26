@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
@@ -13,7 +14,9 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     private void Start()
     {
         mainCamera = Camera.main;
-        this.SaveHandlerData();
+        //this.SaveHandlerData();
+        TransitionManager.Instance.TriggerAPos = 0;
+        TransitionManager.Instance.TriggerBPos = 80;
 
     }
 
@@ -58,6 +61,13 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     /// </summary>
     private void SaveHandlerData()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            TransitionManager.Instance.TriggerAPos = 0;
+            TransitionManager.Instance.TriggerBPos = 80;
+            return;
+        }
+
         if (mainCamera.transform.position.x < 40)
         {
             TransitionManager.Instance.TriggerAPos = mainCamera.ScreenToWorldPoint(GetHandlerScreenPoint).x;

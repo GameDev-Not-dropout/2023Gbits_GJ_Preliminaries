@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,13 +34,13 @@ public class UISettingPanel : MonoBehaviour
     public void ReLoadThisLevel()
     {
         SoundManager.Instance.PlaySound(SE.UIClick);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneFadeManager.instance.ChangeScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void BackToLoginScene()
     {
         SoundManager.Instance.PlaySound(SE.UIClick);
-        SceneManager.LoadScene(0);
+        SceneFadeManager.instance.ChangeScene(0);
     }
 
 

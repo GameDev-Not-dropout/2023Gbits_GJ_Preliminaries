@@ -26,7 +26,12 @@ public class Door : MonoBehaviour
     {
         if (collision.tag == Tags.T_Player && hasGetKey)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);   // 直接进入下一关
+            int levelIndex = SceneManager.GetActiveScene().buildIndex;
+            if (levelIndex == PlayerPrefs.GetInt("unLockedLevelIndex", 1))
+            {
+                PlayerPrefs.SetInt("unLockedLevelIndex", levelIndex + 1);
+            }
+            SceneManager.LoadScene(levelIndex + 1);   // 直接进入下一关
         }
     }
 

@@ -18,6 +18,11 @@ public class MoveFloor : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// 来回移动
+    /// </summary>
+    /// <param name="from"></param>
+    /// <param name="to"></param>
     void MovePingPong(float from, float to)
     {
         transform.DOMoveX(to, duration).SetEase(Ease.Linear)
