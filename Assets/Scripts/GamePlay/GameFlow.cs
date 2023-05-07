@@ -11,6 +11,7 @@ public class GameFlow : MonoBehaviour
     public float canvasDuration;
     public float scaler;
     public List<SpriteRenderer> floors;
+    public List<SpriteRenderer> transparentFloors;
     public Image settingButtonImage;
     public float duration;
 
@@ -25,6 +26,10 @@ public class GameFlow : MonoBehaviour
         {
             item.DOFade(0, 0.1f);
         }
+        foreach (var item in transparentFloors)
+        {
+            item.DOFade(0, 0.1f);
+        }
         settingButtonImage.DOFade(0, 0.1f);
 
         StartCoroutine(CanvasFade());
@@ -35,6 +40,10 @@ public class GameFlow : MonoBehaviour
         foreach (var item in floors)
         {
             item.DOFade(1, duration);
+        }
+        foreach (var item in transparentFloors)
+        {
+            item.DOFade(0.25f, duration);
         }
         settingButtonImage.DOFade(1, duration);
     }
