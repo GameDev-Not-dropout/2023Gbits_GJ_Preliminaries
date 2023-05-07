@@ -1,0 +1,4 @@
+repository "2023Gbits_GJ_Preliminaries@cn_kaisei@cloud.cn"
+  path "/"
+    br "/main"
+    co "/main"

@@ -61,4 +61,15 @@ public class SceneFadeManager : MonoBehaviour
         yield return Fade(0);
     }
 
+    public void ReSetPlayerPosition()
+    {
+        StartCoroutine(FadeInFadeOut());
+    }
+
+    IEnumerator FadeInFadeOut()
+    {
+        yield return Fade(1);
+        yield return Fade(0);
+    }
+
 }

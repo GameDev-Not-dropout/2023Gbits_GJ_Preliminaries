@@ -7,6 +7,9 @@ public enum EventName
     OnChangeScene = 1,
     OnGetKey = 2,
     OnControllFloor = 3,
+    OnJumpUp = 4,
+    OnLand = 5,
+    OnChangeMoveFloor = 6,
 }
 
 public class EventSystem : MonoBehaviour

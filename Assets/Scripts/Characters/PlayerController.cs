@@ -24,6 +24,19 @@ public class PlayerController : MonoBehaviour
         VoicePlayer = GetComponentInChildren<AudioSource>();
     }
 
+    private void OnEnable()
+    {
+        LandManager.instance.lastJumpPoint = transform.position;
+
+        EventSystem.instance.AddEventListener(EventName.OnJumpUp, SavePlayerJumpPosition);
+        EventSystem.instance.AddEventListener(EventName.OnLand, CompareLandHeight);
+    }
+    private void OnDisable()
+    {
+        EventSystem.instance.RemoveEventListener(EventName.OnJumpUp, SavePlayerJumpPosition);
+        EventSystem.instance.RemoveEventListener(EventName.OnLand, CompareLandHeight);
+    }
+
     private void Start()
     {
         input.EnableGamePlayInput();    // 启用动作表
@@ -80,6 +93,21 @@ public class PlayerController : MonoBehaviour
     void OnLevelClear()
     {
         Victory = true;
+    }
+
+    void SavePlayerJumpPosition()
+    {
+        LandManager.instance.lastJumpPoint = transform.position;
+    }
+
+    void CompareLandHeight()
+    {
+        if (LandManager.instance.lastJumpPoint.y - transform.position.y >= 8)
+        {
+            // 角色死亡
+            SceneFadeManager.instance.ReSetPlayerPosition();
+            transform.position = LandManager.instance.lastJumpPoint;
+        }
     }
 
 }

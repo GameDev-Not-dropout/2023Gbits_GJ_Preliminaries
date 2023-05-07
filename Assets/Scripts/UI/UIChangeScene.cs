@@ -21,6 +21,7 @@ public class UIChangeScene : MonoBehaviour
     public Sprite B_SceneSprite;
 
     bool canChangeScene;
+    float lastChangeTime;
 
     private void OnEnable()
     {
@@ -43,7 +44,10 @@ public class UIChangeScene : MonoBehaviour
     {
         if (!canChangeScene)
             return;
+        if (Time.time - lastChangeTime <= 1f)   // 切换场景需要1s时间间隔
+            return;
 
+        lastChangeTime = Time.time;
         Vector3 pos = plyaerTransform.position;
 
         if (pos.x < 40)      // 玩家在场景1
@@ -55,6 +59,8 @@ public class UIChangeScene : MonoBehaviour
                 confiner2D.m_BoundingShape2D = polygonCollider2;
                 mainCamera.transform.position = sceneCamera2Pos;
                 Left_SceneBG.overrideSprite = A_SceneSprite;  // 切换为A场景图片
+                // A场景左边的平台停止移动，同时B场景左边的平台开始移动
+                EventSystem.instance.EmitEvent(EventName.OnChangeMoveFloor, 1);
             }
             else
             {
@@ -62,6 +68,9 @@ public class UIChangeScene : MonoBehaviour
                 plyaerTransform.position = pos;
                 sceneCamera2.transform.position = sceneCamera2Pos;
                 Right_SceneBG.overrideSprite = A_SceneSprite;
+                // A场景右边的平台停止移动，同时B场景右边的平台开始移动
+                EventSystem.instance.EmitEvent(EventName.OnChangeMoveFloor, 2);
+
             }
 
         }
@@ -74,6 +83,9 @@ public class UIChangeScene : MonoBehaviour
                 confiner2D.m_BoundingShape2D = polygonCollider1;
                 mainCamera.transform.position = mainCameraPos;
                 Left_SceneBG.overrideSprite = B_SceneSprite;  // 切换为B场景图片
+                // B场景左边的平台停止移动，同时A场景左边的平台开始移动
+                EventSystem.instance.EmitEvent(EventName.OnChangeMoveFloor, 3); 
+
             }
             else
             {
@@ -81,6 +93,9 @@ public class UIChangeScene : MonoBehaviour
                 plyaerTransform.position = pos;
                 sceneCamera2.transform.position = mainCameraPos;
                 Right_SceneBG.overrideSprite = B_SceneSprite;
+                // B场景右边的平台停止移动，同时A场景右边的平台开始移动
+                EventSystem.instance.EmitEvent(EventName.OnChangeMoveFloor, 4); 
+
             }
         }
     }
