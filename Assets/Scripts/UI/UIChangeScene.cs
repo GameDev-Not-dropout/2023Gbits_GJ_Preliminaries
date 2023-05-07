@@ -15,8 +15,8 @@ public class UIChangeScene : MonoBehaviour
     Vector3 mainCameraPos = new Vector3(0, 0, -10);
     Vector3 sceneCamera2Pos = new Vector3(80, 0, -10);
 
-    public Image Left_SceneBG;
-    public Image Right_SceneBG;
+    public SpriteRenderer Left_SceneBG;
+    public SpriteRenderer Right_SceneBG;
     public Sprite A_SceneSprite;
     public Sprite B_SceneSprite;
 
@@ -58,7 +58,7 @@ public class UIChangeScene : MonoBehaviour
                 plyaerTransform.position = pos;
                 confiner2D.m_BoundingShape2D = polygonCollider2;
                 mainCamera.transform.position = sceneCamera2Pos;
-                Left_SceneBG.overrideSprite = A_SceneSprite;  // 切换为A场景图片
+                Left_SceneBG.sprite = A_SceneSprite;  // 切换为A场景图片
                 // A场景左边的平台停止移动，同时B场景左边的平台开始移动
                 EventSystem.instance.EmitEvent(EventName.OnChangeMoveFloor, 1);
             }
@@ -67,7 +67,7 @@ public class UIChangeScene : MonoBehaviour
                 pos.x = pos.x + 80;
                 plyaerTransform.position = pos;
                 sceneCamera2.transform.position = sceneCamera2Pos;
-                Right_SceneBG.overrideSprite = A_SceneSprite;
+                Right_SceneBG.sprite = A_SceneSprite;
                 // A场景右边的平台停止移动，同时B场景右边的平台开始移动
                 EventSystem.instance.EmitEvent(EventName.OnChangeMoveFloor, 2);
 
@@ -82,7 +82,7 @@ public class UIChangeScene : MonoBehaviour
                 plyaerTransform.position = pos;
                 confiner2D.m_BoundingShape2D = polygonCollider1;
                 mainCamera.transform.position = mainCameraPos;
-                Left_SceneBG.overrideSprite = B_SceneSprite;  // 切换为B场景图片
+                Left_SceneBG.sprite = B_SceneSprite;  // 切换为B场景图片
                 // B场景左边的平台停止移动，同时A场景左边的平台开始移动
                 EventSystem.instance.EmitEvent(EventName.OnChangeMoveFloor, 3); 
 
@@ -92,11 +92,17 @@ public class UIChangeScene : MonoBehaviour
                 pos.x = pos.x - 80;
                 plyaerTransform.position = pos;
                 sceneCamera2.transform.position = mainCameraPos;
-                Right_SceneBG.overrideSprite = B_SceneSprite;
+                Right_SceneBG.sprite = B_SceneSprite;
                 // B场景右边的平台停止移动，同时A场景右边的平台开始移动
                 EventSystem.instance.EmitEvent(EventName.OnChangeMoveFloor, 4); 
 
             }
+        }
+
+        if (mainCamera.transform.position.x > 40 && sceneCamera2.transform.position.x < 40)
+        {
+            Left_SceneBG.sprite = B_SceneSprite;
+            Right_SceneBG.sprite = A_SceneSprite;
         }
     }
 

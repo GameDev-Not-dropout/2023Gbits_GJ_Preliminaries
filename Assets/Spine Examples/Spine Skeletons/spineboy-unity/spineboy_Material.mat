@@ -9,7 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: spineboy_Material
   m_Shader: {fileID: 4800000, guid: 522f03282fd79be47b306e2ef4b593fd, type: 3}
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _STRAIGHT_ALPHA_INPUT
   m_InvalidKeywords:
   - _USE8NEIGHBOURHOOD_ON
   m_LightmapFlags: 5
@@ -35,11 +36,11 @@ Material:
     - _OutlineMipLevel: 0
     - _OutlineReferenceTexWidth: 1024
     - _OutlineSmoothness: 1
-    - _OutlineWidth: 3
+    - _OutlineWidth: 2.58
     - _RefractionStrength: 0.01
     - _StencilComp: 8
     - _StencilRef: 1
-    - _StraightAlphaInput: 0
+    - _StraightAlphaInput: 1
     - _ThresholdEnd: 0.25
     - _Use8Neighbourhood: 1
     - _node_3476: 0

@@ -10,7 +10,7 @@ public class VoidLand : MonoBehaviour
         if (collision.tag == Tags.T_Player)
         {
             // 死亡动画
-            SceneFadeManager.instance.ReSetPlayerPosition();
+            //SceneFadeManager.instance.ReSetPlayerPosition();
             collision.transform.position = LandManager.instance.lastJumpPoint;
         }
     }

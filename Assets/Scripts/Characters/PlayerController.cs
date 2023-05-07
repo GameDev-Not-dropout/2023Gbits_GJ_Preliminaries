@@ -105,9 +105,10 @@ public class PlayerController : MonoBehaviour
         if (LandManager.instance.lastJumpPoint.y - transform.position.y >= 8)
         {
             // 角色死亡
-            SceneFadeManager.instance.ReSetPlayerPosition();
+            //SceneFadeManager.instance.ReSetPlayerPosition();
             transform.position = LandManager.instance.lastJumpPoint;
         }
+        LandManager.instance.lastJumpPoint = transform.position;
     }
 
 }

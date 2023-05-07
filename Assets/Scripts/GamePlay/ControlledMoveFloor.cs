@@ -10,7 +10,9 @@ public class ControlledMoveFloor : MonoBehaviour
     public float boundary;
     float initPos;
     bool notInInitPos;
-    bool hasMoveDone = true;
+    bool isPlaying;
+    Tweener forwardTweener;
+    Tweener backTweener;
 
     private void OnEnable()
     {
@@ -20,6 +22,15 @@ public class ControlledMoveFloor : MonoBehaviour
     private void Start()
     {
         initPos = transform.position.x;
+        forwardTweener = transform.DOMoveX(boundary, duration).SetEase(Ease.Linear)
+                    .OnComplete(MoveComplete);
+        forwardTweener.SetAutoKill(false);
+        forwardTweener.Pause();
+        backTweener = transform.DOMoveX(initPos, duration).SetEase(Ease.Linear)
+                    .OnComplete(MoveComplete);
+        backTweener.SetAutoKill(false);
+        backTweener.Pause();
+
     }
 
     private void OnDisable()
@@ -37,25 +48,38 @@ public class ControlledMoveFloor : MonoBehaviour
 
     void MoveFloor()
     {
-        if (!hasMoveDone)
-            return;
-
-        if (!notInInitPos)
+        if (isPlaying)
         {
-            transform.DOMoveX(boundary, duration).SetEase(Ease.Linear)
-                .OnComplete(MoveComplete);
+            transform.DOPause();
+            isPlaying = false;
+
         }
         else
         {
-            transform.DOMoveX(initPos, duration).SetEase(Ease.Linear)
-                .OnComplete(MoveComplete);
+            isPlaying = true;
+            if (!notInInitPos)
+            {
+                forwardTweener.PlayForward();
+            }
+            else
+            {
+                backTweener.PlayForward();
+            }
         }
     }
 
     void MoveComplete()
     {
         notInInitPos = !notInInitPos;
-        hasMoveDone = true;
+        isPlaying = false;
+        forwardTweener = transform.DOMoveX(boundary, duration).SetEase(Ease.Linear)
+            .OnComplete(MoveComplete);
+        forwardTweener.SetAutoKill(false);
+        forwardTweener.Pause();
+        backTweener = transform.DOMoveX(initPos, duration).SetEase(Ease.Linear)
+                    .OnComplete(MoveComplete);
+        backTweener.SetAutoKill(false);
+        backTweener.Pause();
     }
 
 }
