@@ -30,6 +30,8 @@ public class MoveFloor : MonoBehaviour
                 endBoundary += 80;
 
             initPos = transform.position.x;
+            if (isStopInStart)
+                return;
             MovePingPong(initPos, endBoundary - offset, true);
         }
         else
@@ -69,7 +71,12 @@ public class MoveFloor : MonoBehaviour
         {
             if (isStopInStart)
             {
-                MovePingPong(initPos, endBoundary, false);  // 初始化
+                if (moveHorizontal)
+                {
+                    MovePingPong(initPos, endBoundary - offset, true);  // 初始化
+                }
+                else
+                    MovePingPong(initPos, endBoundary, false);
                 isStopInStart = false;
             }
 

@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     public RectTransform rectTransform;
+    RectTransform thisRect;
     Camera mainCamera;
     public Transform playerTransform;
     public bool canDrag = true;
+    public float offset= 50f;
 
     Vector3 GetHandlerScreenPoint => RectTransformUtility.WorldToScreenPoint(null, transform.position);
 
@@ -15,6 +17,7 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     {
         mainCamera = Camera.main;
         //this.SaveHandlerData();
+        thisRect = this.GetComponent<RectTransform>();
         TransitionManager.Instance.TriggerAPos = 0;
         TransitionManager.Instance.TriggerBPos = 80;
 
@@ -44,6 +47,8 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         Vector3 pos;
         RectTransformUtility.ScreenPointToWorldPointInRectangle(rectTransform, eventData.position, eventData.enterEventCamera, out pos);
         rectTransform.offsetMin = new Vector2(pos.x, -(Screen.height / 2));
+        RectTransformUtility.ScreenPointToWorldPointInRectangle(thisRect, eventData.position, eventData.enterEventCamera, out pos);
+        transform.position = new Vector2(pos.x - offset, transform.position.y);
         this.SaveHandlerData();
 
     }
