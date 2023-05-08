@@ -43,7 +43,7 @@ public class GameFlow : MonoBehaviour
         }
         foreach (var item in transparentFloors)
         {
-            item.DOFade(0.25f, duration);
+            item.DOFade(0.15f, duration);
         }
         settingButtonImage.DOFade(1, duration);
     }

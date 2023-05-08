@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Key : MonoBehaviour
 {
+    public GameObject copy;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -11,6 +12,10 @@ public class Key : MonoBehaviour
         {
             EventSystem.instance.EmitEvent(EventName.OnGetKey);     // 开门
             this.gameObject.SetActive(false);
+            if (copy != null)
+            {
+                copy.SetActive(false);
+            }
         }
     }
 

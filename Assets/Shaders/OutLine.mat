@@ -28,9 +28,9 @@ Material:
     m_Ints: []
     m_Floats:
     - _DualGrid: 1
-    - _EdgeAlphaThreshold: 0.37
-    - _EdgeDampRate: 631.22
-    - _OriginAlphaThreshold: 0.686
+    - _EdgeAlphaThreshold: 0.05
+    - _EdgeDampRate: 34.57
+    - _OriginAlphaThreshold: 0.916
     m_Colors:
     - _EdgeColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

@@ -48,7 +48,16 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         RectTransformUtility.ScreenPointToWorldPointInRectangle(rectTransform, eventData.position, eventData.enterEventCamera, out pos);
         rectTransform.offsetMin = new Vector2(pos.x, -(Screen.height / 2));
         RectTransformUtility.ScreenPointToWorldPointInRectangle(thisRect, eventData.position, eventData.enterEventCamera, out pos);
-        transform.position = new Vector2(pos.x - offset, transform.position.y);
+        if (pos.x <= 20)    // 限制线的移动
+        {
+            transform.position = new Vector3(20f, transform.position.y);
+        }
+        else if (pos.x >= 1900)
+        {
+            transform.position = new Vector3(1900f, transform.position.y);
+        }
+        else
+            transform.position = new Vector2(pos.x - offset, transform.position.y);
         this.SaveHandlerData();
 
     }
