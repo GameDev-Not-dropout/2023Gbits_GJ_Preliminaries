@@ -82,6 +82,11 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody.velocity = new Vector3(rigidBody.velocity.x, velocityY);
     }
+    public void AddForceY(float force)
+    {
+        rigidBody.AddForce(new Vector2(1, force));
+    }
+
     #endregion
 
 
@@ -106,7 +111,8 @@ public class PlayerController : MonoBehaviour
         {
             // 角色死亡
             //SceneFadeManager.instance.ReSetPlayerPosition();
-            transform.position = LandManager.instance.lastJumpPoint;
+            EventSystem.instance.EmitEvent(EventName.OnPlayerDie, transform);
+
         }
         LandManager.instance.lastJumpPoint = transform.position;
     }

@@ -10,6 +10,8 @@ public enum EventName
     OnJumpUp = 4,
     OnLand = 5,
     OnChangeMoveFloor = 6,
+    OnRegenerationPointRef = 7,
+    OnPlayerDie = 8,
 }
 
 public class EventSystem : MonoBehaviour

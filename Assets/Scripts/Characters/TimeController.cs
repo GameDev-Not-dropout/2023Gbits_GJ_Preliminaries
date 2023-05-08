@@ -119,16 +119,16 @@ public class TimeController : MonoBehaviour
         }
     }
     
-    private void OnGUI()    // 可视化debug
-    {
-        Rect rect = new Rect(200, 200, 500 , 500);
-        string message = "时间是否正在回溯:" + wasSteppingBack;
-        GUIStyle style = new GUIStyle();
-        style.fontSize = 40;
-        style.fontStyle = FontStyle.Bold;
+    //private void OnGUI()    // 可视化debug
+    //{
+    //    Rect rect = new Rect(200, 200, 500 , 500);
+    //    string message = "时间是否正在回溯:" + wasSteppingBack;
+    //    GUIStyle style = new GUIStyle();
+    //    style.fontSize = 40;
+    //    style.fontStyle = FontStyle.Bold;
 
-        GUI.Label(rect, message, style);
-    }
+    //    GUI.Label(rect, message, style);
+    //}
 
 
 }

@@ -11,7 +11,8 @@ public class VoidLand : MonoBehaviour
         {
             // 死亡动画
             //SceneFadeManager.instance.ReSetPlayerPosition();
-            collision.transform.position = LandManager.instance.lastJumpPoint;
+            EventSystem.instance.EmitEvent(EventName.OnPlayerDie, collision.transform);
+
         }
     }
 
