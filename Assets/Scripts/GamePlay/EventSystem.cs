@@ -12,6 +12,7 @@ public enum EventName
     OnChangeMoveFloor = 6,
     OnRegenerationPointRef = 7,
     OnPlayerDie = 8,
+    OnChangeCamera = 9,
 }
 
 public class EventSystem : MonoBehaviour

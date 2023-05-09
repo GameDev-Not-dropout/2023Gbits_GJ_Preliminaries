@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using static UnityEditor.PlayerSettings;
 
 public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
@@ -10,6 +11,10 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     public Transform playerTransform;
     public bool canDrag = true;
     public float offset= 50f;
+    public bool isChapter3;
+    public float autoMoveSpeed;
+    bool initTransitonTrigger;
+    float timer = 2f;
 
     Vector3 GetHandlerScreenPoint => RectTransformUtility.WorldToScreenPoint(null, transform.position);
 
@@ -20,8 +25,36 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         thisRect = this.GetComponent<RectTransform>();
         TransitionManager.Instance.TriggerAPos = 0;
         TransitionManager.Instance.TriggerBPos = 80;
-
     }
+
+    private void Update()
+    {
+        if (isChapter3)
+        {
+            if (!initTransitonTrigger)
+            {
+                if (timer >= 0)
+                {
+                    timer -= Time.deltaTime;
+                    return;
+                }
+                initTransitonTrigger = true;
+            }
+
+            Vector3 pos = transform.position;
+            if (pos.x <= 20)    // 限制线的移动
+            {
+                transform.position = new Vector3(1900f, pos.y);
+                EventSystem.instance.EmitEvent(EventName.OnChangeCamera);
+            }
+            else
+                transform.position = new Vector2(pos.x - autoMoveSpeed * Time.deltaTime, pos.y);
+
+            rectTransform.offsetMin = new Vector2(transform.position.x, -(Screen.height / 2));
+            this.SaveHandlerData();
+        }
+    }
+
 
     public void OnBeginDrag(PointerEventData eventData)
     {

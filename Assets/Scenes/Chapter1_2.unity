@@ -1214,8 +1214,9 @@ GameObject:
   - component: {fileID: 251254892}
   - component: {fileID: 251254891}
   - component: {fileID: 251254893}
+  - component: {fileID: 251254894}
   m_Layer: 0
-  m_Name: MoveFloorController
+  m_Name: PurpleFloorController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1229,7 +1230,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251254889}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 94.74, y: -4.97, z: 0}
+  m_LocalPosition: {x: 94.685, y: -4.908, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1277,7 +1278,7 @@ SpriteRenderer:
   m_SortingLayerID: 1440990577
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d22acced1b55fdc4499aa35c59edf681, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5d682b05040acee4aa564a42823ebbf1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1318,15 +1319,35 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.69, y: 2.01}
+    oldSize: {x: 4.28, y: 2.56}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 1.5}
+  m_Size: {x: 4, y: 2}
   m_EdgeRadius: 0
+--- !u!95 &251254894
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251254889}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f959a2b7b8dfa7d4eae3440433cf521c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &261034964
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,8 +1551,9 @@ GameObject:
   - component: {fileID: 274382745}
   - component: {fileID: 274382744}
   - component: {fileID: 274382746}
+  - component: {fileID: 274382747}
   m_Layer: 0
-  m_Name: MoveFloorController
+  m_Name: WhiteFloorController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1545,7 +1567,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274382742}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.31, y: 5.9, z: 0}
+  m_LocalPosition: {x: -17.369, y: 6.194, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1593,7 +1615,7 @@ SpriteRenderer:
   m_SortingLayerID: 1440990577
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4de66c3bcb31ab9488c50166cd244372, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4da6698e8c4658148a9a95143870253a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1634,15 +1656,35 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.52, y: 1.82}
+    oldSize: {x: 4.28, y: 2.56}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 1.5}
+  m_Size: {x: 4, y: 3}
   m_EdgeRadius: 0
+--- !u!95 &274382747
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274382742}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cb532bb53fb5bdf47bce1aa3e2260a07, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &282938393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4285,6 +4327,8 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   canDrag: 1
   offset: 0
+  isChapter3: 0
+  autoMoveSpeed: 0
 --- !u!222 &829766259
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8064,6 +8108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067ff8680a58a4348a570f15f2d601b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isChapther3: 0
   confiner2D: {fileID: 0}
   sceneCamera2: {fileID: 301289968}
   polygonCollider1: {fileID: 0}
@@ -8565,8 +8610,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 920563329
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.27450982}
@@ -9329,8 +9374,9 @@ GameObject:
   - component: {fileID: 2017070634}
   - component: {fileID: 2017070633}
   - component: {fileID: 2017070635}
+  - component: {fileID: 2017070636}
   m_Layer: 0
-  m_Name: MoveFloorController (1)
+  m_Name: BlueFloorController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9344,7 +9390,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2017070631}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.903, y: -8.122, z: 0}
+  m_LocalPosition: {x: -11.2, y: -7.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9392,7 +9438,7 @@ SpriteRenderer:
   m_SortingLayerID: 1440990577
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f05971aff359efc429a7fa49b698dca6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f429cbc8bc753584ea60f8c9d9c15337, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -9433,15 +9479,35 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.71, y: 2}
+    oldSize: {x: 4.28, y: 2.56}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 1.5}
+  m_Size: {x: 4, y: 2}
   m_EdgeRadius: 0
+--- !u!95 &2017070636
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017070631}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7c026fb3fb268d749b249141a26cfd65, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2018673375
 GameObject:
   m_ObjectHideFlags: 0

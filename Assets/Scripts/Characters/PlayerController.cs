@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        LandManager.instance.lastJumpPoint = transform.position;
 
         EventSystem.instance.AddEventListener(EventName.OnJumpUp, SavePlayerJumpPosition);
         EventSystem.instance.AddEventListener(EventName.OnLand, CompareLandHeight);
@@ -40,6 +39,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         input.EnableGamePlayInput();    // 启用动作表
+        LandManager.instance.lastJumpPoint = transform.position;
 
     }
 

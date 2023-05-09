@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class UIChangeScene : MonoBehaviour
 {
     Camera mainCamera;
+    public bool isChapther3;
     public CinemachineConfiner2D confiner2D;
     public Camera sceneCamera2;
     public PolygonCollider2D polygonCollider1;
@@ -26,6 +27,10 @@ public class UIChangeScene : MonoBehaviour
     private void OnEnable()
     {
         EventSystem.instance.AddEventListener<Transform>(EventName.OnChangeScene, ChangeScene);
+        if (isChapther3)
+        {
+            EventSystem.instance.AddEventListener(EventName.OnChangeCamera, ChangeCameraPos);
+        }
     }
     private void Start()
     {
@@ -33,11 +38,16 @@ public class UIChangeScene : MonoBehaviour
         {
             canChangeScene = true;
         }
+
         mainCamera = Camera.main;
     }
     private void OnDisable()
     {
         EventSystem.instance.RemoveEventListener<Transform>(EventName.OnChangeScene, ChangeScene);
+        if (isChapther3)
+        {
+            EventSystem.instance.RemoveEventListener(EventName.OnChangeCamera, ChangeCameraPos);
+        }
     }
 
     void ChangeScene(Transform plyaerTransform)
@@ -106,7 +116,21 @@ public class UIChangeScene : MonoBehaviour
         }
     }
 
-
+    void ChangeCameraPos()
+    {
+        if (mainCamera.transform.position.x < 40)
+        {
+            confiner2D.m_BoundingShape2D = polygonCollider2;
+            mainCamera.transform.position = sceneCamera2Pos;
+            sceneCamera2.transform.position = mainCameraPos;
+        }
+        else
+        {
+            confiner2D.m_BoundingShape2D = polygonCollider1;
+            mainCamera.transform.position = mainCameraPos;
+            sceneCamera2.transform.position = sceneCamera2Pos;
+        }
+    }
 
 
 

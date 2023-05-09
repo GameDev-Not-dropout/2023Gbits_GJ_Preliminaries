@@ -38,6 +38,7 @@ public class TransitionTrigger : MonoBehaviour
         else if (pos.x > transform.position.x && isFromLeft == false)
             return;
 
+        
         // A场景在左，B场景在右时才执行跳转，具体跳转到哪由玩家相对于线的位置来决定
         if (mainCamera.transform.position.x < 40 && sceneCamera2.transform.position.x > 40)
         {
