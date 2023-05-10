@@ -22,6 +22,8 @@ public class GameFlow : MonoBehaviour
 
     private void Start()
     {
+        int index = SceneManager.GetActiveScene().buildIndex;
+        SoundManager.Instance.PlayMusic((BGM)index);
         foreach (var item in floors)
         {
             item.DOFade(0, 0.1f);

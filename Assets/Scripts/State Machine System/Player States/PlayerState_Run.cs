@@ -11,6 +11,7 @@ public class PlayerState_Run : PlayerState
         base.Enter();
 
         currentSpeed = player.MoveSpeed;    // 记录当前玩家速度的值
+        player.VoicePlayer.Play();
     }
     public override void LogicUpdate()
     {
@@ -20,14 +21,17 @@ public class PlayerState_Run : PlayerState
         if (!input.Move)
         {
             stateMachine.SwitchState(typeof(PlayerState_Idle));
+            player.VoicePlayer.Stop();
         }
         if (input.jump)
         {
             stateMachine.SwitchState(typeof(PlayerState_JumpUp));
+            player.VoicePlayer.Stop();
         }
         if (!player.IsGrounded)
         {
             stateMachine.SwitchState(typeof(PlayerState_CoyoteTime));
+            player.VoicePlayer.Stop();
         }
         #endregion
 

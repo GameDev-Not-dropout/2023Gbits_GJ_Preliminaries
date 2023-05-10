@@ -48,6 +48,7 @@ public class TransitionTrigger : MonoBehaviour
                 pos.x = pos.x + 80f;
                 TransitionManager.Instance.SpawnShockWaves(pos, 2);
                 collision.transform.position = pos;
+                SoundManager.Instance.PlaySound(SE.overLine);
                 return; 
             }
             else    // 从线右边跳转到线左边：即从B跳到A
@@ -56,6 +57,7 @@ public class TransitionTrigger : MonoBehaviour
                 pos.x = pos.x - 80f;
                 TransitionManager.Instance.SpawnShockWaves(pos, 2);
                 collision.transform.position = pos;
+                SoundManager.Instance.PlaySound(SE.overLine);
                 return;
             }
         }
@@ -69,6 +71,7 @@ public class TransitionTrigger : MonoBehaviour
                 pos.x = pos.x + 80f;
                 TransitionManager.Instance.SpawnShockWaves(pos, 2);
                 collision.transform.position = pos;
+                SoundManager.Instance.PlaySound(SE.overLine);
                 return; 
             }
             else     // 从线左边跳转到线右边：即从B跳到A
@@ -77,6 +80,7 @@ public class TransitionTrigger : MonoBehaviour
                 pos.x = pos.x - 80f;
                 TransitionManager.Instance.SpawnShockWaves(pos, 2);
                 collision.transform.position = pos;
+                SoundManager.Instance.PlaySound(SE.overLine);
                 return;
             }
         }

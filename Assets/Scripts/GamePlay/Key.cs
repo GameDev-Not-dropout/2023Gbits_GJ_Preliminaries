@@ -11,6 +11,7 @@ public class Key : MonoBehaviour
         if (collision.tag == Tags.T_Player)
         {
             EventSystem.instance.EmitEvent(EventName.OnGetKey);     // 开门
+            SoundManager.Instance.PlaySound(SE.getKey);
             this.gameObject.SetActive(false);
             if (copy != null)
             {

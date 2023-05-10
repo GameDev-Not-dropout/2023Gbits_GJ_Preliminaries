@@ -27,19 +27,20 @@ public class UISettingPanel : MonoBehaviour
 
     public void OpenSettingPanel()
     {
-        SoundManager.Instance.PlaySound(SE.UIClick);
+        SoundManager.Instance.PlaySound(SE.buttonClick);
         settingPanel.SetActive(true);
     }
 
     public void ReLoadThisLevel()
     {
-        SoundManager.Instance.PlaySound(SE.UIClick);
+        SoundManager.Instance.PlaySound(SE.restartButton);
         SceneFadeManager.instance.ChangeScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void BackToLoginScene()
     {
-        SoundManager.Instance.PlaySound(SE.UIClick);
+        SoundManager.Instance.PlaySound(SE.buttonClick);
+        SoundManager.Instance.PlayMusic(BGM.TitleBgm);
         SceneFadeManager.instance.ChangeScene(0);
     }
 
@@ -49,7 +50,7 @@ public class UISettingPanel : MonoBehaviour
     /// </summary>
     public void ClosePanel()
     {
-        SoundManager.Instance.PlaySound(SE.UIClick);  // 播放点击按钮音效
+        SoundManager.Instance.PlaySound(SE.buttonClick);  // 播放点击按钮音效
         this.settingPanel.SetActive(false);
         PlayerPrefs.Save();          // 保存音量设置
     }
@@ -60,7 +61,7 @@ public class UISettingPanel : MonoBehaviour
     public void MusicToogle(bool on)
     {
         SoundConfig.MusicOn = on;    // 给配置文件赋值记录状态
-        SoundManager.Instance.PlaySound(SE.UIClick);    // 播放点击按钮音效
+        SoundManager.Instance.PlaySound(SE.buttonClick);    // 播放点击按钮音效
 
     }
     /// <summary>
@@ -69,7 +70,7 @@ public class UISettingPanel : MonoBehaviour
     public void SoundToogle(bool on)
     {
         SoundConfig.SoundOn = on;
-        SoundManager.Instance.PlaySound(SE.UIClick);
+        SoundManager.Instance.PlaySound(SE.buttonClick);
     }
 
     public void MusicVolume(float vol)
@@ -95,7 +96,7 @@ public class UISettingPanel : MonoBehaviour
         if (Time.realtimeSinceStartup - lastPlay > 0.1)
         {
             lastPlay = Time.realtimeSinceStartup;
-            SoundManager.Instance.PlaySound(SE.UIClick);
+            SoundManager.Instance.PlaySound(SE.buttonClick);
         }
     }
 

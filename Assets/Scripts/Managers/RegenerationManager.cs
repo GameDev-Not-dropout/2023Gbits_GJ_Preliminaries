@@ -6,7 +6,7 @@ using UnityEngine;
 public class RegenerationManager : MonoBehaviour
 {
     public static RegenerationManager Instance;
-    Vector3 RegenerationPoint;
+    Transform RegenerationPoint;
 
     Camera mainCam;
     public Camera scene2Cam;
@@ -23,13 +23,13 @@ public class RegenerationManager : MonoBehaviour
 
     private void OnEnable()
     {
-        EventSystem.instance.AddEventListener<Vector3>(EventName.OnRegenerationPointRef, RecordRegenerationPoint);
+        EventSystem.instance.AddEventListener<Transform>(EventName.OnRegenerationPointRef, RecordRegenerationPoint);
         EventSystem.instance.AddEventListener<Transform>(EventName.OnPlayerDie, Regeneration);
     }
 
     private void OnDisable()
     {
-        EventSystem.instance.RemoveEventListener<Vector3>(EventName.OnRegenerationPointRef, RecordRegenerationPoint);
+        EventSystem.instance.RemoveEventListener<Transform>(EventName.OnRegenerationPointRef, RecordRegenerationPoint);
         EventSystem.instance.RemoveEventListener<Transform>(EventName.OnPlayerDie, Regeneration);
 
     }
@@ -44,7 +44,7 @@ public class RegenerationManager : MonoBehaviour
     /// <summary>
     /// 记录重生点和摄像机位置
     /// </summary>
-    public void RecordRegenerationPoint(Vector3 newRecord)
+    public void RecordRegenerationPoint(Transform newRecord)
     {
         RegenerationPoint = newRecord;
         mainCamPoint = mainCam.transform.position;
@@ -64,7 +64,7 @@ public class RegenerationManager : MonoBehaviour
         mainCam.transform.position = mainCamPoint;
         scene2Cam.transform.position = scene2CamPoint;
 
-        playerPos.position = RegenerationPoint;
+        playerPos.position = RegenerationPoint.position;
     }
 
 

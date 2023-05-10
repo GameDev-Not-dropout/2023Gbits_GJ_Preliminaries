@@ -10,6 +10,7 @@ public class UILogin : MonoBehaviour
 
     private void Start()
     {
+
     }
 
     public void StartGame()
@@ -18,12 +19,12 @@ public class UILogin : MonoBehaviour
     }
     public void OpenLevelSelectPanel()
     {
-        SoundManager.Instance.PlaySound(SE.UIClick);
+        SoundManager.Instance.PlaySound(SE.startButton);
         levelSelectPanel.SetActive(true);
     }
     public void OpenSettingPanel()
     {
-        SoundManager.Instance.PlaySound(SE.UIClick);
+        SoundManager.Instance.PlaySound(SE.buttonClick);
         settingPanel.SetActive(true);
     }
 
@@ -32,7 +33,7 @@ public class UILogin : MonoBehaviour
     /// </summary>
     public void Exit()
     {
-        SoundManager.Instance.PlaySound(SE.UIClick);
+        SoundManager.Instance.PlaySound(SE.buttonClick);
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else

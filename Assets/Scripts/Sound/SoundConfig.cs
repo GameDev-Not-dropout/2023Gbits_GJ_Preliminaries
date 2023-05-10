@@ -35,7 +35,7 @@ public class SoundConfig
     {
         get
         {
-            return PlayerPrefs.GetInt("MusicVolume", 100);
+            return PlayerPrefs.GetInt("MusicVolume", 50);
         }
 
         set
@@ -48,7 +48,7 @@ public class SoundConfig
     {
         get
         {
-            return PlayerPrefs.GetInt("SoundVolume", 100);
+            return PlayerPrefs.GetInt("SoundVolume", 50);
         }
 
         set

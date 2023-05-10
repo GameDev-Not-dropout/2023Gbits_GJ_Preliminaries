@@ -4,10 +4,8 @@ using UnityEngine;
 using UnityEngine.Audio;
 
 
-public class SoundManager : MonoBehaviour
+public class SoundManager : MonoSingleton<SoundManager>
 {
-    public static SoundManager Instance;
-
     public AudioMixer audioMixer;
     public AudioSource musicAudioSource;
     public AudioSource soundAudioSource;
@@ -69,11 +67,6 @@ public class SoundManager : MonoBehaviour
         }
     }
     #endregion
-
-    private void Awake()
-    {
-        Instance = this;
-    }
 
     void Start()
     {

@@ -11,7 +11,14 @@ public class FadeOutFloor : MonoBehaviour
     {
         if (collision.transform.tag == Tags.T_Player)
         {
-            this.GetComponent<SpriteRenderer>().DOFade(0, duration).OnComplete(() => Destroy(this.gameObject));
+            this.GetComponent<SpriteRenderer>().DOFade(0, duration)
+                .OnComplete(
+                () => 
+                { 
+                    Destroy(this.gameObject);
+                    SoundManager.Instance.PlaySound(SE.floorFadeOut);
+                }
+                );
         }
     }
 

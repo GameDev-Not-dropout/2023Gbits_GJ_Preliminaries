@@ -4,11 +4,27 @@ using UnityEngine;
 
 public enum SE
 {
-    UIClick = 0,
+    buttonClick = 0,
+    floorControllerRight = 1,
+    floorControllerLeft = 2,
+    overLine = 3,
+    startButton = 4,
+    getKey = 5,
+    lastFall = 6,
+    restartButton = 7,
+    uiSlider = 8,
+    changeScene = 9,
+    floorFadeOut = 10,
+
 }
 public enum BGM
 {
-    None = 0,
+    TitleBgm = 0,
+    Chapter1_1 = 1,
+    Chapter1_2 = 2,
+    Chapter2_1 = 3,
+    Chapter2_2 = 4,
+    Chapter3_1 = 5,
 }
 
 public class SoundDefine : MonoBehaviour

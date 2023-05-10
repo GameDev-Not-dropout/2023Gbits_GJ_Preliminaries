@@ -10,7 +10,7 @@ public class RegenerationPoint : MonoBehaviour
     {
         if (collision.tag == Tags.T_Player)
         {
-            EventSystem.instance.EmitEvent(EventName.OnRegenerationPointRef, transform.position);
+            EventSystem.instance.EmitEvent(EventName.OnRegenerationPointRef, transform);
         }
     }
 

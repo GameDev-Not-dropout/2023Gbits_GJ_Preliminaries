@@ -35,11 +35,13 @@ public class MoveFloorController : MonoBehaviour
             if (inRight)
             {
                 animator.Play(toLeftHash);
+                SoundManager.Instance.PlaySound(SE.floorControllerRight);
                 inRight = false;
             }
             else
             {
                 animator.Play(toRightHash);
+                SoundManager.Instance.PlaySound(SE.floorControllerLeft);
                 inRight = true;
             }
         }

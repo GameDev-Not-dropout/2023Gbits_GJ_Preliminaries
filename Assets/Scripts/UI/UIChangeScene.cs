@@ -109,6 +109,8 @@ public class UIChangeScene : MonoBehaviour
             }
         }
 
+        SoundManager.Instance.PlaySound(SE.changeScene);
+
         if (mainCamera.transform.position.x > 40 && sceneCamera2.transform.position.x < 40)
         {
             Left_SceneBG.sprite = B_SceneSprite;
