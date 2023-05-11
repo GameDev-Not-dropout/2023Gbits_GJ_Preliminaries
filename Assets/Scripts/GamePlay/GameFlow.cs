@@ -1,3 +1,4 @@
+using Cinemachine;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,6 +9,13 @@ using UnityEngine.UI;
 public class GameFlow : MonoBehaviour
 {
     CanvasGroup canvasGroup;
+    public SpriteRenderer BG;
+    public SpriteRenderer gaussianBG;
+    public GameObject player;
+    public GameObject[] uiObj;
+    public CinemachineVirtualCamera virtualCamera;
+    public GameObject guidePanel;
+
     public float canvasDuration;
     public float scaler;
     public List<SpriteRenderer> floors;
@@ -47,7 +55,16 @@ public class GameFlow : MonoBehaviour
         {
             item.DOFade(0.15f, duration);
         }
+        foreach (var item in uiObj)
+        {
+            item.SetActive(true);
+        }
+
         settingButtonImage.DOFade(1, duration);
+
+        guidePanel.SetActive(true);
+        Time.timeScale = 0f;
+
     }
 
     IEnumerator Fade(int amount)
@@ -71,9 +88,16 @@ public class GameFlow : MonoBehaviour
 
     IEnumerator CanvasFade()
     {
-        yield return Fade(1);
+        yield return new WaitForSeconds(canvasDuration / 2);
+        yield return Fade(1);       // 出字
         yield return new WaitForSeconds(canvasDuration);
-        yield return Fade(0);
+        yield return Fade(0);       // 消字
+        // 摄像机放大到原尺寸
+        DOTween.To((value) => { virtualCamera.m_Lens.OrthographicSize = value; }, virtualCamera.m_Lens.OrthographicSize, 12f, 1.5f).SetEase(Ease.OutCubic);
+        yield return new WaitForSeconds(1.5f);
+        virtualCamera.Follow = player.transform;
+        // 人物出现
+        player.GetComponent<SpriteRenderer>().enabled = true;
         FadeIn();
     }
 

@@ -51,7 +51,7 @@ public class PlayerState : ScriptableObject, IState
     {
         if (input.changeScene)
         {
-            EventSystem.instance.EmitEvent(EventName.OnChangeScene, stateMachine.transform);
+            EventSystem.Instance.EmitEvent(EventName.OnChangeScene, stateMachine.transform);
         }
     }       
             

@@ -13,16 +13,11 @@ public enum EventName
     OnRegenerationPointRef = 7,
     OnPlayerDie = 8,
     OnChangeCamera = 9,
+    OnSceneFadeEnd = 10,
 }
 
-public class EventSystem : MonoBehaviour
+public class EventSystem : MonoSingleton<EventSystem>
 {
-    public static EventSystem instance;
-
-    private void Awake()
-    {
-        instance = this;
-    }
 
     Dictionary<EventName, Delegate> eventDic = new Dictionary<EventName, Delegate>();
 

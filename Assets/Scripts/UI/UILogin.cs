@@ -15,11 +15,11 @@ public class UILogin : MonoBehaviour
 
     public void StartGame()
     {
-        //SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene(1);
     }
     public void OpenLevelSelectPanel()
     {
-        SoundManager.Instance.PlaySound(SE.startButton);
+        SoundManager.Instance.PlaySound(SE.buttonClick);
         levelSelectPanel.SetActive(true);
     }
     public void OpenSettingPanel()

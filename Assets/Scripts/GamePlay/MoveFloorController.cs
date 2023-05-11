@@ -31,7 +31,7 @@ public class MoveFloorController : MonoBehaviour
     {
         if (playerInTrigger && Input.GetKeyDown(KeyCode.J))
         {
-            EventSystem.instance.EmitEvent(EventName.OnControllFloor, controllIndex);
+            EventSystem.Instance.EmitEvent(EventName.OnControllFloor, controllIndex);
             if (inRight)
             {
                 animator.Play(toLeftHash);

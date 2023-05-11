@@ -5,16 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
-    bool hasGetKey;
+    public bool hasGetKey;
 
     private void OnEnable()
     {
-        EventSystem.instance.AddEventListener(EventName.OnGetKey, OnGetKey);
+        EventSystem.Instance.AddEventListener(EventName.OnGetKey, OnGetKey);
     }
 
     private void OnDisable()
     {
-        EventSystem.instance.RemoveEventListener(EventName.OnGetKey, OnGetKey);
+        EventSystem.Instance.RemoveEventListener(EventName.OnGetKey, OnGetKey);
     }
 
     void OnGetKey()

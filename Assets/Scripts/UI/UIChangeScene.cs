@@ -26,10 +26,10 @@ public class UIChangeScene : MonoBehaviour
 
     private void OnEnable()
     {
-        EventSystem.instance.AddEventListener<Transform>(EventName.OnChangeScene, ChangeScene);
+        EventSystem.Instance.AddEventListener<Transform>(EventName.OnChangeScene, ChangeScene);
         if (isChapther3)
         {
-            EventSystem.instance.AddEventListener(EventName.OnChangeCamera, ChangeCameraPos);
+            EventSystem.Instance.AddEventListener(EventName.OnChangeCamera, ChangeCameraPos);
         }
     }
     private void Start()
@@ -43,10 +43,10 @@ public class UIChangeScene : MonoBehaviour
     }
     private void OnDisable()
     {
-        EventSystem.instance.RemoveEventListener<Transform>(EventName.OnChangeScene, ChangeScene);
+        EventSystem.Instance.RemoveEventListener<Transform>(EventName.OnChangeScene, ChangeScene);
         if (isChapther3)
         {
-            EventSystem.instance.RemoveEventListener(EventName.OnChangeCamera, ChangeCameraPos);
+            EventSystem.Instance.RemoveEventListener(EventName.OnChangeCamera, ChangeCameraPos);
         }
     }
 
@@ -70,7 +70,7 @@ public class UIChangeScene : MonoBehaviour
                 mainCamera.transform.position = sceneCamera2Pos;
                 Left_SceneBG.sprite = A_SceneSprite;  // 切换为A场景图片
                 // A场景左边的平台停止移动，同时B场景左边的平台开始移动
-                EventSystem.instance.EmitEvent(EventName.OnChangeMoveFloor, 1);
+                EventSystem.Instance.EmitEvent(EventName.OnChangeMoveFloor, 1);
             }
             else
             {
@@ -79,7 +79,7 @@ public class UIChangeScene : MonoBehaviour
                 sceneCamera2.transform.position = sceneCamera2Pos;
                 Right_SceneBG.sprite = A_SceneSprite;
                 // A场景右边的平台停止移动，同时B场景右边的平台开始移动
-                EventSystem.instance.EmitEvent(EventName.OnChangeMoveFloor, 2);
+                EventSystem.Instance.EmitEvent(EventName.OnChangeMoveFloor, 2);
 
             }
 
@@ -94,7 +94,7 @@ public class UIChangeScene : MonoBehaviour
                 mainCamera.transform.position = mainCameraPos;
                 Left_SceneBG.sprite = B_SceneSprite;  // 切换为B场景图片
                 // B场景左边的平台停止移动，同时A场景左边的平台开始移动
-                EventSystem.instance.EmitEvent(EventName.OnChangeMoveFloor, 3); 
+                EventSystem.Instance.EmitEvent(EventName.OnChangeMoveFloor, 3); 
 
             }
             else
@@ -104,7 +104,7 @@ public class UIChangeScene : MonoBehaviour
                 sceneCamera2.transform.position = mainCameraPos;
                 Right_SceneBG.sprite = B_SceneSprite;
                 // B场景右边的平台停止移动，同时A场景右边的平台开始移动
-                EventSystem.instance.EmitEvent(EventName.OnChangeMoveFloor, 4); 
+                EventSystem.Instance.EmitEvent(EventName.OnChangeMoveFloor, 4); 
 
             }
         }

@@ -10,8 +10,8 @@ public class VoidLand : MonoBehaviour
         if (collision.tag == Tags.T_Player)
         {
             // 死亡动画
-            //SceneFadeManager.instance.ReSetPlayerPosition();
-            EventSystem.instance.EmitEvent(EventName.OnPlayerDie, collision.transform);
+            //SceneFadeManager.Instance.ReSetPlayerPosition();
+            EventSystem.Instance.EmitEvent(EventName.OnPlayerDie, collision.transform);
 
         }
     }

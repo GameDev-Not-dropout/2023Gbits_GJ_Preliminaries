@@ -11,7 +11,7 @@ public class PlayerState_Land : PlayerState
     {
         base.Enter();
 
-        EventSystem.instance.EmitEvent(EventName.OnLand);
+        EventSystem.Instance.EmitEvent(EventName.OnLand);
         player.SetVelocity(Vector3.zero);   // 落地时将玩家刚体速度归零
     }
 

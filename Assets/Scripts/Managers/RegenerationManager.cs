@@ -23,14 +23,14 @@ public class RegenerationManager : MonoBehaviour
 
     private void OnEnable()
     {
-        EventSystem.instance.AddEventListener<Transform>(EventName.OnRegenerationPointRef, RecordRegenerationPoint);
-        EventSystem.instance.AddEventListener<Transform>(EventName.OnPlayerDie, Regeneration);
+        EventSystem.Instance.AddEventListener<Transform>(EventName.OnRegenerationPointRef, RecordRegenerationPoint);
+        EventSystem.Instance.AddEventListener<Transform>(EventName.OnPlayerDie, Regeneration);
     }
 
     private void OnDisable()
     {
-        EventSystem.instance.RemoveEventListener<Transform>(EventName.OnRegenerationPointRef, RecordRegenerationPoint);
-        EventSystem.instance.RemoveEventListener<Transform>(EventName.OnPlayerDie, Regeneration);
+        EventSystem.Instance.RemoveEventListener<Transform>(EventName.OnRegenerationPointRef, RecordRegenerationPoint);
+        EventSystem.Instance.RemoveEventListener<Transform>(EventName.OnPlayerDie, Regeneration);
 
     }
 
@@ -53,6 +53,14 @@ public class RegenerationManager : MonoBehaviour
 
     public void Regeneration(Transform playerPos)
     {
+
+        StartCoroutine(PlayerDieCouroutine(playerPos));
+
+    }
+
+    IEnumerator PlayerDieCouroutine(Transform playerPos)
+    {
+        yield return SceneFadeManager.instance.Fade(1, SceneFadeManager.instance.regenarationScaler);
         if (mainCamPoint.x < 40)
         {
             confiner2D.m_BoundingShape2D = polygonCollider1;
@@ -65,8 +73,9 @@ public class RegenerationManager : MonoBehaviour
         scene2Cam.transform.position = scene2CamPoint;
 
         playerPos.position = RegenerationPoint.position;
+
+        yield return SceneFadeManager.instance.Fade(0, SceneFadeManager.instance.regenarationScaler);
+        EventSystem.Instance.EmitEvent(EventName.OnSceneFadeEnd);
     }
-
-
 
 }

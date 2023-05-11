@@ -51,9 +51,11 @@ public class PlayerInput : MonoBehaviour
     public void EnableGamePlayInput()
     {
         playerInputActions.GamePlay.Enable();
-        
     }
-
+    public void DisableGamePlayInput()
+    {
+        playerInputActions.GamePlay.Disable();
+    }
 
     /// <summary>
     /// 包装跳跃预输入时间协程，供外部调用

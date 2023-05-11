@@ -14,7 +14,7 @@ public class PlayerState_JumpUp : PlayerState
         base.Enter();
 
         input.HasJumpInputBuffer = false;
-        EventSystem.instance.EmitEvent(EventName.OnJumpUp);
+        EventSystem.Instance.EmitEvent(EventName.OnJumpUp);
         //player.AddForceY(jumpForce);     // 给玩家向上施加力，实现跳跃效果
 
         //player.VoicePlayer.PlayOneShot(jumpSFX);

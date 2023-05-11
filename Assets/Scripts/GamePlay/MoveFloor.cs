@@ -15,11 +15,11 @@ public class MoveFloor : MonoBehaviour
 
     private void OnEnable()
     {
-        EventSystem.instance.AddEventListener<int>(EventName.OnChangeMoveFloor, OnChangeScene);
+        EventSystem.Instance.AddEventListener<int>(EventName.OnChangeMoveFloor, OnChangeScene);
     }
-    private void OnDisable()
+    private void OnDestroy()
     {
-        EventSystem.instance.RemoveEventListener<int>(EventName.OnChangeMoveFloor, OnChangeScene);
+        EventSystem.Instance.RemoveEventListener<int>(EventName.OnChangeMoveFloor, OnChangeScene);
     }
 
     private void Start()

@@ -9,7 +9,8 @@ public class SceneFadeManager : MonoBehaviour
     public static SceneFadeManager instance;
 
     CanvasGroup canvasGroup;
-    public float scaler;
+    public float changSceneScaler;
+    public float regenarationScaler;
 
     private void Awake()
     {
@@ -25,11 +26,11 @@ public class SceneFadeManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(Fade(0));
+        StartCoroutine(Fade(0, changSceneScaler));
     }
 
 
-    IEnumerator Fade(int amount)
+    public IEnumerator Fade(int amount, float scaler)
     {
         canvasGroup.blocksRaycasts = true;
         while (canvasGroup.alpha != amount)
@@ -56,20 +57,24 @@ public class SceneFadeManager : MonoBehaviour
 
     IEnumerator ChangeSceneCoroutine(int index)
     {
-        yield return Fade(1);
+        yield return Fade(1, changSceneScaler);
         yield return SceneManager.LoadSceneAsync(index);
-        yield return Fade(0);
+        yield return Fade(0, changSceneScaler);
     }
 
-    public void ReSetPlayerPosition()
+    public void ReSetPlayerPosFadeIn()
     {
-        StartCoroutine(FadeInFadeOut());
+        StartCoroutine(Fade(1, regenarationScaler));
+    }
+    public void ReSetPlayerPosFadeOut()
+    {
+        StartCoroutine(Fade(0, regenarationScaler));
     }
 
     IEnumerator FadeInFadeOut()
     {
-        yield return Fade(1);
-        yield return Fade(0);
+        yield return Fade(1, regenarationScaler);
+        yield return Fade(0, regenarationScaler);
     }
 
 }

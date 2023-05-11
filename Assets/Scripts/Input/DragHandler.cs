@@ -45,7 +45,7 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
             if (pos.x <= 20)    // 限制线的移动
             {
                 transform.position = new Vector3(1900f, pos.y);
-                EventSystem.instance.EmitEvent(EventName.OnChangeCamera);
+                EventSystem.Instance.EmitEvent(EventName.OnChangeCamera);
             }
             else
                 transform.position = new Vector2(pos.x - autoMoveSpeed * Time.deltaTime, pos.y);

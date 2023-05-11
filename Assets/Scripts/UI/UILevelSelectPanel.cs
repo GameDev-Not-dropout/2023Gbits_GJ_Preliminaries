@@ -8,6 +8,7 @@ public class UILevelSelectPanel : MonoBehaviour
 {
     public Button[] levelButton;
     public int unLockedLevelIndex;
+    public GameObject[] chapterPanel;
 
     private void OnEnable()
     {
@@ -28,7 +29,19 @@ public class UILevelSelectPanel : MonoBehaviour
         SceneFadeManager.instance.ChangeScene(index);
     }
 
+    public void ChapterSelect(int index)
+    {
+        for (int i = 0; i < chapterPanel.Length; i++)
+        {
+            if (i == index)
+            {
+                chapterPanel[i].SetActive(true);
+            }
+            else
+                chapterPanel[i].SetActive(false);
 
+        }
+    }
 
 
 

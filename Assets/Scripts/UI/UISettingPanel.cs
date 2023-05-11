@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class UISettingPanel : MonoBehaviour
 {
     public GameObject settingPanel;
+    public GameObject guidePanel;
 
     public Toggle toggleMusic;
     public Toggle toggleSound;
@@ -28,6 +29,7 @@ public class UISettingPanel : MonoBehaviour
     public void OpenSettingPanel()
     {
         SoundManager.Instance.PlaySound(SE.buttonClick);
+        Time.timeScale = 0f;
         settingPanel.SetActive(true);
     }
 
@@ -50,6 +52,7 @@ public class UISettingPanel : MonoBehaviour
     /// </summary>
     public void ClosePanel()
     {
+        Time.timeScale = 1f;
         SoundManager.Instance.PlaySound(SE.buttonClick);  // 播放点击按钮音效
         this.settingPanel.SetActive(false);
         PlayerPrefs.Save();          // 保存音量设置
@@ -100,9 +103,18 @@ public class UISettingPanel : MonoBehaviour
         }
     }
 
+    public void OpenGuidePanel()
+    {
+        Time.timeScale = 0f;
+        guidePanel.SetActive(true);
+    }
 
-
-
+    public void CloseGuidePanel()
+    {
+        Time.timeScale = 1f;
+        SoundManager.Instance.PlaySound(SE.buttonClick);
+        guidePanel.SetActive(false);
+    }
 
 
 

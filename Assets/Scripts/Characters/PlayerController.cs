@@ -26,21 +26,24 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-
-        EventSystem.instance.AddEventListener(EventName.OnJumpUp, SavePlayerJumpPosition);
-        EventSystem.instance.AddEventListener(EventName.OnLand, CompareLandHeight);
+        EventSystem.Instance.AddEventListener(EventName.OnJumpUp, SavePlayerJumpPosition);
+        EventSystem.Instance.AddEventListener(EventName.OnLand, CompareLandHeight);
+        EventSystem.Instance.AddEventListener(EventName.OnSceneFadeEnd, EnableInput);
+        EventSystem.Instance.AddEventListener<Transform>(EventName.OnPlayerDie, DisableInput);
     }
     private void OnDisable()
     {
-        EventSystem.instance.RemoveEventListener(EventName.OnJumpUp, SavePlayerJumpPosition);
-        EventSystem.instance.RemoveEventListener(EventName.OnLand, CompareLandHeight);
+        EventSystem.Instance.RemoveEventListener(EventName.OnJumpUp, SavePlayerJumpPosition);
+        EventSystem.Instance.RemoveEventListener(EventName.OnLand, CompareLandHeight);
+        EventSystem.Instance.RemoveEventListener(EventName.OnSceneFadeEnd, EnableInput);
+        EventSystem.Instance.RemoveEventListener<Transform>(EventName.OnPlayerDie, DisableInput);
+
     }
 
     private void Start()
     {
         input.EnableGamePlayInput();    // 启用动作表
         LandManager.instance.lastJumpPoint = transform.position;
-
     }
 
     #endregion
@@ -110,11 +113,21 @@ public class PlayerController : MonoBehaviour
         if (LandManager.instance.lastJumpPoint.y - transform.position.y >= 8)
         {
             // 角色死亡
-            //SceneFadeManager.instance.ReSetPlayerPosition();
-            EventSystem.instance.EmitEvent(EventName.OnPlayerDie, transform);
-
+            //SceneFadeManager.Instance.ReSetPlayerPosition();
+            EventSystem.Instance.EmitEvent(EventName.OnPlayerDie, transform);
+            return;
         }
         LandManager.instance.lastJumpPoint = transform.position;
+    }
+
+    void DisableInput(Transform transform)
+    {
+        input.DisableGamePlayInput();
+    }
+
+    void EnableInput()
+    {
+        input.EnableGamePlayInput();
     }
 
 }

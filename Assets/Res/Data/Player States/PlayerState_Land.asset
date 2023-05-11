@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: PlayerState_Land
   m_EditorClassIdentifier: 
   stateName: Land
-  transitionDuration: 0.1
+  transitionDuration: 0.042
+  stiffTime: 0

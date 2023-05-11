@@ -16,7 +16,7 @@ public class ControlledMoveFloor : MonoBehaviour
 
     private void OnEnable()
     {
-        EventSystem.instance.AddEventListener<int>(EventName.OnControllFloor, OnMove);
+        EventSystem.Instance.AddEventListener<int>(EventName.OnControllFloor, OnMove);
     }
 
     private void Start()
@@ -35,7 +35,7 @@ public class ControlledMoveFloor : MonoBehaviour
 
     private void OnDisable()
     {
-        EventSystem.instance.RemoveEventListener<int>(EventName.OnControllFloor, OnMove);
+        EventSystem.Instance.RemoveEventListener<int>(EventName.OnControllFloor, OnMove);
     }
 
     void OnMove(int index)
