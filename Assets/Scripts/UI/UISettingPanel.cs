@@ -42,7 +42,7 @@ public class UISettingPanel : MonoBehaviour
     public void BackToLoginScene()
     {
         SoundManager.Instance.PlaySound(SE.buttonClick);
-        SoundManager.Instance.PlayMusic(BGM.TitleBgm);
+        SoundManager.Instance.PlayMusic(BGM.Title);
         SceneFadeManager.instance.ChangeScene(0);
     }
 

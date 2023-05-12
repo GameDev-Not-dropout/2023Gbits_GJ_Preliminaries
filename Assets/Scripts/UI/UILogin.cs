@@ -10,7 +10,7 @@ public class UILogin : MonoBehaviour
 
     private void Start()
     {
-
+        SoundManager.Instance.PlayMusic(BGM.Title);
     }
 
     public void StartGame()

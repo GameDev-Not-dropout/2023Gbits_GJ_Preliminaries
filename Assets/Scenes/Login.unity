@@ -5461,6 +5461,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1059362780688918688, guid: 07328e12cf06e4c40be0118dc205b459, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 1059362780688918714, guid: 07328e12cf06e4c40be0118dc205b459, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -5550,8 +5554,16 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1059362780688918715, guid: 07328e12cf06e4c40be0118dc205b459, type: 3}
+      propertyPath: changSceneDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059362780688918715, guid: 07328e12cf06e4c40be0118dc205b459, type: 3}
       propertyPath: regenarationScaler
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059362780688918715, guid: 07328e12cf06e4c40be0118dc205b459, type: 3}
+      propertyPath: regenarationDuration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1059362780688918719, guid: 07328e12cf06e4c40be0118dc205b459, type: 3}
       propertyPath: m_Alpha

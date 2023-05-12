@@ -10,7 +10,7 @@ public class PlayerState_Land : PlayerState
     public override void Enter()
     {
         base.Enter();
-
+        SoundManager.Instance.PlaySound(SE.land);
         EventSystem.Instance.EmitEvent(EventName.OnLand);
         player.SetVelocity(Vector3.zero);   // 落地时将玩家刚体速度归零
     }

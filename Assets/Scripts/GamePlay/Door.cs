@@ -26,6 +26,8 @@ public class Door : MonoBehaviour
     {
         if (collision.tag == Tags.T_Player && hasGetKey)
         {
+            SoundManager.Instance.PlaySound(SE.door);
+            collision.transform.GetComponentInChildren<AudioSource>().Stop();
             int levelIndex = SceneManager.GetActiveScene().buildIndex;
             if (levelIndex == PlayerPrefs.GetInt("unLockedLevelIndex", 1))
             {

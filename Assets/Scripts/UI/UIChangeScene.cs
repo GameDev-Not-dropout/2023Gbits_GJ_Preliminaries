@@ -9,10 +9,8 @@ public class UIChangeScene : MonoBehaviour
 {
     Camera mainCamera;
     public bool isChapther3;
-    public CinemachineConfiner2D confiner2D;
+    public Transform player;
     public Camera sceneCamera2;
-    public PolygonCollider2D polygonCollider1;
-    public PolygonCollider2D polygonCollider2;
     Vector3 mainCameraPos = new Vector3(0, 0, -10);
     Vector3 sceneCamera2Pos = new Vector3(80, 0, -10);
 
@@ -66,8 +64,7 @@ public class UIChangeScene : MonoBehaviour
             {
                 pos.x = pos.x + 80;
                 plyaerTransform.position = pos;
-                confiner2D.m_BoundingShape2D = polygonCollider2;
-                mainCamera.transform.position = sceneCamera2Pos;
+                mainCamera.transform.position = new Vector3(80f, mainCamera.transform.position.y, -10);
                 Left_SceneBG.sprite = A_SceneSprite;  // 切换为A场景图片
                 // A场景左边的平台停止移动，同时B场景左边的平台开始移动
                 EventSystem.Instance.EmitEvent(EventName.OnChangeMoveFloor, 1);
@@ -90,8 +87,7 @@ public class UIChangeScene : MonoBehaviour
             {
                 pos.x = pos.x - 80;
                 plyaerTransform.position = pos;
-                confiner2D.m_BoundingShape2D = polygonCollider1;
-                mainCamera.transform.position = mainCameraPos;
+                mainCamera.transform.position = new Vector3(0f, mainCamera.transform.position.y, -10);
                 Left_SceneBG.sprite = B_SceneSprite;  // 切换为B场景图片
                 // B场景左边的平台停止移动，同时A场景左边的平台开始移动
                 EventSystem.Instance.EmitEvent(EventName.OnChangeMoveFloor, 3); 
@@ -122,18 +118,15 @@ public class UIChangeScene : MonoBehaviour
     {
         if (mainCamera.transform.position.x < 40)
         {
-            confiner2D.m_BoundingShape2D = polygonCollider2;
-            mainCamera.transform.position = sceneCamera2Pos;
+            mainCamera.transform.position = new Vector3(80f, mainCamera.transform.position.y, -10);
             sceneCamera2.transform.position = mainCameraPos;
         }
         else
         {
-            confiner2D.m_BoundingShape2D = polygonCollider1;
-            mainCamera.transform.position = mainCameraPos;
+            mainCamera.transform.position = new Vector3(0f, mainCamera.transform.position.y, -10);
             sceneCamera2.transform.position = sceneCamera2Pos;
         }
     }
-
 
 
 

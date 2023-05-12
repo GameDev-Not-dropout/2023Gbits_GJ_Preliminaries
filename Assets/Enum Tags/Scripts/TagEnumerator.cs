@@ -3,6 +3,8 @@ using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
+
 namespace Tzar
 {
     public class TagEnumerator
@@ -85,3 +87,5 @@ namespace Tzar
         }
     }
 }
+
+#endif

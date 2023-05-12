@@ -1,8 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
+using UnityEngine.SceneManagement;
 
 public class TransitionTrigger : MonoBehaviour
 {

@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerState_JumpUp : PlayerState
 {
     [SerializeField] AnimationCurve speedCurve;     // 动画曲线
-    [SerializeField] float jumpForce = 7f;
+    //[SerializeField] float jumpForce = 7f;
     [SerializeField] float moveSpeed = 5f;
     //[SerializeField] ParticleSystem jumpVFX;
     //[SerializeField] AudioClip jumpSFX;
@@ -14,11 +14,11 @@ public class PlayerState_JumpUp : PlayerState
         base.Enter();
 
         input.HasJumpInputBuffer = false;
+
+        SoundManager.Instance.PlaySound(SE.jump);
         EventSystem.Instance.EmitEvent(EventName.OnJumpUp);
         //player.AddForceY(jumpForce);     // 给玩家向上施加力，实现跳跃效果
 
-        //player.VoicePlayer.PlayOneShot(jumpSFX);
-        //Instantiate(jumpVFX, player.transform.position, Quaternion.identity);   // 播放粒子特效
     }
 
     public override void LogicUpdate()

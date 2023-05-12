@@ -15,11 +15,14 @@ public enum SE
     uiSlider = 8,
     changeScene = 9,
     floorFadeOut = 10,
+    door = 11,
+    jump = 12,
+    land = 13,
 
 }
 public enum BGM
 {
-    TitleBgm = 0,
+    Title = 0,
     Chapter1_1 = 1,
     Chapter1_2 = 2,
     Chapter2_1 = 3,

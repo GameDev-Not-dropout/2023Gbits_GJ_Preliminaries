@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,8 +11,8 @@ public class SceneFadeManager : MonoBehaviour
     public static SceneFadeManager instance;
 
     CanvasGroup canvasGroup;
-    public float changSceneScaler;
-    public float regenarationScaler;
+    public float changSceneDuration;
+    public float regenarationDuration;
 
     private void Awake()
     {
@@ -26,9 +28,19 @@ public class SceneFadeManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(Fade(0, changSceneScaler));
+        StartCoroutine(Fade(0, changSceneDuration));
     }
 
+
+    public void RegenarationFadeWithTween(float beginValue, float targetValue, Action onComplete)
+    {
+        DOTween.To((value) => canvasGroup.alpha = value, beginValue, targetValue, regenarationDuration).SetEase(Ease.Linear).OnComplete(() => onComplete.Invoke());
+    }
+
+    public void ChangSceneFadeWithTween(float beginValue, float targetValue, Action onComplete)
+    {
+        DOTween.To((value) => canvasGroup.alpha = value, beginValue, targetValue, changSceneDuration).SetEase(Ease.Linear).OnComplete(() => onComplete.Invoke());
+    }
 
     public IEnumerator Fade(int amount, float scaler)
     {
@@ -57,24 +69,10 @@ public class SceneFadeManager : MonoBehaviour
 
     IEnumerator ChangeSceneCoroutine(int index)
     {
-        yield return Fade(1, changSceneScaler);
+        yield return Fade(1, changSceneDuration);
         yield return SceneManager.LoadSceneAsync(index);
-        yield return Fade(0, changSceneScaler);
+        yield return Fade(0, changSceneDuration);
     }
 
-    public void ReSetPlayerPosFadeIn()
-    {
-        StartCoroutine(Fade(1, regenarationScaler));
-    }
-    public void ReSetPlayerPosFadeOut()
-    {
-        StartCoroutine(Fade(0, regenarationScaler));
-    }
-
-    IEnumerator FadeInFadeOut()
-    {
-        yield return Fade(1, regenarationScaler);
-        yield return Fade(0, regenarationScaler);
-    }
 
 }

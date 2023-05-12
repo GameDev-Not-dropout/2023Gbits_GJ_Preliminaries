@@ -10,11 +10,9 @@ public class RegenerationManager : MonoBehaviour
 
     Camera mainCam;
     public Camera scene2Cam;
+    public Transform player;
     Vector3 mainCamPoint;
     Vector3 scene2CamPoint;
-    public CinemachineConfiner2D confiner2D;
-    public PolygonCollider2D polygonCollider1;
-    public PolygonCollider2D polygonCollider2;
 
     private void Awake()
     {
@@ -53,29 +51,30 @@ public class RegenerationManager : MonoBehaviour
 
     public void Regeneration(Transform playerPos)
     {
-
-        StartCoroutine(PlayerDieCouroutine(playerPos));
-
+        PlayerDieCouroutine(playerPos);
     }
 
-    IEnumerator PlayerDieCouroutine(Transform playerPos)
+    void PlayerDieCouroutine(Transform playerPos)
     {
-        yield return SceneFadeManager.instance.Fade(1, SceneFadeManager.instance.regenarationScaler);
+        SceneFadeManager.instance.RegenarationFadeWithTween(0f, 1f, () => MoveCam(playerPos));
+    }
+    
+    void MoveCam(Transform playerPos)
+    {
         if (mainCamPoint.x < 40)
         {
-            confiner2D.m_BoundingShape2D = polygonCollider1;
+            mainCam.transform.position = new Vector3(0f, mainCam.transform.position.y, -10);
         }
         else
         {
-            confiner2D.m_BoundingShape2D = polygonCollider2;
+            mainCam.transform.position = new Vector3(80f, mainCam.transform.position.y, -10);
         }
-        mainCam.transform.position = mainCamPoint;
         scene2Cam.transform.position = scene2CamPoint;
 
         playerPos.position = RegenerationPoint.position;
 
-        yield return SceneFadeManager.instance.Fade(0, SceneFadeManager.instance.regenarationScaler);
-        EventSystem.Instance.EmitEvent(EventName.OnSceneFadeEnd);
+        SceneFadeManager.instance.RegenarationFadeWithTween(1f, 0f, () => EventSystem.Instance.EmitEvent(EventName.OnSceneFadeEnd));
+
     }
 
 }

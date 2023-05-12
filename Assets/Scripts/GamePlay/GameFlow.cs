@@ -13,7 +13,7 @@ public class GameFlow : MonoBehaviour
     public SpriteRenderer gaussianBG;
     public GameObject player;
     public GameObject[] uiObj;
-    public CinemachineVirtualCamera virtualCamera;
+    public Camera mainCamera;
     public GameObject guidePanel;
 
     public float canvasDuration;
@@ -30,6 +30,7 @@ public class GameFlow : MonoBehaviour
 
     private void Start()
     {
+        mainCamera = Camera.main;
         int index = SceneManager.GetActiveScene().buildIndex;
         SoundManager.Instance.PlayMusic((BGM)index);
         foreach (var item in floors)
@@ -93,9 +94,9 @@ public class GameFlow : MonoBehaviour
         yield return new WaitForSeconds(canvasDuration);
         yield return Fade(0);       // 消字
         // 摄像机放大到原尺寸
-        DOTween.To((value) => { virtualCamera.m_Lens.OrthographicSize = value; }, virtualCamera.m_Lens.OrthographicSize, 12f, 1.5f).SetEase(Ease.OutCubic);
+        DOTween.To((value) => { mainCamera.orthographicSize = value; }, mainCamera.orthographicSize, 12f, 1.5f).SetEase(Ease.OutCubic);
+        mainCamera.transform.DOMove(new Vector3(0, 0, -10), 1.5f).SetEase(Ease.OutCubic);
         yield return new WaitForSeconds(1.5f);
-        virtualCamera.Follow = player.transform;
         // 人物出现
         player.GetComponent<SpriteRenderer>().enabled = true;
         FadeIn();
