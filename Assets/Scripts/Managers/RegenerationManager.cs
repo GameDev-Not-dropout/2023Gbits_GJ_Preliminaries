@@ -2,6 +2,8 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using static UnityEditor.PlayerSettings;
 
 public class RegenerationManager : MonoBehaviour
 {
@@ -75,6 +77,23 @@ public class RegenerationManager : MonoBehaviour
 
         SceneFadeManager.instance.RegenarationFadeWithTween(1f, 0f, () => EventSystem.Instance.EmitEvent(EventName.OnSceneFadeEnd));
 
+        if (SceneManager.GetActiveScene().buildIndex != 3 && SceneManager.GetActiveScene().buildIndex != 4)
+            return;
+
+        if (RegenerationPoint.position.x < 40)      // 玩家在场景1
+        {
+            if (RegenerationPoint.position.x < TransitionManager.Instance.TriggerAPos)    // 此时在线的左边
+                EventSystem.Instance.EmitEvent(EventName.OnChangeMoveFloor, 1);
+            else
+                EventSystem.Instance.EmitEvent(EventName.OnChangeMoveFloor, 2);
+        }
+        else   // 玩家在场景2
+        {
+            if (RegenerationPoint.position.x < TransitionManager.Instance.TriggerBPos)    // 此时在线的左边
+                EventSystem.Instance.EmitEvent(EventName.OnChangeMoveFloor, 3);
+            else
+                EventSystem.Instance.EmitEvent(EventName.OnChangeMoveFloor, 4);
+        }
     }
 
 }

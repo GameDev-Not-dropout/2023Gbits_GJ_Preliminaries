@@ -61,15 +61,17 @@ public class SceneFadeManager : MonoBehaviour
         canvasGroup.blocksRaycasts = false;
     }
 
-    public void ChangeScene(int index)
+    public void ChangeScene(int index, bool isReload = false)
     {
         Time.timeScale = 1;
-        StartCoroutine(ChangeSceneCoroutine(index));
+        StartCoroutine(ChangeSceneCoroutine(index, isReload));
     }
 
-    IEnumerator ChangeSceneCoroutine(int index)
+    IEnumerator ChangeSceneCoroutine(int index, bool isReload = false)
     {
         yield return Fade(1, changSceneDuration);
+        if (!isReload)
+            SoundManager.Instance.PlayMusic((BGM)index);
         yield return SceneManager.LoadSceneAsync(index);
         yield return Fade(0, changSceneDuration);
     }

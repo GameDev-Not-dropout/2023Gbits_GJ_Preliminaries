@@ -36,7 +36,7 @@ public class UISettingPanel : MonoBehaviour
     public void ReLoadThisLevel()
     {
         SoundManager.Instance.PlaySound(SE.restartButton);
-        SceneFadeManager.instance.ChangeScene(SceneManager.GetActiveScene().buildIndex);
+        SceneFadeManager.instance.ChangeScene(SceneManager.GetActiveScene().buildIndex, true);
     }
 
     public void BackToLoginScene()

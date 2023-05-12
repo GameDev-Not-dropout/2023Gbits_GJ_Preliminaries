@@ -12,13 +12,22 @@ public class TransitionTrigger : MonoBehaviour
     {
         mainCamera = Camera.main;
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnEnable()
     {
-        if (collision.tag != Tags.T_Player)
-            return;
+        EventSystem.Instance.AddEventListener<Transform>(EventName.OnTransitionTriggerEnter, OnTransitionTriggerEnter);
+        EventSystem.Instance.AddEventListener(EventName.OnChangeCamera, ()=> isFromLeft = !isFromLeft);
 
-        if (collision.transform.position.x < transform.position.x)
+    }
+    private void OnDisable()
+    {
+        EventSystem.Instance.RemoveEventListener<Transform>(EventName.OnTransitionTriggerEnter, OnTransitionTriggerEnter);
+        EventSystem.Instance.RemoveEventListener(EventName.OnChangeCamera, () => isFromLeft = !isFromLeft);
+
+    }
+
+    private void OnTransitionTriggerEnter(Transform playerTrans)
+    {
+        if (playerTrans.position.x < transform.position.x)
             isFromLeft = true;
         else
             isFromLeft = false;

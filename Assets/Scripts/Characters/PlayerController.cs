@@ -46,6 +46,14 @@ public class PlayerController : MonoBehaviour
         LandManager.instance.lastJumpPoint = transform.position;
     }
 
+    private void Update()
+    {
+        if (groundDetector.IsEnterTransitionTrigger)
+        {
+            EventSystem.Instance.EmitEvent(EventName.OnTransitionTriggerEnter, transform);
+        }
+    }
+
     #endregion
 
     /// <summary>

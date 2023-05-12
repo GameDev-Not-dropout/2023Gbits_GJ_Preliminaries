@@ -15,6 +15,7 @@ public class GameFlow : MonoBehaviour
     public GameObject[] uiObj;
     public Camera mainCamera;
     public GameObject guidePanel;
+    public RawImage[] rawVideo;
 
     public float canvasDuration;
     public float scaler;
@@ -31,8 +32,7 @@ public class GameFlow : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main;
-        int index = SceneManager.GetActiveScene().buildIndex;
-        SoundManager.Instance.PlayMusic((BGM)index);
+
         foreach (var item in floors)
         {
             item.DOFade(0, 0.1f);
@@ -61,6 +61,10 @@ public class GameFlow : MonoBehaviour
             item.SetActive(true);
         }
 
+        foreach (var item in rawVideo)
+        {
+            item.DOFade(0, duration).OnComplete(() => item.gameObject.SetActive(false));
+        }
         settingButtonImage.DOFade(1, duration);
 
         guidePanel.SetActive(true);

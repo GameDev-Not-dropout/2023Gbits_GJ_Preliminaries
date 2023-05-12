@@ -245,8 +245,8 @@ GameObject:
   - component: {fileID: 42109042}
   - component: {fileID: 42109041}
   - component: {fileID: 42109040}
-  m_Layer: 0
-  m_Name: TransitionTrigger
+  m_Layer: 8
+  m_Name: TransitionTrigger2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2742,7 +2742,7 @@ GameObject:
   - component: {fileID: 483873356}
   - component: {fileID: 483873355}
   - component: {fileID: 483873354}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TransitionTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5900,7 +5900,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1181656246}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.04, y: -1.89, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5954,7 +5954,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1362218619}
   bottomBoundary: 0
-  topBoundary: 0
+  topBoundary: 48
 --- !u!1 &1204113367
 GameObject:
   m_ObjectHideFlags: 0
@@ -10465,6 +10465,14 @@ PrefabInstance:
     - target: {fileID: 6621996918274973582, guid: 93ab677fb46f95343bc7eb1c8b04267c, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621996918973708659, guid: 93ab677fb46f95343bc7eb1c8b04267c, type: 3}
+      propertyPath: maxTriggerLength
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621996918973708659, guid: 93ab677fb46f95343bc7eb1c8b04267c, type: 3}
+      propertyPath: TriggerLayer.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 6621996919080485731, guid: 93ab677fb46f95343bc7eb1c8b04267c, type: 3}
       propertyPath: Loop

@@ -340,8 +340,8 @@ GameObject:
   - component: {fileID: 42109042}
   - component: {fileID: 42109041}
   - component: {fileID: 42109040}
-  m_Layer: 0
-  m_Name: TransitionTrigger
+  m_Layer: 8
+  m_Name: TransitionTrigger2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2481,7 +2481,7 @@ GameObject:
   - component: {fileID: 483873356}
   - component: {fileID: 483873355}
   - component: {fileID: 483873354}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TransitionTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5397,7 +5397,11 @@ PrefabInstance:
     - target: {fileID: 1258058739511458031, guid: 441179ff26b44b44d99349fb151cb290, type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: f846aa6ce310bcc4395ef65d8fea8757, type: 3}
+      objectReference: {fileID: 32900000, guid: c910804a78544f84b9129b24e1d2939e, type: 3}
+    - target: {fileID: 2679806021510163389, guid: 441179ff26b44b44d99349fb151cb290, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 441179ff26b44b44d99349fb151cb290, type: 3}
 --- !u!224 &1564159553 stripped
@@ -5911,8 +5915,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChapther3: 0
-  vcam1: {fileID: 0}
-  vcam2: {fileID: 0}
   player: {fileID: 0}
   sceneCamera2: {fileID: 301289968}
   Left_SceneBG: {fileID: 0}
@@ -7278,6 +7280,10 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
+  TriggerLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  maxTriggerLength: 20
   distance: 0.2
 --- !u!1001 &2129344197
 PrefabInstance:
@@ -7377,7 +7383,11 @@ PrefabInstance:
     - target: {fileID: 1258058739511458031, guid: 441179ff26b44b44d99349fb151cb290, type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: f846aa6ce310bcc4395ef65d8fea8757, type: 3}
+      objectReference: {fileID: 32900000, guid: c910804a78544f84b9129b24e1d2939e, type: 3}
+    - target: {fileID: 2679806021510163389, guid: 441179ff26b44b44d99349fb151cb290, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 441179ff26b44b44d99349fb151cb290, type: 3}
 --- !u!224 &2129344198 stripped

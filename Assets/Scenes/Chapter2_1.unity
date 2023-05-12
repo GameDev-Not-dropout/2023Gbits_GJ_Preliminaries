@@ -245,8 +245,8 @@ GameObject:
   - component: {fileID: 42109042}
   - component: {fileID: 42109041}
   - component: {fileID: 42109040}
-  m_Layer: 0
-  m_Name: TransitionTrigger
+  m_Layer: 8
+  m_Name: TransitionTrigger2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1727,7 +1727,7 @@ GameObject:
   - component: {fileID: 483873356}
   - component: {fileID: 483873355}
   - component: {fileID: 483873354}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TransitionTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7611,6 +7611,10 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
+  TriggerLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  maxTriggerLength: 20
   distance: 0.2
 --- !u!1 &2076619665
 GameObject:

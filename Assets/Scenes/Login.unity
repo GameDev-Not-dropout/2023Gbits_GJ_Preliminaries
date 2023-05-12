@@ -6726,7 +6726,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7162413232135666312, guid: cbe19af51065a614e90c884db34bdf29, type: 3}
       propertyPath: SE_Clips.Array.size
-      value: 11
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7162413232135666312, guid: cbe19af51065a614e90c884db34bdf29, type: 3}
       propertyPath: BGM_Clips.Array.size
@@ -6775,7 +6775,7 @@ PrefabInstance:
     - target: {fileID: 7162413232135666312, guid: cbe19af51065a614e90c884db34bdf29, type: 3}
       propertyPath: BGM_Clips.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 9b7388d140ce18444bff1c84c21ab482, type: 3}
+      objectReference: {fileID: 8300000, guid: 35985c27a0335d249a4c4f942201b53f, type: 3}
     - target: {fileID: 7162413232135666312, guid: cbe19af51065a614e90c884db34bdf29, type: 3}
       propertyPath: BGM_Clips.Array.data[1]
       value: 
@@ -6800,6 +6800,18 @@ PrefabInstance:
       propertyPath: SE_Clips.Array.data[10]
       value: 
       objectReference: {fileID: 8300000, guid: 6a3e1cc3e14bb3e4693b19ef8ceaac48, type: 3}
+    - target: {fileID: 7162413232135666312, guid: cbe19af51065a614e90c884db34bdf29, type: 3}
+      propertyPath: SE_Clips.Array.data[11]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4819cbfdbca5d8c4e80eef2eca553d28, type: 3}
+    - target: {fileID: 7162413232135666312, guid: cbe19af51065a614e90c884db34bdf29, type: 3}
+      propertyPath: SE_Clips.Array.data[12]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6154d7871f8157145b96bf289bef1d7d, type: 3}
+    - target: {fileID: 7162413232135666312, guid: cbe19af51065a614e90c884db34bdf29, type: 3}
+      propertyPath: SE_Clips.Array.data[13]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0ed9b2a72cb864f4ba95d6ae7ffe9d3a, type: 3}
     - target: {fileID: 7162413232135666313, guid: cbe19af51065a614e90c884db34bdf29, type: 3}
       propertyPath: m_RootOrder
       value: 3
