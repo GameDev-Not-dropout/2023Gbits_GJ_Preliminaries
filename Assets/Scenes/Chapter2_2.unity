@@ -8890,6 +8890,22 @@ PrefabInstance:
       propertyPath: playerCtr
       value: 
       objectReference: {fileID: 9100000, guid: 17b2424270c61b3459d6b33114896cbf, type: 2}
+    - target: {fileID: 6621996918274973553, guid: 93ab677fb46f95343bc7eb1c8b04267c, type: 3}
+      propertyPath: states.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621996918274973553, guid: 93ab677fb46f95343bc7eb1c8b04267c, type: 3}
+      propertyPath: states.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 19d7c68ff95b6804fb83e219a2f61a59, type: 2}
+    - target: {fileID: 6621996918274973555, guid: 93ab677fb46f95343bc7eb1c8b04267c, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621996918274973555, guid: 93ab677fb46f95343bc7eb1c8b04267c, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.18
+      objectReference: {fileID: 0}
     - target: {fileID: 6621996918274973558, guid: 93ab677fb46f95343bc7eb1c8b04267c, type: 3}
       propertyPath: m_Name
       value: ///Player

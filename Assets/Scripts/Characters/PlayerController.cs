@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -5,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     PlayerGroundDetector groundDetector;
     PlayerInput input;
-    Rigidbody2D rigidBody;
+    [NonSerialized] public Rigidbody2D rigidBody;
     BoxCollider2D boxCollider;
     public AudioSource VoicePlayer { get; private set; }
 
@@ -151,7 +152,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            boxCollider.size = new Vector2(1f, 2.5f);
+            boxCollider.size = new Vector2(1f, 2f);
         }
 
 

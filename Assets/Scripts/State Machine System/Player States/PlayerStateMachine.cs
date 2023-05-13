@@ -35,11 +35,18 @@ public class PlayerStateMachine : StateMachine  // 挂载到玩家身上
     private void OnEnable()
     {
         EventSystem.Instance.AddEventListener(EventName.OnChangeStyle, ChangeStyle);
+        EventSystem.Instance.AddEventListener<Transform>(EventName.OnPlayerDie, OnPlayerDie);
+
     }
     private void OnDisable()
     {
         EventSystem.Instance.RemoveEventListener(EventName.OnChangeStyle, ChangeStyle);
+        EventSystem.Instance.RemoveEventListener<Transform>(EventName.OnPlayerDie, OnPlayerDie);
 
+    }
+    void OnPlayerDie(Transform trans)
+    {
+        SwitchState(typeof(PlayerState_Die));
     }
     private void Start()
     {

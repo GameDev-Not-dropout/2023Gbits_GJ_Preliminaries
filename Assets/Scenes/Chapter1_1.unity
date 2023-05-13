@@ -4767,6 +4767,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 12782070d765c514795f350fe84c1955, type: 2}
   - {fileID: 11400000, guid: aefaee4c583755149920701fdeccb7e5, type: 2}
   - {fileID: 11400000, guid: 73b408fb090150841b6d46b8687f70aa, type: 2}
+  - {fileID: 11400000, guid: 19d7c68ff95b6804fb83e219a2f61a59, type: 2}
   copyImage: {fileID: 667020061}
   playerCtr: {fileID: 9100000, guid: 17b2424270c61b3459d6b33114896cbf, type: 2}
   catCtr: {fileID: 9100000, guid: 66647d36a9146e64b9e280e7daa4cbf1, type: 2}

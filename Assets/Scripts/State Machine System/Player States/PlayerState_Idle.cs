@@ -4,11 +4,9 @@ using UnityEngine;
 public class PlayerState_Idle : PlayerState
 {
     [SerializeField] float deceleration = 20f;   // 玩家速度逐帧的减速值
-
     public override void Enter()
     {
         base.Enter();
-
         currentSpeed = player.MoveSpeed;    // 记录当前玩家速度的值
     }
 
