@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerState : ScriptableObject, IState
 {
@@ -7,6 +8,7 @@ public class PlayerState : ScriptableObject, IState
     [SerializeField, Range(0f, 1f)] float transitionDuration = 0.1f;    // 淡化时间
     int stateHash;
     float stateStarTime;
+    int chapterIndex;
 
     protected float currentSpeed;   // 用来存储玩家当前的速度值
 
@@ -23,6 +25,21 @@ public class PlayerState : ScriptableObject, IState
         stateHash = Animator.StringToHash(stateName);
     }
 
+    private void Awake()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            chapterIndex = 1;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            chapterIndex = 2;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 5 || SceneManager.GetActiveScene().buildIndex == 6)
+        {
+            chapterIndex = 3;
+        }
+    }
     /// <summary>
     /// 初始化组件
     /// </summary>
@@ -52,6 +69,10 @@ public class PlayerState : ScriptableObject, IState
         if (input.changeScene)
         {
             EventSystem.Instance.EmitEvent(EventName.OnChangeScene, stateMachine.transform);
+            if (chapterIndex == 2)
+            {
+                EventSystem.Instance.EmitEvent(EventName.OnChangeStyle);
+            }
         }
     }       
             

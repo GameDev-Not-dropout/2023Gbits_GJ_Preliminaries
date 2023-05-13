@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     PlayerGroundDetector groundDetector;
     PlayerInput input;
     Rigidbody2D rigidBody;
+    BoxCollider2D boxCollider;
     public AudioSource VoicePlayer { get; private set; }
 
     public bool Victory { get; private set; }
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
         groundDetector = GetComponentInChildren<PlayerGroundDetector>();
         input = GetComponent<PlayerInput>();
         rigidBody = GetComponent<Rigidbody2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
         VoicePlayer = GetComponentInChildren<AudioSource>();
     }
 
@@ -30,6 +32,8 @@ public class PlayerController : MonoBehaviour
         EventSystem.Instance.AddEventListener(EventName.OnLand, CompareLandHeight);
         EventSystem.Instance.AddEventListener(EventName.OnSceneFadeEnd, EnableInput);
         EventSystem.Instance.AddEventListener<Transform>(EventName.OnPlayerDie, DisableInput);
+        EventSystem.Instance.AddEventListener(EventName.OnChangeStyle, ChangeStyle);
+
     }
     private void OnDisable()
     {
@@ -37,6 +41,7 @@ public class PlayerController : MonoBehaviour
         EventSystem.Instance.RemoveEventListener(EventName.OnLand, CompareLandHeight);
         EventSystem.Instance.RemoveEventListener(EventName.OnSceneFadeEnd, EnableInput);
         EventSystem.Instance.RemoveEventListener<Transform>(EventName.OnPlayerDie, DisableInput);
+        EventSystem.Instance.AddEventListener(EventName.OnChangeStyle, ChangeStyle);
 
     }
 
@@ -136,6 +141,20 @@ public class PlayerController : MonoBehaviour
     void EnableInput()
     {
         input.EnableGamePlayInput();
+    }
+
+    void ChangeStyle()
+    {
+        if (boxCollider.size.x == 1)
+        {
+            boxCollider.size = new Vector2(1.4f, 0.85f);   // 变成猫的尺寸
+        }
+        else
+        {
+            boxCollider.size = new Vector2(1f, 2.5f);
+        }
+
+
     }
 
 }

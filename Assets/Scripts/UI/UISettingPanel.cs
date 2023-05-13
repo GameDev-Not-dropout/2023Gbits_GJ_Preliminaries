@@ -19,10 +19,10 @@ public class UISettingPanel : MonoBehaviour
 
     private void Start()
     {
-        this.toggleMusic.isOn = SoundConfig.MusicOn;
-        this.toggleSound.isOn = SoundConfig.SoundOn;
+        //this.toggleMusic.isOn = SoundConfig.MusicOn;
+        //this.toggleSound.isOn = SoundConfig.SoundOn;
         this.sliderMusic.value = SoundConfig.MusicVolume;
-        this.sliderSound.value = SoundConfig.SoundVolume;
+        //this.sliderSound.value = SoundConfig.SoundVolume;
     }
 
 
@@ -58,35 +58,35 @@ public class UISettingPanel : MonoBehaviour
         PlayerPrefs.Save();          // 保存音量设置
     }
 
-    /// <summary>
-    /// 音乐音量开关
-    /// </summary>
-    public void MusicToogle(bool on)
-    {
-        SoundConfig.MusicOn = on;    // 给配置文件赋值记录状态
-        SoundManager.Instance.PlaySound(SE.buttonClick);    // 播放点击按钮音效
+    ///// <summary>
+    ///// 音乐音量开关
+    ///// </summary>
+    //public void MusicToogle(bool on)
+    //{
+    //    SoundConfig.MusicOn = on;    // 给配置文件赋值记录状态
+    //    SoundManager.Instance.PlaySound(SE.buttonClick);    // 播放点击按钮音效
 
-    }
-    /// <summary>
-    /// 声音音量开关
-    /// </summary>
-    public void SoundToogle(bool on)
-    {
-        SoundConfig.SoundOn = on;
-        SoundManager.Instance.PlaySound(SE.buttonClick);
-    }
+    //}
+    ///// <summary>
+    ///// 声音音量开关
+    ///// </summary>
+    //public void SoundToogle(bool on)
+    //{
+    //    SoundConfig.SoundOn = on;
+    //    SoundManager.Instance.PlaySound(SE.buttonClick);
+    //}
 
     public void MusicVolume(float vol)
     {
         SoundConfig.MusicVolume = (int)vol;
-        PlaySound();
+        //PlaySound();
     }
 
-    public void SoundVolume(float vol)
-    {
-        SoundConfig.SoundVolume = (int)vol;
-        PlaySound();
-    }
+    //public void SoundVolume(float vol)
+    //{
+    //    SoundConfig.SoundVolume = (int)vol;
+    //    PlaySound();
+    //}
 
 
 
@@ -117,6 +117,14 @@ public class UISettingPanel : MonoBehaviour
     }
 
 
-
+    public void ExitGame()
+    {
+        SoundManager.Instance.PlaySound(SE.buttonClick);
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+                    Application.Quit();
+#endif
+    }
 
 }

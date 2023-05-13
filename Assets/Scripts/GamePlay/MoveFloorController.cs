@@ -29,7 +29,7 @@ public class MoveFloorController : MonoBehaviour
 
     private void Update()
     {
-        if (playerInTrigger && Input.GetKeyDown(KeyCode.J))
+        if (playerInTrigger && Input.GetKeyDown(KeyCode.F))
         {
             EventSystem.Instance.EmitEvent(EventName.OnControllFloor, controllIndex);
             if (inRight)

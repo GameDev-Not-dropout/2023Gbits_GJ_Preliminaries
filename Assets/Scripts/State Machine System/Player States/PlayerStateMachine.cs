@@ -6,6 +6,8 @@ public class PlayerStateMachine : StateMachine  // 挂载到玩家身上
 {
     [SerializeField] PlayerState[] states;
     public SpriteRenderer copyImage;
+    public RuntimeAnimatorController playerCtr;
+    public RuntimeAnimatorController catCtr;
 
     Animator animator;
     PlayerController player;
@@ -28,6 +30,16 @@ public class PlayerStateMachine : StateMachine  // 挂载到玩家身上
             state.Initialize(animator, player, input, this);    // 为每个具体状态绑定组件（动画、输入控制器、输入和状态机）
             stateTable.Add(state.GetType(), state);         // 为状态字典填充内容
         }
+    }
+
+    private void OnEnable()
+    {
+        EventSystem.Instance.AddEventListener(EventName.OnChangeStyle, ChangeStyle);
+    }
+    private void OnDisable()
+    {
+        EventSystem.Instance.RemoveEventListener(EventName.OnChangeStyle, ChangeStyle);
+
     }
     private void Start()
     {
@@ -55,7 +67,16 @@ public class PlayerStateMachine : StateMachine  // 挂载到玩家身上
             else
                 copyImage.transform.localPosition = new Vector3(-80, 0);
         }
-
-
     }
+
+    void ChangeStyle()
+    {
+        if (animator.runtimeAnimatorController.name == playerCtr.name)
+        {
+            animator.runtimeAnimatorController = catCtr;
+        }
+        else
+           animator.runtimeAnimatorController = playerCtr;
+    }
+
 }

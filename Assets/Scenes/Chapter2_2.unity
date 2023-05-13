@@ -3780,6 +3780,14 @@ PrefabInstance:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SoundToogle
       objectReference: {fileID: 0}
+    - target: {fileID: 7631764232104262096, guid: 592edaf253e1998439a88a5d75c04490, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1926194473}
+    - target: {fileID: 7631764232104262096, guid: 592edaf253e1998439a88a5d75c04490, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitGame
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 592edaf253e1998439a88a5d75c04490, type: 3}
 --- !u!224 &921412084 stripped
@@ -8874,6 +8882,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6621996918274973553, guid: 93ab677fb46f95343bc7eb1c8b04267c, type: 3}
+      propertyPath: catCtr
+      value: 
+      objectReference: {fileID: 9100000, guid: 66647d36a9146e64b9e280e7daa4cbf1, type: 2}
+    - target: {fileID: 6621996918274973553, guid: 93ab677fb46f95343bc7eb1c8b04267c, type: 3}
+      propertyPath: playerCtr
+      value: 
+      objectReference: {fileID: 9100000, guid: 17b2424270c61b3459d6b33114896cbf, type: 2}
     - target: {fileID: 6621996918274973558, guid: 93ab677fb46f95343bc7eb1c8b04267c, type: 3}
       propertyPath: m_Name
       value: ///Player
@@ -8921,6 +8937,10 @@ PrefabInstance:
     - target: {fileID: 6621996918274973559, guid: 93ab677fb46f95343bc7eb1c8b04267c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621996918274973582, guid: 93ab677fb46f95343bc7eb1c8b04267c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6621996918973708659, guid: 93ab677fb46f95343bc7eb1c8b04267c, type: 3}
       propertyPath: maxTriggerLength

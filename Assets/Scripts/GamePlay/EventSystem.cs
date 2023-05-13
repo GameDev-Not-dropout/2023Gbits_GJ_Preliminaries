@@ -15,6 +15,7 @@ public enum EventName
     OnChangeCamera = 9,
     OnSceneFadeEnd = 10,
     OnTransitionTriggerEnter = 11,
+    OnChangeStyle = 12,
 
 }
 

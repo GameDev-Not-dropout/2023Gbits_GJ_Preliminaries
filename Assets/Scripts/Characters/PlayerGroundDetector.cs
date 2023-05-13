@@ -54,7 +54,27 @@ public class PlayerGroundDetector : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        EventSystem.Instance.AddEventListener(EventName.OnChangeStyle, ChangeStyle);
+    }
+    private void OnDisable()
+    {
+        EventSystem.Instance.RemoveEventListener(EventName.OnChangeStyle, ChangeStyle);
 
+    }
+
+    void ChangeStyle()
+    {
+        if (transform.localPosition.y < -1)
+        {
+            transform.localPosition = new Vector3(0, -0.5f, 0);
+        }
+        else
+        {
+            transform.localPosition = new Vector3(0, -1.2f, 0);
+        }
+    }
 
     /// <summary>
     /// 将投射出来的球体显示在编辑器窗口

@@ -1183,7 +1183,7 @@ PrefabInstance:
     - target: {fileID: 5576343675415412737, guid: 3ceb409a5c3c14145a1d71b84b490221, type: 3}
       propertyPath: B_SceneSprite
       value: 
-      objectReference: {fileID: 21300000, guid: adad44449f0a4574fabadf1dafedf0fa, type: 3}
+      objectReference: {fileID: 21300000, guid: 5a9b40198ff8a134fa325f3ce4ff90c5, type: 3}
     - target: {fileID: 5576343675415412737, guid: 3ceb409a5c3c14145a1d71b84b490221, type: 3}
       propertyPath: Right_SceneBG
       value: 
@@ -2010,7 +2010,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &563628720
@@ -2982,7 +2982,7 @@ SpriteRenderer:
   m_SortingLayerID: -1752439101
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: adad44449f0a4574fabadf1dafedf0fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5a9b40198ff8a134fa325f3ce4ff90c5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4784,6 +4784,14 @@ PrefabInstance:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SoundToogle
       objectReference: {fileID: 0}
+    - target: {fileID: 7631764232104262096, guid: 592edaf253e1998439a88a5d75c04490, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1926194473}
+    - target: {fileID: 7631764232104262096, guid: 592edaf253e1998439a88a5d75c04490, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitGame
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 592edaf253e1998439a88a5d75c04490, type: 3}
 --- !u!224 &1243286686 stripped
@@ -5270,6 +5278,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aefaee4c583755149920701fdeccb7e5, type: 2}
   - {fileID: 11400000, guid: 73b408fb090150841b6d46b8687f70aa, type: 2}
   copyImage: {fileID: 2076619667}
+  playerCtr: {fileID: 9100000, guid: 17b2424270c61b3459d6b33114896cbf, type: 2}
+  catCtr: {fileID: 9100000, guid: 66647d36a9146e64b9e280e7daa4cbf1, type: 2}
 --- !u!50 &1362218622
 Rigidbody2D:
   serializedVersion: 4
@@ -6661,7 +6671,7 @@ MonoBehaviour:
   Left_SceneBG: {fileID: 495651935}
   Right_SceneBG: {fileID: 1316916875}
   A_SceneSprite: {fileID: 21300000, guid: cc22f58fb86709146bff1a2c04fa69af, type: 3}
-  B_SceneSprite: {fileID: 21300000, guid: adad44449f0a4574fabadf1dafedf0fa, type: 3}
+  B_SceneSprite: {fileID: 21300000, guid: 5a9b40198ff8a134fa325f3ce4ff90c5, type: 3}
 --- !u!1 &1785173306
 GameObject:
   m_ObjectHideFlags: 0
@@ -7103,7 +7113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1911155700}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 90.503, y: 4.514, z: 0}
+  m_LocalPosition: {x: 89.5, y: 3.5, z: 0}
   m_LocalScale: {x: 3, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7123,7 +7133,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.039015234, y: -0.047673345}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -7134,7 +7144,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.92196953, y: 0.9046533}
   m_EdgeRadius: 0
 --- !u!212 &1911155703
 SpriteRenderer:
@@ -7213,11 +7223,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3216076224115636469, guid: dbefec3ccf80ba44b8ca4dafa5530aa2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 90.58
+      value: 89.65
       objectReference: {fileID: 0}
     - target: {fileID: 3216076224115636469, guid: dbefec3ccf80ba44b8ca4dafa5530aa2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.86
+      value: 4.59
       objectReference: {fileID: 0}
     - target: {fileID: 3216076224115636469, guid: dbefec3ccf80ba44b8ca4dafa5530aa2, type: 3}
       propertyPath: m_LocalPosition.z

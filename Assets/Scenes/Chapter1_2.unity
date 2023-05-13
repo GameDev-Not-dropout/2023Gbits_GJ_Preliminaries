@@ -4314,6 +4314,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7631764232104262096, guid: 592edaf253e1998439a88a5d75c04490, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1926194473}
+    - target: {fileID: 7631764232104262096, guid: 592edaf253e1998439a88a5d75c04490, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitGame
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 592edaf253e1998439a88a5d75c04490, type: 3}
 --- !u!224 &1355271661 stripped
@@ -4454,6 +4462,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aefaee4c583755149920701fdeccb7e5, type: 2}
   - {fileID: 11400000, guid: 73b408fb090150841b6d46b8687f70aa, type: 2}
   copyImage: {fileID: 1909508812}
+  playerCtr: {fileID: 9100000, guid: 17b2424270c61b3459d6b33114896cbf, type: 2}
+  catCtr: {fileID: 9100000, guid: 66647d36a9146e64b9e280e7daa4cbf1, type: 2}
 --- !u!50 &1362218622
 Rigidbody2D:
   serializedVersion: 4

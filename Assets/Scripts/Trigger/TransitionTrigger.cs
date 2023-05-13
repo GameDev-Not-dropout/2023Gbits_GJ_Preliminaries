@@ -7,10 +7,23 @@ public class TransitionTrigger : MonoBehaviour
     Camera mainCamera;
     public Camera sceneCamera2;
     bool isFromLeft;
+    int chapterIndex;
 
     private void Start()
     {
         mainCamera = Camera.main;
+        if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            chapterIndex = 1;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            chapterIndex = 2;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 5 || SceneManager.GetActiveScene().buildIndex == 6)
+        {
+            chapterIndex = 3;
+        }
     }
     private void OnEnable()
     {
@@ -53,6 +66,10 @@ public class TransitionTrigger : MonoBehaviour
             {
                 TransitionManager.Instance.SpawnShockWaves(pos, 1);
                 pos.x = pos.x + 80f;
+                if (chapterIndex == 1)
+                {
+                    EventSystem.Instance.EmitEvent(EventName.OnChangeStyle);
+                }
                 TransitionManager.Instance.SpawnShockWaves(pos, 2);
                 collision.transform.position = pos;
                 SoundManager.Instance.PlaySound(SE.overLine);
@@ -62,6 +79,10 @@ public class TransitionTrigger : MonoBehaviour
             {
                 TransitionManager.Instance.SpawnShockWaves(pos, 1);
                 pos.x = pos.x - 80f;
+                if (chapterIndex == 1)
+                {
+                    EventSystem.Instance.EmitEvent(EventName.OnChangeStyle);
+                }
                 TransitionManager.Instance.SpawnShockWaves(pos, 2);
                 collision.transform.position = pos;
                 SoundManager.Instance.PlaySound(SE.overLine);
