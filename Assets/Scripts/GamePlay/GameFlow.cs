@@ -9,8 +9,6 @@ using UnityEngine.UI;
 public class GameFlow : MonoBehaviour
 {
     CanvasGroup canvasGroup;
-    public SpriteRenderer BG;
-    public SpriteRenderer gaussianBG;
     public GameObject player;
     public GameObject[] uiObj;
     public Camera mainCamera;
@@ -23,6 +21,8 @@ public class GameFlow : MonoBehaviour
     public List<SpriteRenderer> transparentFloors;
     public Image settingButtonImage;
     public float duration;
+    public float transparentRatio = 0.3f;
+
 
     private void Awake()
     {
@@ -54,7 +54,7 @@ public class GameFlow : MonoBehaviour
         }
         foreach (var item in transparentFloors)
         {
-            item.DOFade(0.15f, duration);
+            item.DOFade(transparentRatio, duration);
         }
         foreach (var item in uiObj)
         {

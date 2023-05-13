@@ -15,6 +15,10 @@ public class RegenerationManager : MonoBehaviour
     public Transform player;
     Vector3 mainCamPoint;
     Vector3 scene2CamPoint;
+    public SpriteRenderer Left_SceneBG;
+    public SpriteRenderer Right_SceneBG;
+    public Sprite A_SceneSprite;
+    public Sprite B_SceneSprite;
 
     private void Awake()
     {
@@ -65,35 +69,70 @@ public class RegenerationManager : MonoBehaviour
     {
         if (mainCamPoint.x < 40)
         {
-            mainCam.transform.position = new Vector3(0f, mainCam.transform.position.y, -10);
+            if (mainCam.transform.position.x > 40)  // 主相机从场景B移到场景A
+            {
+                mainCam.transform.position = new Vector3(0f, mainCam.transform.position.y, -10);
+                if (Left_SceneBG != null)
+                    Left_SceneBG.sprite = B_SceneSprite;  // 透明背景切换为B场景图片
+
+                // B场景左边平台开始移动，A场景左边平台停止移动
+                EventSystem.Instance.EmitEvent(EventName.OnChangeMoveFloor, 3);
+            }
+
         }
         else
         {
-            mainCam.transform.position = new Vector3(80f, mainCam.transform.position.y, -10);
+            if (mainCam.transform.position.x < 40)  // 主相机从场景A移到场景B
+            {
+                mainCam.transform.position = new Vector3(80f, mainCam.transform.position.y, -10);
+                if (Left_SceneBG != null)
+                    Left_SceneBG.sprite = A_SceneSprite;  // 透明背景切换为A场景图片
+                // A场景左边平台开始移动，B场景左边平台停止移动
+                EventSystem.Instance.EmitEvent(EventName.OnChangeMoveFloor, 1);
+            }
+
+        }
+        if (scene2CamPoint.x < 40 && scene2Cam.transform.position.x > 40)
+        {
+            EventSystem.Instance.EmitEvent(EventName.OnChangeMoveFloor, 4);
+        }
+        else if (scene2CamPoint.x > 40 && scene2Cam.transform.position.x < 40)
+        {
+            EventSystem.Instance.EmitEvent(EventName.OnChangeMoveFloor, 2);
         }
         scene2Cam.transform.position = scene2CamPoint;
+        if (scene2Cam.transform.position.x < 40)
+        {
+            if (Right_SceneBG != null)
+                Right_SceneBG.sprite = B_SceneSprite;  // 透明背景切换为B场景图片
+        }
+        else
+        {
+            if (Right_SceneBG != null)
+                Right_SceneBG.sprite = A_SceneSprite;  // 透明背景切换为A场景图片
+        }
 
         playerPos.position = RegenerationPoint.position;
 
         SceneFadeManager.instance.RegenarationFadeWithTween(1f, 0f, () => EventSystem.Instance.EmitEvent(EventName.OnSceneFadeEnd));
 
-        if (SceneManager.GetActiveScene().buildIndex != 3 && SceneManager.GetActiveScene().buildIndex != 4)
-            return;
+        //if (SceneManager.GetActiveScene().buildIndex != 3 && SceneManager.GetActiveScene().buildIndex != 4)
+        //    return;
 
-        if (RegenerationPoint.position.x < 40)      // 玩家在场景1
-        {
-            if (RegenerationPoint.position.x < TransitionManager.Instance.TriggerAPos)    // 此时在线的左边
-                EventSystem.Instance.EmitEvent(EventName.OnChangeMoveFloor, 1);
-            else
-                EventSystem.Instance.EmitEvent(EventName.OnChangeMoveFloor, 2);
-        }
-        else   // 玩家在场景2
-        {
-            if (RegenerationPoint.position.x < TransitionManager.Instance.TriggerBPos)    // 此时在线的左边
-                EventSystem.Instance.EmitEvent(EventName.OnChangeMoveFloor, 3);
-            else
-                EventSystem.Instance.EmitEvent(EventName.OnChangeMoveFloor, 4);
-        }
+        //if (RegenerationPoint.position.x < 40)      // 玩家在场景1
+        //{
+        //    if (RegenerationPoint.position.x < TransitionManager.Instance.TriggerAPos)    // 此时在线的左边
+        //        EventSystem.Instance.EmitEvent(EventName.OnChangeMoveFloor, 3);
+        //    else
+        //        EventSystem.Instance.EmitEvent(EventName.OnChangeMoveFloor, 4);
+        //}
+        //else   // 玩家在场景2
+        //{
+        //    if (RegenerationPoint.position.x < TransitionManager.Instance.TriggerBPos)    // 此时在线的左边
+        //        EventSystem.Instance.EmitEvent(EventName.OnChangeMoveFloor, 1);
+        //    else
+        //        EventSystem.Instance.EmitEvent(EventName.OnChangeMoveFloor, 2);
+        //}
     }
 
 }

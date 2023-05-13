@@ -279,7 +279,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.2, y: 0}
+  m_Offset: {x: 0, y: 1.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -290,7 +290,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 25}
+  m_Size: {x: 0.1, y: 27}
   m_EdgeRadius: 0
 --- !u!4 &42109042
 Transform:
@@ -2168,7 +2168,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.2, y: 0}
+  m_Offset: {x: 0, y: 1.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2179,7 +2179,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 25}
+  m_Size: {x: 0.1, y: 27}
   m_EdgeRadius: 0
 --- !u!4 &483873356
 Transform:
@@ -8097,8 +8097,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da2af6087c7f89498ccedba3e418bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BG: {fileID: 0}
-  gaussianBG: {fileID: 0}
   player: {fileID: 1362218618}
   uiObj:
   - {fileID: 387158280}
@@ -8130,3 +8128,4 @@ MonoBehaviour:
   transparentFloors: []
   settingButtonImage: {fileID: 1085169690}
   duration: 1.5
+  transparentRatio: 0.3
