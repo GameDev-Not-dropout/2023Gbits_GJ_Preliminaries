@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStateMachine : StateMachine  // 挂载到玩家身上
 {
@@ -13,6 +14,7 @@ public class PlayerStateMachine : StateMachine  // 挂载到玩家身上
     PlayerController player;
     PlayerInput input;
     SpriteRenderer spriteRenderer;
+    float lastChangeTime;
 
     private void Awake()
     {
@@ -35,13 +37,13 @@ public class PlayerStateMachine : StateMachine  // 挂载到玩家身上
     private void OnEnable()
     {
         EventSystem.Instance.AddEventListener(EventName.OnChangeStyle, ChangeStyle);
-        EventSystem.Instance.AddEventListener<Transform>(EventName.OnPlayerDie, OnPlayerDie);
+        //EventSystem.Instance.AddEventListener<Transform>(EventName.OnPlayerDie, OnPlayerDie);
 
     }
     private void OnDisable()
     {
         EventSystem.Instance.RemoveEventListener(EventName.OnChangeStyle, ChangeStyle);
-        EventSystem.Instance.RemoveEventListener<Transform>(EventName.OnPlayerDie, OnPlayerDie);
+        //EventSystem.Instance.RemoveEventListener<Transform>(EventName.OnPlayerDie, OnPlayerDie);
 
     }
     void OnPlayerDie(Transform trans)
@@ -56,7 +58,8 @@ public class PlayerStateMachine : StateMachine  // 挂载到玩家身上
     public override void TimeUpdate()
     {
         base.TimeUpdate();
-        copyImage.sprite = spriteRenderer.sprite;
+        if (copyImage != null)
+            copyImage.sprite = spriteRenderer.sprite;
 
         Vector3 pos = transform.position;
         if (pos.x < 40)
@@ -78,12 +81,30 @@ public class PlayerStateMachine : StateMachine  // 挂载到玩家身上
 
     void ChangeStyle()
     {
+        //if (Time.time - lastChangeTime <= 1f)   // 切换场景需要1s时间间隔
+        //    return;
+
+        lastChangeTime = Time.time;
+
         if (animator.runtimeAnimatorController.name == playerCtr.name)
         {
             animator.runtimeAnimatorController = catCtr;
         }
         else
            animator.runtimeAnimatorController = playerCtr;
+        if (transform.position.x < 40)
+        {
+            TransitionManager.Instance.SpawnShockWaves(transform.position, 1);
+            Vector3 pos = new Vector3(transform.position.x + 80f, transform.position.y);
+            TransitionManager.Instance.SpawnShockWaves(pos, 2);
+        }
+        else
+        {
+            TransitionManager.Instance.SpawnShockWaves(transform.position, 2);
+            Vector3 pos = new Vector3(transform.position.x - 80f, transform.position.y);
+            TransitionManager.Instance.SpawnShockWaves(pos, 1);
+        }
+
     }
 
 }

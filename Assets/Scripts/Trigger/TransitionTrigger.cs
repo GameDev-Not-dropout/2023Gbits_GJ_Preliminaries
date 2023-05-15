@@ -27,14 +27,20 @@ public class TransitionTrigger : MonoBehaviour
     }
     private void OnEnable()
     {
-        EventSystem.Instance.AddEventListener<Transform>(EventName.OnTransitionTriggerEnter, OnTransitionTriggerEnter);
-        EventSystem.Instance.AddEventListener(EventName.OnChangeCamera, ()=> isFromLeft = !isFromLeft);
+        if (chapterIndex != 3)
+        {
+            EventSystem.Instance.AddEventListener<Transform>(EventName.OnTransitionTriggerEnter, OnTransitionTriggerEnter);
+            EventSystem.Instance.AddEventListener(EventName.OnChangeCamera, () => isFromLeft = !isFromLeft);
+        }
 
     }
     private void OnDisable()
     {
-        EventSystem.Instance.RemoveEventListener<Transform>(EventName.OnTransitionTriggerEnter, OnTransitionTriggerEnter);
-        EventSystem.Instance.RemoveEventListener(EventName.OnChangeCamera, () => isFromLeft = !isFromLeft);
+        if (chapterIndex != 3)
+        {
+            EventSystem.Instance.RemoveEventListener<Transform>(EventName.OnTransitionTriggerEnter, OnTransitionTriggerEnter);
+            EventSystem.Instance.RemoveEventListener(EventName.OnChangeCamera, () => isFromLeft = !isFromLeft);
+        }
 
     }
 
@@ -57,7 +63,7 @@ public class TransitionTrigger : MonoBehaviour
             return;
         else if (pos.x > transform.position.x && isFromLeft == false)
             return;
-
+        
         
         // A场景在左，B场景在右时才执行跳转，具体跳转到哪由玩家相对于线的位置来决定
         if (mainCamera.transform.position.x < 40 && sceneCamera2.transform.position.x > 40)
@@ -66,7 +72,7 @@ public class TransitionTrigger : MonoBehaviour
             {
                 TransitionManager.Instance.SpawnShockWaves(pos, 1);
                 pos.x = pos.x + 80f;
-                if (chapterIndex == 1)
+                if (chapterIndex == 1 || chapterIndex == 3)
                 {
                     EventSystem.Instance.EmitEvent(EventName.OnChangeStyle);
                 }
@@ -79,7 +85,7 @@ public class TransitionTrigger : MonoBehaviour
             {
                 TransitionManager.Instance.SpawnShockWaves(pos, 1);
                 pos.x = pos.x - 80f;
-                if (chapterIndex == 1)
+                if (chapterIndex == 1 || chapterIndex == 3)
                 {
                     EventSystem.Instance.EmitEvent(EventName.OnChangeStyle);
                 }
@@ -97,6 +103,10 @@ public class TransitionTrigger : MonoBehaviour
             {
                 TransitionManager.Instance.SpawnShockWaves(pos, 1);
                 pos.x = pos.x + 80f;
+                if (chapterIndex == 3)
+                {
+                    EventSystem.Instance.EmitEvent(EventName.OnChangeStyle);
+                }
                 TransitionManager.Instance.SpawnShockWaves(pos, 2);
                 collision.transform.position = pos;
                 SoundManager.Instance.PlaySound(SE.overLine);
@@ -106,6 +116,10 @@ public class TransitionTrigger : MonoBehaviour
             {
                 TransitionManager.Instance.SpawnShockWaves(pos, 1);
                 pos.x = pos.x - 80f;
+                if (chapterIndex == 3)
+                {
+                    EventSystem.Instance.EmitEvent(EventName.OnChangeStyle);
+                }
                 TransitionManager.Instance.SpawnShockWaves(pos, 2);
                 collision.transform.position = pos;
                 SoundManager.Instance.PlaySound(SE.overLine);

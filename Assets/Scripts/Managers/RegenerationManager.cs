@@ -1,9 +1,7 @@
-using Cinemachine;
+using DG.Tweening;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEditor.PlayerSettings;
 
 public class RegenerationManager : MonoBehaviour
 {
@@ -19,6 +17,7 @@ public class RegenerationManager : MonoBehaviour
     public SpriteRenderer Right_SceneBG;
     public Sprite A_SceneSprite;
     public Sprite B_SceneSprite;
+    public bool isC3;
 
     private void Awake()
     {
@@ -57,6 +56,12 @@ public class RegenerationManager : MonoBehaviour
 
     public void Regeneration(Transform playerPos)
     {
+        if (!isC3)
+        {
+            SceneFadeManager.instance.ChangeScene(SceneManager.GetActiveScene().buildIndex, true);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
         PlayerDieCouroutine(playerPos);
     }
 
@@ -67,6 +72,25 @@ public class RegenerationManager : MonoBehaviour
     
     void MoveCam(Transform playerPos)
     {
+        if (SceneManager.GetActiveScene().buildIndex == 5)
+        {
+            if (RegenerationPoint.position.x < 40)
+            {
+                mainCam.transform.position = new Vector3(0f, mainCam.transform.position.y, -10);
+                scene2Cam.transform.position = new Vector3(80f, mainCam.transform.position.y, -10);
+            }
+            else
+            {
+                mainCam.transform.position = new Vector3(80f, mainCam.transform.position.y, -10);
+                scene2Cam.transform.position = new Vector3(0f, mainCam.transform.position.y, -10);
+            }
+            playerPos.position = RegenerationPoint.position;
+
+            StartCoroutine(WaitForDieBlack());
+            return;
+        }
+
+
         if (mainCamPoint.x < 40)
         {
             if (mainCam.transform.position.x > 40)  // 主相机从场景B移到场景A
@@ -114,8 +138,7 @@ public class RegenerationManager : MonoBehaviour
 
         playerPos.position = RegenerationPoint.position;
 
-        SceneFadeManager.instance.RegenarationFadeWithTween(1f, 0f, () => EventSystem.Instance.EmitEvent(EventName.OnSceneFadeEnd));
-
+        StartCoroutine(WaitForDieBlack());
         //if (SceneManager.GetActiveScene().buildIndex != 3 && SceneManager.GetActiveScene().buildIndex != 4)
         //    return;
 
@@ -133,6 +156,12 @@ public class RegenerationManager : MonoBehaviour
         //    else
         //        EventSystem.Instance.EmitEvent(EventName.OnChangeMoveFloor, 2);
         //}
+    }
+
+    IEnumerator WaitForDieBlack()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneFadeManager.instance.RegenarationFadeWithTween(1f, 0f, () => EventSystem.Instance.EmitEvent(EventName.OnSceneFadeEnd));
     }
 
 }

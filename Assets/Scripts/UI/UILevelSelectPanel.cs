@@ -17,10 +17,10 @@ public class UILevelSelectPanel : MonoBehaviour
         {
             if (i >= unLockedLevelIndex)
             {
-                levelButton[i].enabled = false;     // 未解锁的关卡不能点击
+                levelButton[i].interactable = false;     // 未解锁的关卡不能点击
             }
             else
-                levelButton[i].enabled = true;
+                levelButton[i].interactable = true;
         }
     }
 

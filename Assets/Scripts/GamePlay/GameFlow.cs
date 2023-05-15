@@ -19,9 +19,10 @@ public class GameFlow : MonoBehaviour
     public float scaler;
     public List<SpriteRenderer> floors;
     public List<SpriteRenderer> transparentFloors;
-    public Image settingButtonImage;
+    public Image[] buttonImages;
     public float duration;
     public float transparentRatio = 0.3f;
+    public float cameraMoveDuration;
 
 
     private void Awake()
@@ -35,23 +36,22 @@ public class GameFlow : MonoBehaviour
 
         foreach (var item in floors)
         {
-            item.DOFade(0, 0.1f);
+            item.DOFade(0, 0f);
         }
         foreach (var item in transparentFloors)
         {
-            item.DOFade(0, 0.1f);
+            item.DOFade(0, 0f);
         }
-        settingButtonImage.DOFade(0, 0.1f);
+        foreach (var item in buttonImages)
+        {
+            item.DOFade(0, 0f);
+        }
 
         StartCoroutine(CanvasFade());
     }
 
     void FadeIn()
     {
-        foreach (var item in floors)
-        {
-            item.DOFade(1, duration);
-        }
         foreach (var item in transparentFloors)
         {
             item.DOFade(transparentRatio, duration);
@@ -65,11 +65,14 @@ public class GameFlow : MonoBehaviour
         {
             item.DOFade(0, duration).OnComplete(() => item.gameObject.SetActive(false));
         }
-        settingButtonImage.DOFade(1, duration);
-
-        guidePanel.SetActive(true);
-        Time.timeScale = 0f;
-
+        foreach (var item in buttonImages)
+        {
+            item.DOFade(1, duration);
+        }
+        foreach (var item in floors)
+        {
+            item.DOFade(1, duration).OnComplete(() => { guidePanel.SetActive(true); Time.timeScale = 0f; });
+        }
     }
 
     IEnumerator Fade(int amount)
@@ -98,9 +101,9 @@ public class GameFlow : MonoBehaviour
         yield return new WaitForSeconds(canvasDuration);
         yield return Fade(0);       // 消字
         // 摄像机放大到原尺寸
-        DOTween.To((value) => { mainCamera.orthographicSize = value; }, mainCamera.orthographicSize, 12f, 1.5f).SetEase(Ease.OutCubic);
-        mainCamera.transform.DOMove(new Vector3(0, 0, -10), 1.5f).SetEase(Ease.OutCubic);
-        yield return new WaitForSeconds(1.5f);
+        DOTween.To((value) => { mainCamera.orthographicSize = value; }, mainCamera.orthographicSize, 12f, cameraMoveDuration).SetEase(Ease.OutCubic);
+        mainCamera.transform.DOMove(new Vector3(0, 0, -10), cameraMoveDuration).SetEase(Ease.OutCubic);
+        yield return new WaitForSeconds(cameraMoveDuration);
         // 人物出现
         player.GetComponent<SpriteRenderer>().enabled = true;
         FadeIn();

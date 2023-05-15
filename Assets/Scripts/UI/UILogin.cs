@@ -17,11 +17,13 @@ public class UILogin : MonoBehaviour
     public float fadeDuration;
     float timer;
     bool hasOpenUI;
+    public int levelUnlock;
 
     private void Start()
     {
         SoundManager.Instance.PlayMusic(BGM.Title);
         videoPlayer.loopPointReached += ChangeVideo;
+        //PlayerPrefs.SetInt("unLockedLevelIndex", levelUnlock);
     }
 
     private void Update()
@@ -54,7 +56,10 @@ public class UILogin : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        SoundManager.Instance.PlaySound(SE.startButton);
+
+        firstUI[2].GetComponent<Animator>().Play("move");
+        SceneFadeManager.instance.ChangeScene(1);
     }
     public void OpenLevelSelectPanel()
     {

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public RectTransform rectTransform;
     RectTransform thisRect;
@@ -24,6 +24,34 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         thisRect = this.GetComponent<RectTransform>();
         TransitionManager.Instance.TriggerAPos = 0;
         TransitionManager.Instance.TriggerBPos = 80;
+    }
+
+    private void OnEnable()
+    {
+        if (isChapter3)
+        {
+            EventSystem.Instance.AddEventListener<Transform>(EventName.OnPlayerDie, OnPlayerDie);
+            EventSystem.Instance.AddEventListener(EventName.OnSceneFadeEnd, OnSceneFadeEnd);
+        }
+    }
+    private void OnDisable()
+    {
+        if (isChapter3)
+        {
+            EventSystem.Instance.RemoveEventListener<Transform>(EventName.OnPlayerDie, OnPlayerDie);
+            EventSystem.Instance.RemoveEventListener(EventName.OnSceneFadeEnd, OnSceneFadeEnd);
+
+        }
+    }
+
+    void OnPlayerDie(Transform trans)
+    {
+        isChapter3 = false;
+    }
+    void OnSceneFadeEnd()
+    {
+        transform.position = new Vector3(1900f, transform.position.y);
+        isChapter3 = true;
     }
 
     private void Update()
@@ -124,5 +152,16 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
             TransitionManager.Instance.TriggerAPos = mainCamera.ScreenToWorldPoint(GetHandlerScreenPoint).x - 80;
             TransitionManager.Instance.TriggerBPos = mainCamera.ScreenToWorldPoint(GetHandlerScreenPoint).x;
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        CursorManager.Instance.UseMoveCursor();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        CursorManager.Instance.UseNormalCursor();
+
     }
 }

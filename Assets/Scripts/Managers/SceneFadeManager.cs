@@ -1,8 +1,6 @@
 using DG.Tweening;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,9 +8,11 @@ public class SceneFadeManager : MonoBehaviour
 {
     public static SceneFadeManager instance;
 
-    CanvasGroup canvasGroup;
+    public CanvasGroup canvasGroup;
     public float changSceneDuration;
     public float regenarationDuration;
+    public AudioSource audioSource;
+    public AudioClip[] chapterAudios;
 
     private void Awake()
     {
@@ -72,9 +72,37 @@ public class SceneFadeManager : MonoBehaviour
         yield return Fade(1, changSceneDuration);
         if (!isReload)
             SoundManager.Instance.PlayMusic((BGM)index);
-        yield return SceneManager.LoadSceneAsync(index);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(index);
+        operation.allowSceneActivation = false;
+        while (!operation.isDone)
+        {
+            if (operation.progress >= 0.9f)
+            {
+                yield return new WaitForSeconds(1.5f);
+                switch (index)
+                {
+                    case 1:
+                        audioSource.PlayOneShot(chapterAudios[0]);
+                        yield return new WaitForSeconds(chapterAudios[0].length + 0.5f);
+                        break;
+                    case 3:
+                        audioSource.PlayOneShot(chapterAudios[1]);
+                        yield return new WaitForSeconds(chapterAudios[1].length + 0.5f);
+                        break;
+                    case 5:
+                        audioSource.PlayOneShot(chapterAudios[2]);
+                        yield return new WaitForSeconds(chapterAudios[2].length + 0.5f);
+                        break;
+                }
+                operation.allowSceneActivation = true;
+                yield return null;
+            }
+            yield return null;
+
+        }
         yield return Fade(0, changSceneDuration);
     }
+
 
 
 }

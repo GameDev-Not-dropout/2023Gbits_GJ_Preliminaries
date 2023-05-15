@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Door : MonoBehaviour
 {
     public bool hasGetKey;
+    public bool isFinalLevel;
 
     private void OnEnable()
     {
@@ -27,13 +28,19 @@ public class Door : MonoBehaviour
         if (collision.tag == Tags.T_Player && hasGetKey)
         {
             SoundManager.Instance.PlaySound(SE.door);
-            collision.transform.GetComponentInChildren<AudioSource>().Stop();
+            collision.transform.GetComponentInChildren<AudioSource>().gameObject.SetActive(false);
             int levelIndex = SceneManager.GetActiveScene().buildIndex;
             if (levelIndex == PlayerPrefs.GetInt("unLockedLevelIndex", 1))
             {
                 PlayerPrefs.SetInt("unLockedLevelIndex", levelIndex + 1);
             }
-            SceneManager.LoadScene(levelIndex + 1);   // 直接进入下一关
+            if (isFinalLevel)
+            {
+                SoundManager.Instance.musicAudioSource.Stop();
+                SceneFadeManager.instance.ChangeScene(levelIndex + 1, true);
+                return;
+            }
+            SceneFadeManager.instance.ChangeScene(levelIndex + 1);  // 直接进入下一关
         }
     }
 

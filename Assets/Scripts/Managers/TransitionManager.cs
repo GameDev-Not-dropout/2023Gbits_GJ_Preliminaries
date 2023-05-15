@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TransitionManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class TransitionManager : MonoBehaviour
     public ShockWaveManager[] shockWaves;
     public GameObject transitionTriggerA;
     public GameObject transitionTriggerB;
+    bool isC3;
 
     float triggerAPos;
     float triggerBPos;
@@ -36,6 +38,13 @@ public class TransitionManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 5)
+        {
+            isC3 = true;
+        }
     }
 
     public void SpawnShockWaves(Vector3 playerPosition, int index)

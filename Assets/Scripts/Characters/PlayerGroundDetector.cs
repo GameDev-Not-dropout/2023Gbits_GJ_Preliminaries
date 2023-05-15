@@ -13,6 +13,7 @@ public class PlayerGroundDetector : MonoBehaviour
     RaycastHit2D[] hitTrigger = new RaycastHit2D[1];
     public float maxTriggerLength = 20f;
     [SerializeField] float distance = 0.1f;
+    public bool isC3;
 
     // 投射碰撞球体，不会产生GC，返回数组长度
     public bool IsGrounded
@@ -43,6 +44,12 @@ public class PlayerGroundDetector : MonoBehaviour
             Vector3 origin = new Vector3(transform.position.x - maxTriggerLength / 2, transform.position.y);
             bool result = Physics2D.RaycastNonAlloc(origin, Vector3.right, hitTrigger, maxTriggerLength, TriggerLayer) != 0;
             Debug.DrawLine(origin, new Vector3(transform.position.x + maxTriggerLength / 2, transform.position.y), Color.green);
+
+            if (isC3)
+            {
+                return result;
+            }
+
 
             if (result && hitTrigger[0].transform.name != tempHit.name)
             {

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -11,15 +10,53 @@ public class CameraController : MonoBehaviour
     const int APosX = 0;
     const int BPosX = 80;
 
+    //public bool isC3;
+    //public bool isDie;
+    //Camera mainCam;
+
+    //private void Start()
+    //{
+    //    mainCam = Camera.main;
+    //}
+
+    //private void OnEnable()
+    //{
+    //    EventSystem.Instance.AddEventListener<Transform>(EventName.OnPlayerDie, DoShakeT);
+    //    EventSystem.Instance.AddEventListener(EventName.OnSceneFadeEnd, DoShakeF);
+    //}
+    //private void OnDisable()
+    //{
+    //    EventSystem.Instance.RemoveEventListener<Transform>(EventName.OnPlayerDie, DoShakeT);
+    //    EventSystem.Instance.RemoveEventListener(EventName.OnSceneFadeEnd, DoShakeF);
+    //}
+
+    //void DoShakeT(Transform tran)
+    //{
+    //    isDie = true;
+    //    Shake();
+    //}
+    //void DoShakeF()
+    //{
+    //    isDie = false;
+    //}
+
     private void LateUpdate()
     {
-        if (player.position.y <= bottomBoundary || player.position.y >= topBoundary)
+        //if (isC3 && isDie)
+        //    return;
+        if (this.gameObject.GetComponent<Camera>().orthographicSize < 10f)
+        {
             return;
-        else
-            transform.position = new Vector3(transform.position.x, player.position.y, -10);
+        }
+        transform.position = new Vector3(transform.position.x, Mathf.Clamp(player.position.y, bottomBoundary, topBoundary), -10);
+
     }
 
 
+    //void Shake()
+    //{
+    //    mainCam.DOShakePosition(1f, new Vector3(0, 2f, 0));
+    //}
 
 
 

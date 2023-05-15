@@ -52,7 +52,7 @@ public class UIChangeScene : MonoBehaviour
     {
         if (!canChangeScene)
             return;
-        if (Time.time - lastChangeTime <= 1f)   // 切换场景需要1s时间间隔
+        if (Time.time - lastChangeTime <= 0.5f)   // 切换场景需要1s时间间隔
             return;
 
         lastChangeTime = Time.time;

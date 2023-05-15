@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     BoxCollider2D boxCollider;
     public AudioSource VoicePlayer { get; private set; }
 
+    public AudioClip[] runClips;
+
     public bool Victory { get; private set; }
     public bool CanAirJump { get; set; }
     public bool IsGrounded => groundDetector.IsGrounded;
@@ -42,7 +44,7 @@ public class PlayerController : MonoBehaviour
         EventSystem.Instance.RemoveEventListener(EventName.OnLand, CompareLandHeight);
         EventSystem.Instance.RemoveEventListener(EventName.OnSceneFadeEnd, EnableInput);
         EventSystem.Instance.RemoveEventListener<Transform>(EventName.OnPlayerDie, DisableInput);
-        EventSystem.Instance.AddEventListener(EventName.OnChangeStyle, ChangeStyle);
+        EventSystem.Instance.RemoveEventListener(EventName.OnChangeStyle, ChangeStyle);
 
     }
 
@@ -149,10 +151,13 @@ public class PlayerController : MonoBehaviour
         if (boxCollider.size.x == 1)
         {
             boxCollider.size = new Vector2(1.4f, 0.85f);   // 变成猫的尺寸
+            VoicePlayer.clip = runClips[1];
         }
         else
         {
             boxCollider.size = new Vector2(1f, 2f);
+            VoicePlayer.clip = runClips[0];
+
         }
 
 

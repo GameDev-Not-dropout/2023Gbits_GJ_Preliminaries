@@ -25,9 +25,27 @@ public class UISettingPanel : MonoBehaviour
         //this.sliderSound.value = SoundConfig.SoundVolume;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (SceneFadeManager.instance.canvasGroup.alpha == 0 && SceneFadeManager.instance.canvasGroup.blocksRaycasts == false)
+            {
+                OpenSettingPanel();
+            }
+        }
+    }
 
     public void OpenSettingPanel()
     {
+        if (settingPanel.activeSelf == true)
+        {
+            settingPanel.SetActive(false);
+            Time.timeScale = 1f;
+            SoundManager.Instance.PlaySound(SE.buttonClick);
+            return;
+        }
+
         SoundManager.Instance.PlaySound(SE.buttonClick);
         Time.timeScale = 0f;
         settingPanel.SetActive(true);

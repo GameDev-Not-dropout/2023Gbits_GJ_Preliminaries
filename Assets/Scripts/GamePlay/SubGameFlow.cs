@@ -1,7 +1,6 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +11,10 @@ public class SubGameFlow : MonoBehaviour
     public List<SpriteRenderer> transparentFloors;
     public GameObject[] uiObj;
     public RawImage[] rawVideo;
+    public Image[] buttonImages;
+    public GameObject guidePanel;
+
+
     public SpriteRenderer player;
 
     public float duration;
@@ -23,11 +26,15 @@ public class SubGameFlow : MonoBehaviour
         player.enabled = false;
         foreach (var item in floors)
         {
-            item.DOFade(0, 0.1f);
+            item.DOFade(0, 0f);
         }
         foreach (var item in transparentFloors)
         {
-            item.DOFade(0, 0.1f);
+            item.DOFade(0, 0f);
+        }
+        foreach (var item in buttonImages)
+        {
+            item.DOFade(0, 0f);
         }
 
         StartCoroutine(CanvasFade());
@@ -37,6 +44,9 @@ public class SubGameFlow : MonoBehaviour
     {
         yield return new WaitForSeconds(duration * 2);
         FadeIn();
+        yield return new WaitForSeconds(1.5f);
+        guidePanel.SetActive(true); 
+        Time.timeScale = 0f;
     }
 
 
@@ -53,6 +63,10 @@ public class SubGameFlow : MonoBehaviour
         foreach (var item in uiObj)
         {
             item.SetActive(true);
+        }
+        foreach (var item in buttonImages)
+        {
+            item.DOFade(1, duration);
         }
 
         foreach (var item in rawVideo)
