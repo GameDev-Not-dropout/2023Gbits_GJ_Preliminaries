@@ -336,11 +336,11 @@ PrefabInstance:
     - target: {fileID: 1258058739511458031, guid: 441179ff26b44b44d99349fb151cb290, type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: 59c2947ce5db9624abf0f105d9ee29a8, type: 3}
+      objectReference: {fileID: 32900000, guid: 37c4aa18947c69f4d97aaf5aa50e87f8, type: 3}
     - target: {fileID: 2396634353295930568, guid: 441179ff26b44b44d99349fb151cb290, type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: 726c4450fb337ac4981a0bc8f22d82c2, type: 3}
+      objectReference: {fileID: 32900000, guid: 37c4aa18947c69f4d97aaf5aa50e87f8, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 441179ff26b44b44d99349fb151cb290, type: 3}
 --- !u!224 &30083958 stripped
@@ -2761,11 +2761,11 @@ PrefabInstance:
     - target: {fileID: 1258058739511458031, guid: 441179ff26b44b44d99349fb151cb290, type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: 59c2947ce5db9624abf0f105d9ee29a8, type: 3}
+      objectReference: {fileID: 32900000, guid: 37c4aa18947c69f4d97aaf5aa50e87f8, type: 3}
     - target: {fileID: 2396634353295930568, guid: 441179ff26b44b44d99349fb151cb290, type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: 726c4450fb337ac4981a0bc8f22d82c2, type: 3}
+      objectReference: {fileID: 32900000, guid: 37c4aa18947c69f4d97aaf5aa50e87f8, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 441179ff26b44b44d99349fb151cb290, type: 3}
 --- !u!224 &738353158 stripped
@@ -3164,11 +3164,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rectTransform: {fileID: 387158281}
+  rawImageRect: {fileID: 1265460046}
   playerTransform: {fileID: 1362218619}
   canDrag: 0
-  offset: 0
-  isChapter3: 0
-  autoMoveSpeed: 0
 --- !u!222 &829766259
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3796,7 +3794,7 @@ PrefabInstance:
     - target: {fileID: 2897335951695493125, guid: 3f57e224a3d080141b35d6ccdfc27bc3, type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: 130b680bdffe9174db902798fbdfa11a, type: 3}
+      objectReference: {fileID: 32900000, guid: c99f6b6549385cc4baa6cbcc0374b418, type: 3}
     - target: {fileID: 2897335952847793320, guid: 3f57e224a3d080141b35d6ccdfc27bc3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4768,7 +4766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1362218619}
   bottomBoundary: 0
-  topBoundary: 3.13
+  topBoundary: 0
 --- !u!1 &1204113367
 GameObject:
   m_ObjectHideFlags: 0
@@ -5178,6 +5176,10 @@ PrefabInstance:
     - target: {fileID: 5024946022653481676, guid: 4dc833b1e5688124aa180f1608b65f57, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OpenGuidePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5024946022795367274, guid: 4dc833b1e5688124aa180f1608b65f57, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -103
       objectReference: {fileID: 0}
     - target: {fileID: 5024946022795367275, guid: 4dc833b1e5688124aa180f1608b65f57, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -7248,7 +7250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
+  m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}

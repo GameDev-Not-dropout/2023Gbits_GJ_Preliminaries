@@ -12,12 +12,23 @@ public class CameraController : MonoBehaviour
 
     //public bool isC3;
     //public bool isDie;
-    //Camera mainCam;
+    Camera mainCam;
 
-    //private void Start()
-    //{
-    //    mainCam = Camera.main;
-    //}
+    private void Start()
+    {
+        mainCam = Camera.main;
+
+        mainCam.orthographicSize = mainCam.orthographicSize * 1920 / 1080 * Screen.height / Screen.width;
+        bottomBoundary = 12f * 1920 / 1080 * Screen.height / Screen.width - 12f;
+        if (topBoundary == 0)
+        {
+            topBoundary = 14.5f - 12f * 1920 / 1080 * Screen.height / Screen.width;
+        }
+        if (topBoundary == 60)
+        {
+            topBoundary = 60f - 12f * 1920 / 1080 * Screen.height / Screen.width;
+        }
+    }
 
     //private void OnEnable()
     //{
@@ -44,23 +55,15 @@ public class CameraController : MonoBehaviour
     {
         //if (isC3 && isDie)
         //    return;
-        if (this.gameObject.GetComponent<Camera>().orthographicSize < 10f)
+        if (this.gameObject.GetComponent<Camera>().orthographicSize <= 6f)
         {
             return;
         }
         transform.position = new Vector3(transform.position.x, Mathf.Clamp(player.position.y, bottomBoundary, topBoundary), -10);
-
     }
-
 
     //void Shake()
     //{
     //    mainCam.DOShakePosition(1f, new Vector3(0, 2f, 0));
     //}
-
-
-
-
-
-
 }

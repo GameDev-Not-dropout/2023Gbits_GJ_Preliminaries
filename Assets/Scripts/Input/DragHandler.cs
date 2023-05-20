@@ -1,87 +1,39 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public RectTransform rectTransform;
-    RectTransform thisRect;
-    Camera mainCamera;
+    public RectTransform rawImageRect;
     public Transform playerTransform;
     public bool canDrag = true;
-    public float offset= 50f;
-    public bool isChapter3;
-    public float autoMoveSpeed;
-    bool initTransitonTrigger;
-    float timer = 2f;
 
-    Vector3 GetHandlerScreenPoint => RectTransformUtility.WorldToScreenPoint(null, transform.position);
+    RectTransform thisRect;
+    Camera mainCamera;
+    float screenWidth;
+    float screenHeight;
+
+    private Vector3 GetHandlerScreenPoint => RectTransformUtility.WorldToScreenPoint(null, transform.position);
 
     private void Start()
     {
+        screenWidth = Screen.width;
+        screenHeight = Screen.height;
+
+        rectTransform.offsetMin = new Vector2(screenWidth / 2, -(screenHeight / 2));
+        rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, screenHeight);
+        rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, 0f);
+        rawImageRect.sizeDelta = new Vector2(screenWidth, screenHeight);
+        rawImageRect.anchoredPosition = new Vector2(-screenWidth / 2, 0f);
+
         mainCamera = Camera.main;
         //this.SaveHandlerData();
         thisRect = this.GetComponent<RectTransform>();
         TransitionManager.Instance.TriggerAPos = 0;
         TransitionManager.Instance.TriggerBPos = 80;
     }
-
-    private void OnEnable()
-    {
-        if (isChapter3)
-        {
-            EventSystem.Instance.AddEventListener<Transform>(EventName.OnPlayerDie, OnPlayerDie);
-            EventSystem.Instance.AddEventListener(EventName.OnSceneFadeEnd, OnSceneFadeEnd);
-        }
-    }
-    private void OnDisable()
-    {
-        if (isChapter3)
-        {
-            EventSystem.Instance.RemoveEventListener<Transform>(EventName.OnPlayerDie, OnPlayerDie);
-            EventSystem.Instance.RemoveEventListener(EventName.OnSceneFadeEnd, OnSceneFadeEnd);
-
-        }
-    }
-
-    void OnPlayerDie(Transform trans)
-    {
-        isChapter3 = false;
-    }
-    void OnSceneFadeEnd()
-    {
-        transform.position = new Vector3(1900f, transform.position.y);
-        isChapter3 = true;
-    }
-
-    private void Update()
-    {
-        if (isChapter3)
-        {
-            if (!initTransitonTrigger)
-            {
-                if (timer >= 0)
-                {
-                    timer -= Time.deltaTime;
-                    return;
-                }
-                initTransitonTrigger = true;
-            }
-
-            Vector3 pos = transform.position;
-            if (pos.x <= 20)    // 限制线的移动
-            {
-                transform.position = new Vector3(1900f, pos.y);
-                EventSystem.Instance.EmitEvent(EventName.OnChangeCamera);
-            }
-            else
-                transform.position = new Vector2(pos.x - autoMoveSpeed * Time.deltaTime, pos.y);
-
-            rectTransform.offsetMin = new Vector2(transform.position.x, -(Screen.height / 2));
-            this.SaveHandlerData();
-        }
-    }
-
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -106,20 +58,19 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     {
         Vector3 pos;
         RectTransformUtility.ScreenPointToWorldPointInRectangle(rectTransform, eventData.position, eventData.enterEventCamera, out pos);
-        rectTransform.offsetMin = new Vector2(pos.x, -(Screen.height / 2));
+        rectTransform.offsetMin = new Vector2(pos.x, -(screenHeight / 2));
         RectTransformUtility.ScreenPointToWorldPointInRectangle(thisRect, eventData.position, eventData.enterEventCamera, out pos);
         if (pos.x <= 20)    // 限制线的移动
         {
             transform.position = new Vector3(20f, transform.position.y);
         }
-        else if (pos.x >= 1900)
+        else if (pos.x >= screenWidth - 20f)
         {
-            transform.position = new Vector3(1900f, transform.position.y);
+            transform.position = new Vector3(screenWidth - 20f, transform.position.y);
         }
         else
-            transform.position = new Vector2(pos.x - offset, transform.position.y);
+            transform.position = new Vector2(pos.x, transform.position.y);
         this.SaveHandlerData();
-
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -162,6 +113,5 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     public void OnPointerExit(PointerEventData eventData)
     {
         CursorManager.Instance.UseNormalCursor();
-
     }
 }

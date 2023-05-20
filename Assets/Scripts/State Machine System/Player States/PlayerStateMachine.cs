@@ -19,11 +19,13 @@ public class PlayerStateMachine : StateMachine  // 挂载到玩家身上
     private void Awake()
     {
         #region 状态需要绑定的组件
+
         animator = GetComponentInChildren<Animator>();
         player = GetComponent<PlayerController>();
         input = GetComponent<PlayerInput>();
         spriteRenderer = this.GetComponent<SpriteRenderer>();
-        #endregion
+
+        #endregion 状态需要绑定的组件
 
         stateTable = new Dictionary<System.Type, IState>(states.Length);    // 初始化状态字典
 
@@ -38,18 +40,19 @@ public class PlayerStateMachine : StateMachine  // 挂载到玩家身上
     {
         EventSystem.Instance.AddEventListener(EventName.OnChangeStyle, ChangeStyle);
         //EventSystem.Instance.AddEventListener<Transform>(EventName.OnPlayerDie, OnPlayerDie);
-
     }
+
     private void OnDisable()
     {
         EventSystem.Instance.RemoveEventListener(EventName.OnChangeStyle, ChangeStyle);
         //EventSystem.Instance.RemoveEventListener<Transform>(EventName.OnPlayerDie, OnPlayerDie);
-
     }
-    void OnPlayerDie(Transform trans)
+
+    private void OnPlayerDie(Transform trans)
     {
         SwitchState(typeof(PlayerState_Die));
     }
+
     private void Start()
     {
         SwitchOn(stateTable[typeof(PlayerState_Idle)]);    // 状态机以空闲状态启动
@@ -68,7 +71,6 @@ public class PlayerStateMachine : StateMachine  // 挂载到玩家身上
                 copyImage.transform.localPosition = new Vector3(-80, 0);
             else
                 copyImage.transform.localPosition = new Vector3(80, 0);
-
         }
         else
         {
@@ -79,19 +81,28 @@ public class PlayerStateMachine : StateMachine  // 挂载到玩家身上
         }
     }
 
-    void ChangeStyle()
+    private void ChangeStyle()
     {
-        //if (Time.time - lastChangeTime <= 1f)   // 切换场景需要1s时间间隔
-        //    return;
+        if (Time.time - lastChangeTime <= 0.5f)   // 切换场景需要0.5s时间间隔
+            return;
 
         lastChangeTime = Time.time;
 
         if (animator.runtimeAnimatorController.name == playerCtr.name)
         {
-            animator.runtimeAnimatorController = catCtr;
+            animator.runtimeAnimatorController = catCtr;    // 变成猫
         }
         else
-           animator.runtimeAnimatorController = playerCtr;
+        {
+            animator.runtimeAnimatorController = playerCtr;    // 变成人
+            if (stateTable[currentState.GetType()] is PlayerState_Run)
+            {
+                animator.Play("Run");
+                player.VoicePlayer.clip = player.runClips[0];
+                player.VoicePlayer.Play();
+            }
+        }
+
         if (transform.position.x < 40)
         {
             TransitionManager.Instance.SpawnShockWaves(transform.position, 1);
@@ -104,7 +115,5 @@ public class PlayerStateMachine : StateMachine  // 挂载到玩家身上
             Vector3 pos = new Vector3(transform.position.x - 80f, transform.position.y);
             TransitionManager.Instance.SpawnShockWaves(pos, 1);
         }
-
     }
-
 }

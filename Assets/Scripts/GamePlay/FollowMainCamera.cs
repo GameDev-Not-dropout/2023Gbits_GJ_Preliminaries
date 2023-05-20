@@ -4,23 +4,20 @@ using UnityEngine;
 
 public class FollowMainCamera : MonoBehaviour
 {
-    Camera main;
+    Camera mainCam;
+    Camera thisCam;
 
     private void Start()
     {
-        main = Camera.main;
+        mainCam = Camera.main;
+        thisCam = transform.GetComponent<Camera>();
+        thisCam.aspect = mainCam.aspect;
+
+        thisCam.orthographicSize = thisCam.orthographicSize * 1920 / 1080 * Screen.height / Screen.width;
     }
+
     private void LateUpdate()
     {
-        transform.position = new Vector3(transform.position.x, main.transform.position.y, -10);
+        transform.position = new Vector3(transform.position.x, mainCam.transform.position.y, -10);
     }
-
-
-
-
-
-
-
-
-
 }

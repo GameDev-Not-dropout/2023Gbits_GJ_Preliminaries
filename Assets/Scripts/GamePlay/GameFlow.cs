@@ -24,7 +24,6 @@ public class GameFlow : MonoBehaviour
     public float transparentRatio = 0.3f;
     public float cameraMoveDuration;
 
-
     private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
@@ -50,7 +49,7 @@ public class GameFlow : MonoBehaviour
         StartCoroutine(CanvasFade());
     }
 
-    void FadeIn()
+    private void FadeIn()
     {
         foreach (var item in transparentFloors)
         {
@@ -75,7 +74,7 @@ public class GameFlow : MonoBehaviour
         }
     }
 
-    IEnumerator Fade(int amount)
+    private IEnumerator Fade(int amount)
     {
         canvasGroup.blocksRaycasts = true;
         while (canvasGroup.alpha != amount)
@@ -85,6 +84,7 @@ public class GameFlow : MonoBehaviour
                 case 1:
                     canvasGroup.alpha += Time.deltaTime * scaler;
                     break;
+
                 case 0:
                     canvasGroup.alpha -= Time.deltaTime * scaler;
                     break;
@@ -94,26 +94,18 @@ public class GameFlow : MonoBehaviour
         canvasGroup.blocksRaycasts = false;
     }
 
-    IEnumerator CanvasFade()
+    private IEnumerator CanvasFade()
     {
         yield return new WaitForSeconds(canvasDuration / 2);
         yield return Fade(1);       // 出字
         yield return new WaitForSeconds(canvasDuration);
         yield return Fade(0);       // 消字
         // 摄像机放大到原尺寸
-        DOTween.To((value) => { mainCamera.orthographicSize = value; }, mainCamera.orthographicSize, 12f, cameraMoveDuration).SetEase(Ease.OutCubic);
+        DOTween.To((value) => { mainCamera.orthographicSize = value; }, mainCamera.orthographicSize, 12f * 1920 / 1080 * Screen.height / Screen.width, cameraMoveDuration).SetEase(Ease.OutCubic);
         mainCamera.transform.DOMove(new Vector3(0, 0, -10), cameraMoveDuration).SetEase(Ease.OutCubic);
         yield return new WaitForSeconds(cameraMoveDuration);
         // 人物出现
         player.GetComponent<SpriteRenderer>().enabled = true;
         FadeIn();
     }
-
-
-
-
-
-
-
-
 }

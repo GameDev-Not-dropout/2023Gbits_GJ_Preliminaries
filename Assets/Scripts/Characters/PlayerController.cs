@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 
-
 public class PlayerController : MonoBehaviour
 {
     PlayerGroundDetector groundDetector;
@@ -18,8 +17,8 @@ public class PlayerController : MonoBehaviour
     public bool IsFalling => rigidBody.velocity.y < 0f && !IsGrounded;
     public float MoveSpeed => Mathf.Abs(rigidBody.velocity.x);  // 玩家水平移动速度要取绝对值
 
-
     #region MonoCallBacks
+
     private void Awake()
     {
         groundDetector = GetComponentInChildren<PlayerGroundDetector>();
@@ -36,8 +35,8 @@ public class PlayerController : MonoBehaviour
         EventSystem.Instance.AddEventListener(EventName.OnSceneFadeEnd, EnableInput);
         EventSystem.Instance.AddEventListener<Transform>(EventName.OnPlayerDie, DisableInput);
         EventSystem.Instance.AddEventListener(EventName.OnChangeStyle, ChangeStyle);
-
     }
+
     private void OnDisable()
     {
         EventSystem.Instance.RemoveEventListener(EventName.OnJumpUp, SavePlayerJumpPosition);
@@ -45,7 +44,6 @@ public class PlayerController : MonoBehaviour
         EventSystem.Instance.RemoveEventListener(EventName.OnSceneFadeEnd, EnableInput);
         EventSystem.Instance.RemoveEventListener<Transform>(EventName.OnPlayerDie, DisableInput);
         EventSystem.Instance.RemoveEventListener(EventName.OnChangeStyle, ChangeStyle);
-
     }
 
     private void Start()
@@ -62,7 +60,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    #endregion
+    #endregion MonoCallBacks
 
     /// <summary>
     /// 根据x轴输入来移动玩家，以及改变玩家朝向
@@ -75,16 +73,14 @@ public class PlayerController : MonoBehaviour
         }
 
         SetVelocityX(speed * input.AxisX);  // 移动
-
     }
 
-
     #region 方便调整刚体速度
+
     /// <summary>
     /// 对刚体速度的直接修改
     /// </summary>
     public void SetVelocity(Vector3 velocity) => rigidBody.velocity = velocity;
-
 
     /// <summary>
     /// 用于左右移动玩家
@@ -101,30 +97,30 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody.velocity = new Vector3(rigidBody.velocity.x, velocityY);
     }
+
     public void AddForceY(float force)
     {
         rigidBody.AddForce(new Vector2(1, force));
     }
 
-    #endregion
-
+    #endregion 方便调整刚体速度
 
     /// <summary>
     /// 启用/关闭重力
     /// </summary>
     public void SetUseGravity(bool value) => rigidBody.gravityScale = value ? 1 : 0;
 
-    void OnLevelClear()
+    private void OnLevelClear()
     {
         Victory = true;
     }
 
-    void SavePlayerJumpPosition()
+    private void SavePlayerJumpPosition()
     {
         LandManager.instance.lastJumpPoint = transform.position;
     }
 
-    void CompareLandHeight()
+    private void CompareLandHeight()
     {
         if (LandManager.instance.lastJumpPoint.y - transform.position.y >= 8)
         {
@@ -136,18 +132,25 @@ public class PlayerController : MonoBehaviour
         LandManager.instance.lastJumpPoint = transform.position;
     }
 
-    void DisableInput(Transform transform)
+    private void DisableInput(Transform transform)
     {
         input.DisableGamePlayInput();
     }
 
-    void EnableInput()
+    private void EnableInput()
     {
         input.EnableGamePlayInput();
     }
 
-    void ChangeStyle()
+    float lastChangeTime;
+
+    private void ChangeStyle()
     {
+        if (Time.time - lastChangeTime <= 0.5f)   // 切换场景需要0.5s时间间隔
+            return;
+
+        lastChangeTime = Time.time;
+
         if (boxCollider.size.x == 1)
         {
             boxCollider.size = new Vector2(1.4f, 0.85f);   // 变成猫的尺寸
@@ -157,10 +160,6 @@ public class PlayerController : MonoBehaviour
         {
             boxCollider.size = new Vector2(1f, 2f);
             VoicePlayer.clip = runClips[0];
-
         }
-
-
     }
-
 }

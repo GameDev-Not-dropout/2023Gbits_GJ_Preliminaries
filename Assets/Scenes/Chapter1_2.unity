@@ -490,7 +490,7 @@ PrefabInstance:
     - target: {fileID: 2897335951695493125, guid: 3f57e224a3d080141b35d6ccdfc27bc3, type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: 39718c35a63f71d47b4ab6b2add2dc59, type: 3}
+      objectReference: {fileID: 32900000, guid: 3ff5d36da05a9e04dacd2293dd04bbac, type: 3}
     - target: {fileID: 2897335951695493126, guid: 3f57e224a3d080141b35d6ccdfc27bc3, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 5
@@ -2806,11 +2806,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rectTransform: {fileID: 387158281}
+  rawImageRect: {fileID: 1265460046}
   playerTransform: {fileID: 0}
   canDrag: 1
-  offset: 0
-  isChapter3: 0
-  autoMoveSpeed: 0
 --- !u!222 &829766259
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3353,7 +3351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1362218619}
   bottomBoundary: 0
-  topBoundary: 3.13
+  topBoundary: 0
 --- !u!1 &1204113367
 GameObject:
   m_ObjectHideFlags: 0
@@ -4687,11 +4685,11 @@ PrefabInstance:
     - target: {fileID: 1258058739511458031, guid: 441179ff26b44b44d99349fb151cb290, type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: c910804a78544f84b9129b24e1d2939e, type: 3}
+      objectReference: {fileID: 32900000, guid: 607959d2cd68bb240b3f989b1b6376db, type: 3}
     - target: {fileID: 2396634353295930568, guid: 441179ff26b44b44d99349fb151cb290, type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: 57c4983e6d3b8954596faaa3ee1bcd4b, type: 3}
+      objectReference: {fileID: 32900000, guid: 607959d2cd68bb240b3f989b1b6376db, type: 3}
     - target: {fileID: 2679806021510163389, guid: 441179ff26b44b44d99349fb151cb290, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -5353,34 +5351,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: TopArea
       objectReference: {fileID: 0}
-    - target: {fileID: 5024946022479794987, guid: 4dc833b1e5688124aa180f1608b65f57, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5024946022652296007, guid: 4dc833b1e5688124aa180f1608b65f57, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1926194473}
-    - target: {fileID: 5024946022652296007, guid: 4dc833b1e5688124aa180f1608b65f57, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReLoadThisLevel
-      objectReference: {fileID: 0}
     - target: {fileID: 5024946022653481676, guid: 4dc833b1e5688124aa180f1608b65f57, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1926194473}
-    - target: {fileID: 5024946022653481676, guid: 4dc833b1e5688124aa180f1608b65f57, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenGuidePanel
-      objectReference: {fileID: 0}
     - target: {fileID: 5024946022795367275, guid: 4dc833b1e5688124aa180f1608b65f57, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1926194473}
-    - target: {fileID: 5024946022795367275, guid: 4dc833b1e5688124aa180f1608b65f57, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenSettingPanel
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dc833b1e5688124aa180f1608b65f57, type: 3}
 --- !u!224 &1721548660 stripped
@@ -6594,11 +6576,11 @@ PrefabInstance:
     - target: {fileID: 1258058739511458031, guid: 441179ff26b44b44d99349fb151cb290, type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: c910804a78544f84b9129b24e1d2939e, type: 3}
+      objectReference: {fileID: 32900000, guid: 607959d2cd68bb240b3f989b1b6376db, type: 3}
     - target: {fileID: 2396634353295930568, guid: 441179ff26b44b44d99349fb151cb290, type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: 57c4983e6d3b8954596faaa3ee1bcd4b, type: 3}
+      objectReference: {fileID: 32900000, guid: 607959d2cd68bb240b3f989b1b6376db, type: 3}
     - target: {fileID: 2679806021510163389, guid: 441179ff26b44b44d99349fb151cb290, type: 3}
       propertyPath: m_IsActive
       value: 1

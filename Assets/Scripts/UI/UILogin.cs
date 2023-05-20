@@ -21,7 +21,6 @@ public class UILogin : MonoBehaviour
 
     private void Start()
     {
-        SoundManager.Instance.PlayMusic(BGM.Title);
         videoPlayer.loopPointReached += ChangeVideo;
         //PlayerPrefs.SetInt("unLockedLevelIndex", levelUnlock);
     }
@@ -39,8 +38,7 @@ public class UILogin : MonoBehaviour
         }
     }
 
-
-    void OpenUI()
+    private void OpenUI()
     {
         foreach (var item in firstUI)
         {
@@ -49,7 +47,7 @@ public class UILogin : MonoBehaviour
         }
     }
 
-    void ChangeVideo(VideoPlayer thisPlay)
+    private void ChangeVideo(VideoPlayer thisPlay)
     {
         thisPlay.clip = continueVideo;
     }
@@ -61,11 +59,13 @@ public class UILogin : MonoBehaviour
         firstUI[2].GetComponent<Animator>().Play("move");
         SceneFadeManager.instance.ChangeScene(1);
     }
+
     public void OpenLevelSelectPanel()
     {
         SoundManager.Instance.PlaySound(SE.buttonClick);
         levelSelectPanel.SetActive(true);
     }
+
     public void OpenSettingPanel()
     {
         SoundManager.Instance.PlaySound(SE.buttonClick);
@@ -84,14 +84,4 @@ public class UILogin : MonoBehaviour
                     Application.Quit();
 #endif
     }
-
-
-
-
-
-
-
-
-
-
 }

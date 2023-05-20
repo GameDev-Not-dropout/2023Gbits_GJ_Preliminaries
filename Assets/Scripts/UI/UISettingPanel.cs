@@ -16,7 +16,6 @@ public class UISettingPanel : MonoBehaviour
     public Slider sliderMusic;
     public Slider sliderSound;
 
-
     private void Start()
     {
         //this.toggleMusic.isOn = SoundConfig.MusicOn;
@@ -60,10 +59,8 @@ public class UISettingPanel : MonoBehaviour
     public void BackToLoginScene()
     {
         SoundManager.Instance.PlaySound(SE.buttonClick);
-        SoundManager.Instance.PlayMusic(BGM.Title);
         SceneFadeManager.instance.ChangeScene(0);
     }
-
 
     /// <summary>
     /// 关闭界面按钮
@@ -106,9 +103,8 @@ public class UISettingPanel : MonoBehaviour
     //    PlaySound();
     //}
 
-
-
     float lastPlay = 0;
+
     /// <summary>
     /// 每次调节音量都要播放一下音效来表示当前音量合不合适
     /// </summary>
@@ -134,7 +130,6 @@ public class UISettingPanel : MonoBehaviour
         guidePanel.SetActive(false);
     }
 
-
     public void ExitGame()
     {
         SoundManager.Instance.PlaySound(SE.buttonClick);
@@ -144,5 +139,4 @@ public class UISettingPanel : MonoBehaviour
                     Application.Quit();
 #endif
     }
-
 }

@@ -32,14 +32,17 @@ public class PlayerGroundDetector : MonoBehaviour
             return result;
         }
     }
+
     Transform tempHit;
+
     private void Start()
     {
         tempHit = transform;
     }
+
     public bool IsEnterTransitionTrigger
     {
-        get 
+        get
         {
             Vector3 origin = new Vector3(transform.position.x - maxTriggerLength / 2, transform.position.y);
             bool result = Physics2D.RaycastNonAlloc(origin, Vector3.right, hitTrigger, maxTriggerLength, TriggerLayer) != 0;
@@ -49,7 +52,6 @@ public class PlayerGroundDetector : MonoBehaviour
             {
                 return result;
             }
-
 
             if (result && hitTrigger[0].transform.name != tempHit.name)
             {
@@ -65,14 +67,21 @@ public class PlayerGroundDetector : MonoBehaviour
     {
         EventSystem.Instance.AddEventListener(EventName.OnChangeStyle, ChangeStyle);
     }
+
     private void OnDisable()
     {
         EventSystem.Instance.RemoveEventListener(EventName.OnChangeStyle, ChangeStyle);
-
     }
 
-    void ChangeStyle()
+    float lastChangeTime;
+
+    private void ChangeStyle()
     {
+        if (Time.time - lastChangeTime <= 0.5f)   // 切换场景需要0.5s时间间隔
+            return;
+
+        lastChangeTime = Time.time;
+
         if (transform.localPosition.y < -1)
         {
             transform.localPosition = new Vector3(0, -0.5f, 0);
@@ -91,5 +100,4 @@ public class PlayerGroundDetector : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(transform.position, detectionRadius);
     }
-
 }

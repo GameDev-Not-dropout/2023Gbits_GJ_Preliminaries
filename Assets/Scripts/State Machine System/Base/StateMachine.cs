@@ -9,23 +9,27 @@ using UnityEngine;
 /// </summary>
 public class StateMachine : TimeControlled
 {
-    IState currentState;
+    protected IState currentState;
 
     protected Dictionary<System.Type, IState> stateTable;   // 以状态的类型为key来构建字典，保证集合中的每个状态都是唯一的
 
     #region 状态的更新
+
     public override void TimeUpdate()
     {
         base.TimeUpdate();
         currentState.LogicUpdate();
     }
+
     private void FixedUpdate()
     {
         currentState.PhysicUpdate();
     }
-    #endregion
+
+    #endregion 状态的更新
 
     #region 启动状态
+
     /// <summary>
     /// 启动当前状态，给子类使用
     /// </summary>
@@ -38,7 +42,7 @@ public class StateMachine : TimeControlled
     /// <summary>
     /// 切换状态，核心方法
     /// </summary>
-    void SwitchState(IState newState)
+    private void SwitchState(IState newState)
     {
         currentState.Exit();
         SwitchOn(newState);
@@ -51,7 +55,6 @@ public class StateMachine : TimeControlled
     {
         SwitchState(stateTable[newStateType]);
     }
-    #endregion
 
-
+    #endregion 启动状态
 }

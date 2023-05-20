@@ -17,6 +17,7 @@ public class ControlledMoveFloor : MonoBehaviour
     private void OnEnable()
     {
         EventSystem.Instance.AddEventListener<int>(EventName.OnControllFloor, OnMove);
+        EventSystem.Instance.AddEventListener<Transform>(EventName.OnPlayerDie, Regeneration);
     }
 
     private void Start()
@@ -30,15 +31,15 @@ public class ControlledMoveFloor : MonoBehaviour
                     .OnComplete(MoveComplete);
         backTweener.SetAutoKill(false);
         backTweener.Pause();
-
     }
 
     private void OnDisable()
     {
         EventSystem.Instance.RemoveEventListener<int>(EventName.OnControllFloor, OnMove);
+        EventSystem.Instance.RemoveEventListener<Transform>(EventName.OnPlayerDie, Regeneration);
     }
 
-    void OnMove(int index)
+    private void OnMove(int index)
     {
         if (index == floorIndex || index == 3)
         {
@@ -46,13 +47,12 @@ public class ControlledMoveFloor : MonoBehaviour
         }
     }
 
-    void MoveFloor()
+    private void MoveFloor()
     {
         if (isPlaying)
         {
             transform.DOPause();
             isPlaying = false;
-
         }
         else
         {
@@ -68,7 +68,7 @@ public class ControlledMoveFloor : MonoBehaviour
         }
     }
 
-    void MoveComplete()
+    private void MoveComplete()
     {
         notInInitPos = !notInInitPos;
         isPlaying = false;
@@ -82,4 +82,16 @@ public class ControlledMoveFloor : MonoBehaviour
         backTweener.Pause();
     }
 
+    private void Regeneration(Transform trans)
+    {
+        transform.position = new Vector3(initPos, transform.position.y);
+        forwardTweener = transform.DOMoveX(boundary, duration).SetEase(Ease.Linear)
+                .OnComplete(MoveComplete);
+        forwardTweener.SetAutoKill(false);
+        forwardTweener.Pause();
+        backTweener = transform.DOMoveX(initPos, duration).SetEase(Ease.Linear)
+                    .OnComplete(MoveComplete);
+        backTweener.SetAutoKill(false);
+        backTweener.Pause();
+    }
 }

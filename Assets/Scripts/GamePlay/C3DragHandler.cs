@@ -7,18 +7,30 @@ using UnityEngine.SceneManagement;
 public class C3DragHandler : MonoBehaviour
 {
     public RectTransform rectTransform;
-    RectTransform thisRect;
-    Camera mainCamera;
+    public RectTransform rawImageRect;
     public Transform playerTransform;
     public float autoMoveSpeed;
+
+    RectTransform thisRect;
+    Camera mainCamera;
     bool initTransitonTrigger;
     float timer = 2f;
     bool isAlive = true;
+    float screenWidth;
+    float screenHeight;
 
-    Vector3 GetHandlerScreenPoint => RectTransformUtility.WorldToScreenPoint(null, transform.position);
+    private Vector3 GetHandlerScreenPoint => RectTransformUtility.WorldToScreenPoint(null, transform.position);
 
     private void Start()
     {
+        screenWidth = Screen.width;
+        screenHeight = Screen.height;
+
+        rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, screenHeight);
+        rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, 0f);
+        rawImageRect.sizeDelta = new Vector2(screenWidth, screenHeight);
+        rawImageRect.anchoredPosition = new Vector2(-screenWidth / 2, 0f);
+
         mainCamera = Camera.main;
         //this.SaveHandlerData();
         thisRect = this.GetComponent<RectTransform>();
@@ -29,23 +41,22 @@ public class C3DragHandler : MonoBehaviour
     {
         EventSystem.Instance.AddEventListener<Transform>(EventName.OnPlayerDie, OnPlayerDie);
         EventSystem.Instance.AddEventListener(EventName.OnSceneFadeEnd, OnSceneFadeEnd);
-   
     }
+
     private void OnDisable()
     {
-
         EventSystem.Instance.RemoveEventListener<Transform>(EventName.OnPlayerDie, OnPlayerDie);
         EventSystem.Instance.RemoveEventListener(EventName.OnSceneFadeEnd, OnSceneFadeEnd);
-
     }
 
-    void OnPlayerDie(Transform trans)
+    private void OnPlayerDie(Transform trans)
     {
         isAlive = false;
     }
-    void OnSceneFadeEnd()
+
+    private void OnSceneFadeEnd()
     {
-        transform.position = new Vector3(1900f, transform.position.y);
+        transform.position = new Vector3(screenWidth - 20f, transform.position.y);
         isAlive = true;
     }
 
@@ -66,13 +77,13 @@ public class C3DragHandler : MonoBehaviour
             Vector3 pos = transform.position;
             if (pos.x <= 20)    // 限制线的移动
             {
-                transform.position = new Vector3(1900f, pos.y);
+                transform.position = new Vector3(screenWidth - 20f, pos.y);
                 EventSystem.Instance.EmitEvent(EventName.OnChangeCamera);
             }
             else
                 transform.position = new Vector2(pos.x - autoMoveSpeed * Time.deltaTime, pos.y);
 
-            rectTransform.offsetMin = new Vector2(transform.position.x, -(Screen.height / 2));
+            rectTransform.offsetMin = new Vector2(transform.position.x, -(screenHeight / 2));
             this.SaveHandlerData();
         }
     }
@@ -107,8 +118,5 @@ public class C3DragHandler : MonoBehaviour
     public void OnPointerExit(PointerEventData eventData)
     {
         CursorManager.Instance.UseNormalCursor();
-
     }
-
-
 }
