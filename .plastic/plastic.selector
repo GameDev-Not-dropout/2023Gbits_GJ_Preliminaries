@@ -1,4 +1,3 @@
-repository "2023Gbits_GJ_Preliminaries@cn_kaisei@cloud.cn"
+rep "2023Gbits_GJ_Preliminaries@cn_kaisei@cloud.cn"
   path "/"
-    br "/main"
-    co "/main"
+    smartbranch "/main" changeset "91"     

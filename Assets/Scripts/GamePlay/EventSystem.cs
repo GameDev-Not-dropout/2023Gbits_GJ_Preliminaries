@@ -17,11 +17,13 @@ public enum EventName
     OnTransitionTriggerEnter = 11,
     OnChangeStyle = 12,
 
+    OnJumpTouch = 13,
+    OnStopJumpTouch = 14,
+    OnFunctionTouch = 15,
 }
 
 public class EventSystem : MonoSingleton<EventSystem>
 {
-
     Dictionary<EventName, Delegate> eventDic = new Dictionary<EventName, Delegate>();
 
     /// <summary>
@@ -44,7 +46,6 @@ public class EventSystem : MonoSingleton<EventSystem>
         eventDic[eventType] = (Action<T>)Delegate.Combine((Action<T>)eventDic[eventType], action);
     }
 
-
     /// <summary>
     /// 移除事件监听
     /// </summary>
@@ -52,7 +53,7 @@ public class EventSystem : MonoSingleton<EventSystem>
     /// <param name="action"></param>
     public void RemoveEventListener(EventName eventType, Action action)
     {
-        if(CheckRemovingEvent(eventType, action))
+        if (CheckRemovingEvent(eventType, action))
             eventDic[eventType] = (Action)Delegate.Remove((Action)eventDic[eventType], action);
     }
 
@@ -127,7 +128,7 @@ public class EventSystem : MonoSingleton<EventSystem>
         }
     }
 
-    void CheckAddingEvent(EventName eventType, Delegate listener)
+    private void CheckAddingEvent(EventName eventType, Delegate listener)
     {
         if (!eventDic.ContainsKey(eventType))
             eventDic.Add(eventType, null);
@@ -143,7 +144,7 @@ public class EventSystem : MonoSingleton<EventSystem>
         }
     }
 
-    bool CheckRemovingEvent(EventName eventType, Delegate listener)
+    private bool CheckRemovingEvent(EventName eventType, Delegate listener)
     {
         bool result;
         if (!eventDic.ContainsKey(eventType))
@@ -164,6 +165,4 @@ public class EventSystem : MonoSingleton<EventSystem>
 
         return result;
     }
-
-
 }

@@ -66,6 +66,7 @@ public class GameFlow : MonoBehaviour
         }
         foreach (var item in buttonImages)
         {
+            item.gameObject.SetActive(true);
             item.DOFade(1, duration);
         }
         foreach (var item in floors)

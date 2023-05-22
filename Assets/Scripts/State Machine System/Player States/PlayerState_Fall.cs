@@ -7,11 +7,13 @@ public class PlayerState_Fall : PlayerState
 {
     [SerializeField] AnimationCurve speedCurve;     // 动画曲线
     [SerializeField] float moveSpeed = 5f;
+
     public override void LogicUpdate()
     {
         base.LogicUpdate();
 
         #region 状态切换
+
         if (player.IsGrounded)
         {
             stateMachine.SwitchState(typeof(PlayerState_Land));
@@ -24,8 +26,9 @@ public class PlayerState_Fall : PlayerState
                 return;
             }
             input.SetJumpInputBufferTime();    // 如果玩家没有二段跳功能就可以进行跳跃预输入
-        } 
-        #endregion
+        }
+
+        #endregion 状态切换
     }
 
     public override void PhysicUpdate()

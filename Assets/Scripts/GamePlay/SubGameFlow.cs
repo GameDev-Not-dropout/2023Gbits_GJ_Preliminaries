@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class SubGameFlow : MonoBehaviour
 {
-
     public List<SpriteRenderer> floors;
     public List<SpriteRenderer> transparentFloors;
     public GameObject[] uiObj;
@@ -14,12 +13,10 @@ public class SubGameFlow : MonoBehaviour
     public Image[] buttonImages;
     public GameObject guidePanel;
 
-
     public SpriteRenderer player;
 
     public float duration;
     public float transparentRatio = 0.3f;
-
 
     private void Start()
     {
@@ -34,23 +31,23 @@ public class SubGameFlow : MonoBehaviour
         }
         foreach (var item in buttonImages)
         {
+            item.gameObject.SetActive(true);
             item.DOFade(0, 0f);
         }
 
         StartCoroutine(CanvasFade());
     }
 
-    IEnumerator CanvasFade()
+    private IEnumerator CanvasFade()
     {
         yield return new WaitForSeconds(duration * 2);
         FadeIn();
         yield return new WaitForSeconds(1.5f);
-        guidePanel.SetActive(true); 
+        guidePanel.SetActive(true);
         Time.timeScale = 0f;
     }
 
-
-    void FadeIn()
+    private void FadeIn()
     {
         foreach (var item in floors)
         {
@@ -58,7 +55,7 @@ public class SubGameFlow : MonoBehaviour
         }
         foreach (var item in transparentFloors)
         {
-            item.DOFade(transparentRatio, duration).OnComplete(()=> player.enabled = true);
+            item.DOFade(transparentRatio, duration).OnComplete(() => player.enabled = true);
         }
         foreach (var item in uiObj)
         {
@@ -74,7 +71,4 @@ public class SubGameFlow : MonoBehaviour
             item.DOFade(0, duration).OnComplete(() => item.gameObject.SetActive(false));
         }
     }
-
-
-
 }

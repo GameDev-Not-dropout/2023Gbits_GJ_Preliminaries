@@ -85,6 +85,7 @@ public class ControlledMoveFloor : MonoBehaviour
     private void Regeneration(Transform trans)
     {
         transform.position = new Vector3(initPos, transform.position.y);
+        notInInitPos = false;
         forwardTweener = transform.DOMoveX(boundary, duration).SetEase(Ease.Linear)
                 .OnComplete(MoveComplete);
         forwardTweener.SetAutoKill(false);
