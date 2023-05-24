@@ -1,0 +1,141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Cat_run
+  serializedVersion: 2
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: c8e5b973b711bfc4ab4826b574a6fbe9, type: 3}
+    - {fileID: 2800000, guid: a7ae30377ae4d99459229286f2286ba3, type: 3}
+    - {fileID: 2800000, guid: be361b87c80175c479d07eb18da307f4, type: 3}
+    - {fileID: 2800000, guid: 54df542639570bf4ca5a78736ae02f14, type: 3}
+    - {fileID: 2800000, guid: 8695909e00ad0ab458d0bf09c582ef58, type: 3}
+    - {fileID: 2800000, guid: 2172b654313bff84cb4281567c90b020, type: 3}
+    - {fileID: 2800000, guid: 816fd66d59a70cb469c3e5f99322b60f, type: 3}
+    - {fileID: 2800000, guid: 894f52c087f5c514786a4263b1b5a5c1, type: 3}
+    - {fileID: 2800000, guid: 4b49546e5aa0cfe42831058aaf379b5c, type: 3}
+    - {fileID: 2800000, guid: 02229211015ccd648995def5b541728a, type: 3}
+    - {fileID: 2800000, guid: 6a06d1f392ec9b842b9cb7e5c077d964, type: 3}
+    - {fileID: 2800000, guid: 20f06182a09b82243a757e68a754b551, type: 3}
+    - {fileID: 2800000, guid: d78bc429c291b8446a326056cadabbf1, type: 3}
+    - {fileID: 2800000, guid: 712d4e88ea07e5040b0cce86abf81618, type: 3}
+    - {fileID: 2800000, guid: b7b3c4acd757abc498f0f64ab808653a, type: 3}
+    - {fileID: 2800000, guid: 920fc31d29758d741b9d19b7b6482b56, type: 3}
+    - {fileID: 2800000, guid: b7ea0eff2a7428145ba6bced2a58d6ab, type: 3}
+    - {fileID: 2800000, guid: 761972fe4243cc94686c22872a1afa4e, type: 3}
+    - {fileID: 2800000, guid: bb21f94637ee69640b6490a1810697cf, type: 3}
+    - {fileID: 2800000, guid: c408a1e9f4f198b4cb5e5feb2e5a1f93, type: 3}
+    - {fileID: 2800000, guid: a9f225f8b06576f4eac6fda10079aac1, type: 3}
+    - {fileID: 2800000, guid: 233be19a27b560542b8e8442f6963396, type: 3}
+    - {fileID: 2800000, guid: 8064d506bda65bf4d8eab51acaf07568, type: 3}
+    - {fileID: 2800000, guid: 6ab8b2ade8067df4e968ad3b1d978b94, type: 3}
+    - {fileID: 2800000, guid: b78fd4ca5e37034429d94bae1d29d1f9, type: 3}
+    - {fileID: 2800000, guid: 8bd7b9d76cf08d44c884a34821378ff4, type: 3}
+    - {fileID: 2800000, guid: b1268d42b317663419448c0001ee7a91, type: 3}
+    - {fileID: 2800000, guid: dc746084fe1f7ca4a91f023f6687dce2, type: 3}
+    - {fileID: 2800000, guid: 3185bccba327c044b8226d95bf5fcae8, type: 3}
+    - {fileID: 2800000, guid: eb7186335e01f1d48b6ae60c82b4d1d1, type: 3}
+    - {fileID: 2800000, guid: f6dbed4a80f3c114ea5237362bc1e116, type: 3}
+    - {fileID: 2800000, guid: a74ca3f73635e5e489e590384842385e, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 894f52c087f5c514786a4263b1b5a5c1, type: 3}
+  - {fileID: 21300000, guid: 02229211015ccd648995def5b541728a, type: 3}
+  - {fileID: 21300000, guid: b1268d42b317663419448c0001ee7a91, type: 3}
+  - {fileID: 21300000, guid: 20f06182a09b82243a757e68a754b551, type: 3}
+  - {fileID: 21300000, guid: eb7186335e01f1d48b6ae60c82b4d1d1, type: 3}
+  - {fileID: 21300000, guid: c8e5b973b711bfc4ab4826b574a6fbe9, type: 3}
+  - {fileID: 21300000, guid: 6a06d1f392ec9b842b9cb7e5c077d964, type: 3}
+  - {fileID: 21300000, guid: 2172b654313bff84cb4281567c90b020, type: 3}
+  - {fileID: 21300000, guid: dc746084fe1f7ca4a91f023f6687dce2, type: 3}
+  - {fileID: 21300000, guid: 8064d506bda65bf4d8eab51acaf07568, type: 3}
+  - {fileID: 21300000, guid: 54df542639570bf4ca5a78736ae02f14, type: 3}
+  - {fileID: 21300000, guid: bb21f94637ee69640b6490a1810697cf, type: 3}
+  - {fileID: 21300000, guid: a7ae30377ae4d99459229286f2286ba3, type: 3}
+  - {fileID: 21300000, guid: be361b87c80175c479d07eb18da307f4, type: 3}
+  - {fileID: 21300000, guid: 8bd7b9d76cf08d44c884a34821378ff4, type: 3}
+  - {fileID: 21300000, guid: a74ca3f73635e5e489e590384842385e, type: 3}
+  - {fileID: 21300000, guid: 712d4e88ea07e5040b0cce86abf81618, type: 3}
+  - {fileID: 21300000, guid: a9f225f8b06576f4eac6fda10079aac1, type: 3}
+  - {fileID: 21300000, guid: d78bc429c291b8446a326056cadabbf1, type: 3}
+  - {fileID: 21300000, guid: c408a1e9f4f198b4cb5e5feb2e5a1f93, type: 3}
+  - {fileID: 21300000, guid: f6dbed4a80f3c114ea5237362bc1e116, type: 3}
+  - {fileID: 21300000, guid: 233be19a27b560542b8e8442f6963396, type: 3}
+  - {fileID: 21300000, guid: b78fd4ca5e37034429d94bae1d29d1f9, type: 3}
+  - {fileID: 21300000, guid: 3185bccba327c044b8226d95bf5fcae8, type: 3}
+  - {fileID: 21300000, guid: b7b3c4acd757abc498f0f64ab808653a, type: 3}
+  - {fileID: 21300000, guid: 920fc31d29758d741b9d19b7b6482b56, type: 3}
+  - {fileID: 21300000, guid: 816fd66d59a70cb469c3e5f99322b60f, type: 3}
+  - {fileID: 21300000, guid: 6ab8b2ade8067df4e968ad3b1d978b94, type: 3}
+  - {fileID: 21300000, guid: 4b49546e5aa0cfe42831058aaf379b5c, type: 3}
+  - {fileID: 21300000, guid: 8695909e00ad0ab458d0bf09c582ef58, type: 3}
+  - {fileID: 21300000, guid: 761972fe4243cc94686c22872a1afa4e, type: 3}
+  - {fileID: 21300000, guid: b7ea0eff2a7428145ba6bced2a58d6ab, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - run_08
+  - run_11
+  - run_33
+  - run_13
+  - run_37
+  - run_00
+  - run_12
+  - run_05
+  - run_35
+  - run_28
+  - run_03
+  - run_23
+  - run_01
+  - run_02
+  - run_32
+  - run_39
+  - run_16
+  - run_25
+  - run_15
+  - run_24
+  - run_38
+  - run_27
+  - run_31
+  - run_36
+  - run_17
+  - run_19
+  - run_07
+  - run_29
+  - run_09
+  - run_04
+  - run_21
+  - run_20
+  m_RenderDataMap: {}
+  m_Tag: Cat_run
+  m_IsVariant: 0
+  m_IsPlaceholder: 0

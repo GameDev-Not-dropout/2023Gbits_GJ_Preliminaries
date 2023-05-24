@@ -51,14 +51,28 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         this.DraggingHandler(eventData);
     }
 
+    //public float offset;
+
     /// <summary>
     /// 线跟随鼠标
     /// </summary>
     private void DraggingHandler(PointerEventData eventData)
     {
         Vector3 pos;
+
         RectTransformUtility.ScreenPointToWorldPointInRectangle(rectTransform, eventData.position, eventData.enterEventCamera, out pos);
+
+        if (pos.x < 20)
+        {
+            rectTransform.offsetMin = new Vector2(rectTransform.offsetMin.x - 100f, -(screenHeight / 2));
+            transform.position = new Vector2(transform.position.x - 100f, transform.position.y);
+
+            return;
+        }
+
         rectTransform.offsetMin = new Vector2(pos.x, -(screenHeight / 2));
+        rectTransform.offsetMax = new Vector2(0f, rectTransform.offsetMax.y);
+
         RectTransformUtility.ScreenPointToWorldPointInRectangle(thisRect, eventData.position, eventData.enterEventCamera, out pos);
         if (pos.x <= 20)    // 限制线的移动
         {

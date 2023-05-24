@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Scene2_2
+  serializedVersion: 2
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 99995b31880c5844cb996dbe6b744c31, type: 3}
+    - {fileID: 2800000, guid: 7adcf5908e722cf4d9b526a064ef5c8a, type: 3}
+    - {fileID: 2800000, guid: 10fd4ef04483b1a428a245eb2592b2ee, type: 3}
+    - {fileID: 2800000, guid: 0f49471b480762442a480cc8596c7699, type: 3}
+    - {fileID: 2800000, guid: 4638d623c5209dd48af8009117f07844, type: 3}
+    - {fileID: 2800000, guid: e4700c4a851d7f548885b04195f65cc4, type: 3}
+    - {fileID: 2800000, guid: 5bc2a8c2f6d5b9146b662f0745021b6b, type: 3}
+    - {fileID: 2800000, guid: d7790e71854480547b27a8ecfff8c729, type: 3}
+    - {fileID: 2800000, guid: fe90efcde1b775f4582dc63884e6966c, type: 3}
+    - {fileID: 2800000, guid: 85cd5dff48b7402428d373b6dac09db9, type: 3}
+    - {fileID: 2800000, guid: 73d7a822e0661ac4b8790924acf93ce8, type: 3}
+    - {fileID: 2800000, guid: f25bf1dc44a349f4c9f19f6bdcfd9c23, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 7adcf5908e722cf4d9b526a064ef5c8a, type: 3}
+  - {fileID: 21300000, guid: 10fd4ef04483b1a428a245eb2592b2ee, type: 3}
+  - {fileID: 21300000, guid: 99995b31880c5844cb996dbe6b744c31, type: 3}
+  - {fileID: 21300000, guid: d7790e71854480547b27a8ecfff8c729, type: 3}
+  - {fileID: 21300000, guid: 73d7a822e0661ac4b8790924acf93ce8, type: 3}
+  - {fileID: 21300000, guid: 5bc2a8c2f6d5b9146b662f0745021b6b, type: 3}
+  - {fileID: 21300000, guid: 4638d623c5209dd48af8009117f07844, type: 3}
+  - {fileID: 21300000, guid: e4700c4a851d7f548885b04195f65cc4, type: 3}
+  - {fileID: 21300000, guid: 0f49471b480762442a480cc8596c7699, type: 3}
+  - {fileID: 21300000, guid: f25bf1dc44a349f4c9f19f6bdcfd9c23, type: 3}
+  - {fileID: 21300000, guid: fe90efcde1b775f4582dc63884e6966c, type: 3}
+  - {fileID: 21300000, guid: 85cd5dff48b7402428d373b6dac09db9, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - A R
+  - end
+  - A L
+  - move 1
+  - SceneA
+  - key
+  - guiji 3
+  - guiji1
+  - guiji 2
+  - SceneB
+  - move 2
+  - move 3
+  m_RenderDataMap: {}
+  m_Tag: Scene2_2
+  m_IsVariant: 0
+  m_IsPlaceholder: 0

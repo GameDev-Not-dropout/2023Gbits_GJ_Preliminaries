@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LoginUI
+  serializedVersion: 2
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: fa8c89826b2ef3d44874f9a473529da4, type: 3}
+    - {fileID: 2800000, guid: a1daea037f3b5e84ba85f5b7e4ba2199, type: 3}
+    - {fileID: 2800000, guid: b03b40469ac13c94fb6ffdc835ee616e, type: 3}
+    - {fileID: 2800000, guid: 6a49fbcca729512489624dab0216ff56, type: 3}
+    - {fileID: 2800000, guid: 5b066e9e61223744992e91a246fdbfae, type: 3}
+    - {fileID: 2800000, guid: 410bbc1b16b28544794148a9651e7086, type: 3}
+    - {fileID: 2800000, guid: 1dfc82eac32668e488436f72b2d3fe16, type: 3}
+    - {fileID: 2800000, guid: 02a9e12a747d2b6488abf65b168c7fe9, type: 3}
+    - {fileID: 2800000, guid: a9c7ffb44d6b18241aaa0520e3a29d82, type: 3}
+    - {fileID: 2800000, guid: 6b4ee6c5645d5904086d5efa3acb84eb, type: 3}
+    - {fileID: 2800000, guid: a70edf3600a41dd42b60e3d7cf44859c, type: 3}
+    - {fileID: 2800000, guid: 480d146c6f542de489da47302e15d2e3, type: 3}
+    - {fileID: 2800000, guid: 9f89624057e0e7346ac62709bfd11c54, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 9f89624057e0e7346ac62709bfd11c54, type: 3}
+  - {fileID: 21300000, guid: fa8c89826b2ef3d44874f9a473529da4, type: 3}
+  - {fileID: 21300000, guid: a1daea037f3b5e84ba85f5b7e4ba2199, type: 3}
+  - {fileID: 21300000, guid: a9c7ffb44d6b18241aaa0520e3a29d82, type: 3}
+  - {fileID: 21300000, guid: 6b4ee6c5645d5904086d5efa3acb84eb, type: 3}
+  - {fileID: 21300000, guid: a70edf3600a41dd42b60e3d7cf44859c, type: 3}
+  - {fileID: 21300000, guid: b03b40469ac13c94fb6ffdc835ee616e, type: 3}
+  - {fileID: 21300000, guid: 02a9e12a747d2b6488abf65b168c7fe9, type: 3}
+  - {fileID: 21300000, guid: 1dfc82eac32668e488436f72b2d3fe16, type: 3}
+  - {fileID: 21300000, guid: 410bbc1b16b28544794148a9651e7086, type: 3}
+  - {fileID: 21300000, guid: 480d146c6f542de489da47302e15d2e3, type: 3}
+  - {fileID: 21300000, guid: 6a49fbcca729512489624dab0216ff56, type: 3}
+  - {fileID: 21300000, guid: 5b066e9e61223744992e91a246fdbfae, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - 08
+  - "\u5F00\u59CB\u6E38\u620F \u6309\u4E0B"
+  - "\u5F00\u59CB\u6E38\u620F"
+  - 04
+  - 05
+  - 06
+  - "\u9009\u62E9\u5173\u5361 \u6309\u4E0B"
+  - 03
+  - 02
+  - 01
+  - 07
+  - "\u9009\u62E9\u5173\u5361"
+  - exit
+  m_RenderDataMap: {}
+  m_Tag: LoginUI
+  m_IsVariant: 0
+  m_IsPlaceholder: 0

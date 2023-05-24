@@ -1,0 +1,141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Cat_fall
+  serializedVersion: 2
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 4a70a7ebf77a70140b585fc8c52235f4, type: 3}
+    - {fileID: 2800000, guid: b8678efd6d763894f9818e2283e21d84, type: 3}
+    - {fileID: 2800000, guid: c7ec5f8fcdbf2754a8504366951fc0ef, type: 3}
+    - {fileID: 2800000, guid: 922c9efe23e012b499e850a2e8ba06a7, type: 3}
+    - {fileID: 2800000, guid: 3184f2a3b1773a844bbe08ae5b15d46c, type: 3}
+    - {fileID: 2800000, guid: 2acec1d6a65372944ab0a4456a34a068, type: 3}
+    - {fileID: 2800000, guid: 6a60a8e4f51e81d4d954fcbca448c019, type: 3}
+    - {fileID: 2800000, guid: 53d8cbe0dd6b1cf4b9a6cadcedf93632, type: 3}
+    - {fileID: 2800000, guid: cd21d02e7b00dd34ab6c03c426f82d1f, type: 3}
+    - {fileID: 2800000, guid: 9e2ef9440a498d248a659c6b2771548f, type: 3}
+    - {fileID: 2800000, guid: f537837d910be4f4d97ac85f57713b21, type: 3}
+    - {fileID: 2800000, guid: 7e0ec2f034c31b14584d9c9fefac8703, type: 3}
+    - {fileID: 2800000, guid: c052e83db36a3e64f8bea5ce412b45fa, type: 3}
+    - {fileID: 2800000, guid: d9c2f9d93ecc4564288815cc00e65026, type: 3}
+    - {fileID: 2800000, guid: 7cb3782068ab2d249b610e2606e808cb, type: 3}
+    - {fileID: 2800000, guid: 0f6869614a92a7043a3e64abc374031f, type: 3}
+    - {fileID: 2800000, guid: 8720138a5c81f374aabe64c5ab060ce3, type: 3}
+    - {fileID: 2800000, guid: d9ce2eaf0d3127c4f94695ba1a5686b0, type: 3}
+    - {fileID: 2800000, guid: c94b84c9b8405704d83738cf1ab8ee08, type: 3}
+    - {fileID: 2800000, guid: 59aa60e544c6d4b41bb76218d967e668, type: 3}
+    - {fileID: 2800000, guid: 0ebbd18047826c848aa7eca7f0be42a6, type: 3}
+    - {fileID: 2800000, guid: 9c14fa0d566da6e469250e408d23a9c3, type: 3}
+    - {fileID: 2800000, guid: d2eda888e6426a648aceb328d6bbf888, type: 3}
+    - {fileID: 2800000, guid: 5461621164e807c448c8ff916f767215, type: 3}
+    - {fileID: 2800000, guid: e084f25ded0f2114d82cabbaf342691d, type: 3}
+    - {fileID: 2800000, guid: 70f7e785965e11540a5bffcc0e6fb916, type: 3}
+    - {fileID: 2800000, guid: 450adb9751598cb4fa87a93ffd4caf88, type: 3}
+    - {fileID: 2800000, guid: c5dbfc8300970d749976bda74dcdb090, type: 3}
+    - {fileID: 2800000, guid: 35cf002a11d365047a3e3f41f206baae, type: 3}
+    - {fileID: 2800000, guid: 43e4a8d511a922a49b6d830e737fd442, type: 3}
+    - {fileID: 2800000, guid: 934a6159efee41b40942306914bd318d, type: 3}
+    - {fileID: 2800000, guid: f1229fc4df60b3c47a8c25f4aec310c4, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 7cb3782068ab2d249b610e2606e808cb, type: 3}
+  - {fileID: 21300000, guid: 0ebbd18047826c848aa7eca7f0be42a6, type: 3}
+  - {fileID: 21300000, guid: 53d8cbe0dd6b1cf4b9a6cadcedf93632, type: 3}
+  - {fileID: 21300000, guid: 7e0ec2f034c31b14584d9c9fefac8703, type: 3}
+  - {fileID: 21300000, guid: 5461621164e807c448c8ff916f767215, type: 3}
+  - {fileID: 21300000, guid: 0f6869614a92a7043a3e64abc374031f, type: 3}
+  - {fileID: 21300000, guid: c5dbfc8300970d749976bda74dcdb090, type: 3}
+  - {fileID: 21300000, guid: 3184f2a3b1773a844bbe08ae5b15d46c, type: 3}
+  - {fileID: 21300000, guid: 9e2ef9440a498d248a659c6b2771548f, type: 3}
+  - {fileID: 21300000, guid: f1229fc4df60b3c47a8c25f4aec310c4, type: 3}
+  - {fileID: 21300000, guid: 6a60a8e4f51e81d4d954fcbca448c019, type: 3}
+  - {fileID: 21300000, guid: 70f7e785965e11540a5bffcc0e6fb916, type: 3}
+  - {fileID: 21300000, guid: 43e4a8d511a922a49b6d830e737fd442, type: 3}
+  - {fileID: 21300000, guid: 59aa60e544c6d4b41bb76218d967e668, type: 3}
+  - {fileID: 21300000, guid: 2acec1d6a65372944ab0a4456a34a068, type: 3}
+  - {fileID: 21300000, guid: 450adb9751598cb4fa87a93ffd4caf88, type: 3}
+  - {fileID: 21300000, guid: d2eda888e6426a648aceb328d6bbf888, type: 3}
+  - {fileID: 21300000, guid: 934a6159efee41b40942306914bd318d, type: 3}
+  - {fileID: 21300000, guid: c94b84c9b8405704d83738cf1ab8ee08, type: 3}
+  - {fileID: 21300000, guid: d9c2f9d93ecc4564288815cc00e65026, type: 3}
+  - {fileID: 21300000, guid: 35cf002a11d365047a3e3f41f206baae, type: 3}
+  - {fileID: 21300000, guid: 8720138a5c81f374aabe64c5ab060ce3, type: 3}
+  - {fileID: 21300000, guid: 4a70a7ebf77a70140b585fc8c52235f4, type: 3}
+  - {fileID: 21300000, guid: 9c14fa0d566da6e469250e408d23a9c3, type: 3}
+  - {fileID: 21300000, guid: c052e83db36a3e64f8bea5ce412b45fa, type: 3}
+  - {fileID: 21300000, guid: e084f25ded0f2114d82cabbaf342691d, type: 3}
+  - {fileID: 21300000, guid: f537837d910be4f4d97ac85f57713b21, type: 3}
+  - {fileID: 21300000, guid: b8678efd6d763894f9818e2283e21d84, type: 3}
+  - {fileID: 21300000, guid: cd21d02e7b00dd34ab6c03c426f82d1f, type: 3}
+  - {fileID: 21300000, guid: 922c9efe23e012b499e850a2e8ba06a7, type: 3}
+  - {fileID: 21300000, guid: c7ec5f8fcdbf2754a8504366951fc0ef, type: 3}
+  - {fileID: 21300000, guid: d9ce2eaf0d3127c4f94695ba1a5686b0, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - fall_18
+  - fall_25
+  - fall_08
+  - fall_13
+  - fall_29
+  - fall_19
+  - fall_34
+  - fall_05
+  - fall_11
+  - fall_39
+  - fall_07
+  - fall_32
+  - fall_36
+  - fall_24
+  - fall_06
+  - fall_33
+  - fall_28
+  - fall_38
+  - fall_22
+  - fall_16
+  - fall_35
+  - fall_20
+  - fall_00
+  - fall_27
+  - fall_15
+  - fall_30
+  - fall_12
+  - fall_01
+  - fall_10
+  - fall_04
+  - fall_02
+  - fall_21
+  m_RenderDataMap: {}
+  m_Tag: Cat_fall
+  m_IsVariant: 0
+  m_IsPlaceholder: 0

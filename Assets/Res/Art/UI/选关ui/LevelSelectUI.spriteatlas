@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LevelSelectUI
+  serializedVersion: 2
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: bea9b532cd971ea45bf40d4ccca64219, type: 3}
+    - {fileID: 2800000, guid: 45439c0b77936af44a50ec8e93c95c79, type: 3}
+    - {fileID: 2800000, guid: 828d7b11750d5ac41b724e59e98fc20a, type: 3}
+    - {fileID: 2800000, guid: 302c86267b2c2de419ca9a309b72a52f, type: 3}
+    - {fileID: 2800000, guid: 71984eb830cf29d44a9c056051abecd2, type: 3}
+    - {fileID: 2800000, guid: 2a398f7d6ad8b22418a8b0bd23537c91, type: 3}
+    - {fileID: 2800000, guid: 8eac2a581f8af3748ac7d3c6749b7c5b, type: 3}
+    - {fileID: 2800000, guid: f7cbc85a66498974ebb3500490287daf, type: 3}
+    - {fileID: 2800000, guid: da9fc8e00d48f5544ac2f90f8365565b, type: 3}
+    - {fileID: 2800000, guid: 5f929e0a76a44ea4ab2f80de2a4207c0, type: 3}
+    - {fileID: 2800000, guid: 03895368d6beafd42b2f86270923bca7, type: 3}
+    - {fileID: 2800000, guid: 062950bef4dd6864a809c9e800dd0456, type: 3}
+    - {fileID: 2800000, guid: a7ca70841d6462548bb4fc04994bf7f0, type: 3}
+    - {fileID: 2800000, guid: 1bd98e1b774ced94cbf2f7c6731d1db2, type: 3}
+    - {fileID: 2800000, guid: c09f1d641be890b40909801be6a4b2aa, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: da9fc8e00d48f5544ac2f90f8365565b, type: 3}
+  - {fileID: 21300000, guid: 828d7b11750d5ac41b724e59e98fc20a, type: 3}
+  - {fileID: 21300000, guid: bea9b532cd971ea45bf40d4ccca64219, type: 3}
+  - {fileID: 21300000, guid: c09f1d641be890b40909801be6a4b2aa, type: 3}
+  - {fileID: 21300000, guid: a7ca70841d6462548bb4fc04994bf7f0, type: 3}
+  - {fileID: 21300000, guid: 302c86267b2c2de419ca9a309b72a52f, type: 3}
+  - {fileID: 21300000, guid: 8eac2a581f8af3748ac7d3c6749b7c5b, type: 3}
+  - {fileID: 21300000, guid: 03895368d6beafd42b2f86270923bca7, type: 3}
+  - {fileID: 21300000, guid: 71984eb830cf29d44a9c056051abecd2, type: 3}
+  - {fileID: 21300000, guid: 5f929e0a76a44ea4ab2f80de2a4207c0, type: 3}
+  - {fileID: 21300000, guid: f7cbc85a66498974ebb3500490287daf, type: 3}
+  - {fileID: 21300000, guid: 45439c0b77936af44a50ec8e93c95c79, type: 3}
+  - {fileID: 21300000, guid: 1bd98e1b774ced94cbf2f7c6731d1db2, type: 3}
+  - {fileID: 21300000, guid: 2a398f7d6ad8b22418a8b0bd23537c91, type: 3}
+  - {fileID: 21300000, guid: 062950bef4dd6864a809c9e800dd0456, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - "\u8D44\u6E90 100@4x"
+  - 3
+  - 1
+  - "\u8D44\u6E90 112@4x"
+  - "\u8D44\u6E90 110@4x"
+  - "\u6309\u4E0B1"
+  - "\u8D44\u6E90 98@4x"
+  - "\u8D44\u6E90 108@4x"
+  - "\u6309\u4E0B2"
+  - "\u8D44\u6E90 107@4x"
+  - "\u8D44\u6E90 99@4x"
+  - 2
+  - "\u8D44\u6E90 111@4x"
+  - "\u6309\u4E0B3"
+  - "\u8D44\u6E90 109@4x"
+  m_RenderDataMap: {}
+  m_Tag: LevelSelectUI
+  m_IsVariant: 0
+  m_IsPlaceholder: 0

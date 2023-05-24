@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Player_land
+  serializedVersion: 2
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: bf4bd7cb0fc874340b8ade30507f3475, type: 3}
+    - {fileID: 2800000, guid: 2b23c57a77fa261449f19e414c6a9f8f, type: 3}
+    - {fileID: 2800000, guid: 55fce9c2bdc6c23418035dcbcb9239df, type: 3}
+    - {fileID: 2800000, guid: 690aefa979bacd34fbc1511f20f8e927, type: 3}
+    - {fileID: 2800000, guid: 45630f566a3235d4fbaedaef5ef8df14, type: 3}
+    - {fileID: 2800000, guid: 21f842a943e21714e96795c6a7626cef, type: 3}
+    - {fileID: 2800000, guid: 63d92c9c8aa13b347ae067d044b10c82, type: 3}
+    - {fileID: 2800000, guid: 8bd5d9c9118339f42ae61e5a2bbec327, type: 3}
+    - {fileID: 2800000, guid: b6ef7cb3af2472341a9b79ec9700835f, type: 3}
+    - {fileID: 2800000, guid: ce8ef0d62c7c72f41b1a66f0d480fb0d, type: 3}
+    - {fileID: 2800000, guid: 3d4276ea9a15ffc40961f6ce2161ea1e, type: 3}
+    - {fileID: 2800000, guid: 4a1928070796c7a45854ac753e0406df, type: 3}
+    - {fileID: 2800000, guid: 6be4ed90134b25645a50fe3cae658270, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 6be4ed90134b25645a50fe3cae658270, type: 3}
+  - {fileID: 21300000, guid: 55fce9c2bdc6c23418035dcbcb9239df, type: 3}
+  - {fileID: 21300000, guid: b6ef7cb3af2472341a9b79ec9700835f, type: 3}
+  - {fileID: 21300000, guid: 45630f566a3235d4fbaedaef5ef8df14, type: 3}
+  - {fileID: 21300000, guid: ce8ef0d62c7c72f41b1a66f0d480fb0d, type: 3}
+  - {fileID: 21300000, guid: 4a1928070796c7a45854ac753e0406df, type: 3}
+  - {fileID: 21300000, guid: 21f842a943e21714e96795c6a7626cef, type: 3}
+  - {fileID: 21300000, guid: 690aefa979bacd34fbc1511f20f8e927, type: 3}
+  - {fileID: 21300000, guid: 8bd5d9c9118339f42ae61e5a2bbec327, type: 3}
+  - {fileID: 21300000, guid: 2b23c57a77fa261449f19e414c6a9f8f, type: 3}
+  - {fileID: 21300000, guid: 3d4276ea9a15ffc40961f6ce2161ea1e, type: 3}
+  - {fileID: 21300000, guid: bf4bd7cb0fc874340b8ade30507f3475, type: 3}
+  - {fileID: 21300000, guid: 63d92c9c8aa13b347ae067d044b10c82, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - land_13
+  - land_02
+  - land_09
+  - land_04
+  - land_10
+  - land_12
+  - land_05
+  - land_03
+  - land_08
+  - land_01
+  - land_11
+  - land_00
+  - land_06
+  m_RenderDataMap: {}
+  m_Tag: Player_land
+  m_IsVariant: 0
+  m_IsPlaceholder: 0

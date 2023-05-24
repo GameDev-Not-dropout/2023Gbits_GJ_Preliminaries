@@ -1207,7 +1207,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 301289969}
-  - component: {fileID: 301289970}
   - component: {fileID: 301289968}
   - component: {fileID: 301289966}
   m_Layer: 0
@@ -1308,18 +1307,6 @@ Transform:
   m_Father: {fileID: 1990001444}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &301289970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 301289965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2efc9824c1fa1cc4a8ecbcb0177eb965, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &320938676
 GameObject:
   m_ObjectHideFlags: 0
@@ -4055,7 +4042,11 @@ PrefabInstance:
     - target: {fileID: 2897335951695493125, guid: 3f57e224a3d080141b35d6ccdfc27bc3, type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: c99f6b6549385cc4baa6cbcc0374b418, type: 3}
+      objectReference: {fileID: 32900000, guid: d1d392527c418dd42b80fafe90be567c, type: 3}
+    - target: {fileID: 2897335951695493126, guid: 3f57e224a3d080141b35d6ccdfc27bc3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.0002746582
+      objectReference: {fileID: 0}
     - target: {fileID: 2897335952847793320, guid: 3f57e224a3d080141b35d6ccdfc27bc3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4159,7 +4150,7 @@ PrefabInstance:
     - target: {fileID: 2897335952881211584, guid: 3f57e224a3d080141b35d6ccdfc27bc3, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 41a8c417648ea6346a81f43b3a199ca1, type: 3}
+      objectReference: {fileID: 21300000, guid: c02bd62ba17616a4485bb6baabc9bd29, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f57e224a3d080141b35d6ccdfc27bc3, type: 3}
 --- !u!224 &1025755689 stripped
@@ -5028,6 +5019,7 @@ MonoBehaviour:
   player: {fileID: 1362218619}
   bottomBoundary: 0
   topBoundary: 0
+  scene2Cam: {fileID: 301289968}
 --- !u!1 &1204113367
 GameObject:
   m_ObjectHideFlags: 0

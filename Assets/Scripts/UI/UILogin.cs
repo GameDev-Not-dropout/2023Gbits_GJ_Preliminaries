@@ -22,7 +22,7 @@ public class UILogin : MonoBehaviour
     private void Start()
     {
         videoPlayer.loopPointReached += ChangeVideo;
-        //PlayerPrefs.SetInt("unLockedLevelIndex", levelUnlock);
+        //PlayerPrefs.SetInt("unLockedLevelIndex", 6);
     }
 
     private void Update()

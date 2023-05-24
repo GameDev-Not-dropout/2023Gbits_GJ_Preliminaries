@@ -14,6 +14,8 @@ public class CameraController : MonoBehaviour
     //public bool isDie;
     Camera mainCam;
 
+    public Camera scene2Cam;
+
     private void Start()
     {
         mainCam = Camera.main;
@@ -28,6 +30,9 @@ public class CameraController : MonoBehaviour
         {
             topBoundary = 60f - 12f * 1920 / 1080 * Screen.height / Screen.width;
         }
+
+        scene2Cam.aspect = mainCam.aspect;
+        scene2Cam.orthographicSize = scene2Cam.orthographicSize * 1920 / 1080 * Screen.height / Screen.width;
     }
 
     //private void OnEnable()
@@ -60,6 +65,7 @@ public class CameraController : MonoBehaviour
             return;
         }
         transform.position = new Vector3(transform.position.x, Mathf.Clamp(player.position.y, bottomBoundary, topBoundary), -10);
+        scene2Cam.transform.position = new Vector3(scene2Cam.transform.position.x, mainCam.transform.position.y, -10);
     }
 
     //void Shake()
